@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Website Favicon (Icon sa Browser Tab) -->
+    <link rel="icon" type="image/png" href="pamana(1).png">
+    
     <!-- Speed Optimization: Resource Hints -->
     <link rel="preconnect" href="https://www.canva.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -94,7 +97,7 @@
             background-color: #ffffff;
         }
 
-        /* Top Header Container (Desktop View Default) */
+        /* Top Header Container (Desktop View) */
         .sticky-header {
             position: fixed;
             top: 0;
@@ -183,26 +186,24 @@
             font-size: 13px;
         }
 
-        /* ========================================================= */
-        /* MOBILE OPTIMIZATION: Lilit ang header sa mga cellphone    */
-        /* ========================================================= */
+        /* Mobile View Rules */
         @media (max-width: 600px) {
             .sticky-header {
-                height: 36px; /* Binawasan ang taas ng header bar */
+                height: 36px;
                 padding: 0 12px;
             }
             .brand-container {
-                gap: 8px; /* Binawasan ang espasyo ng logo at text */
+                gap: 8px;
             }
             .brand-container img {
-                max-height: 26px; /* Niliko ang sukat ng logo */
+                max-height: 26px;
             }
             .brand-title {
-                font-size: 15px; /* Niliko ang sukat ng font ng PAMANA */
+                font-size: 15px;
                 letter-spacing: 1px;
             }
             iframe {
-                height: calc(100vh - 64px); /* Inadjust ang taas ng Canva embed (36px header + 28px footer) */
+                height: calc(100vh - 64px);
                 margin-top: 36px;
             }
             .sticky-footer {
