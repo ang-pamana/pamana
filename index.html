@@ -50,7 +50,7 @@
             height: 100%;
             overflow-x: hidden;
             background-color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         /* CUSTOM LOADING SCREEN */
@@ -84,37 +84,37 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* FLOATING TOP HEADER & NAVIGATION BAR */
+        /* FLOATING TOP HEADER */
         .sticky-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 52px;
+            height: 48px;
             background-color: rgba(255, 255, 255, 0.98);
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            padding: 0 25px;
+            padding: 0 20px;
             z-index: 9999;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
         .brand-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .brand-container img {
-            max-height: 36px;
+            max-height: 38px;
             width: auto;
             object-fit: contain;
         }
 
         .brand-title {
-            font-family: 'Georgia', serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             font-size: 20px;
             font-weight: 800;
             letter-spacing: 2px;
@@ -122,36 +122,15 @@
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
 
-        /* Dynamic Navigation Menu Options */
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333333;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            transition: color 0.2s ease;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: #ff6a00;
-        }
-
-        /* IFRAME CANVA EMBED */
+        /* EMBEDDED CANVA FRAME */
         iframe {
             width: 100vw;
-            height: calc(100vh - 82px);
-            margin-top: 52px;
+            height: calc(100vh - 78px);
+            margin-top: 48px;
             border: none;
             display: block;
         }
@@ -187,6 +166,10 @@
             color: #ff6a00;
         }
 
+        .footer-item i {
+            font-size: 13px;
+        }
+
         /* FLOATING BACK TO TOP BUTTON */
         .back-to-top {
             position: fixed;
@@ -212,14 +195,14 @@
             transform: translateY(-3px);
         }
 
-        /* MODAL OVERLAY STYLES */
+        /* WELCOME POP-UP OVERLAY STYLES */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.65);
+            background-color: rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -242,7 +225,7 @@
         }
 
         @keyframes popupAnimation {
-            from { transform: scale(0.85); opacity: 0; }
+            from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
@@ -267,7 +250,7 @@
 
         .modal-title {
             font-family: 'Georgia', serif;
-            font-size: 24px;
+            font-size: 25px;
             color: #2c2c2c;
             margin-bottom: 12px;
             font-weight: 700;
@@ -280,20 +263,12 @@
             margin-bottom: 24px;
         }
 
-        .modal-list {
-            text-align: left;
-            margin: 15px 0 25px 20px;
-            color: #444;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
         .action-btn {
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
             color: #ffffff;
             border: none;
             padding: 12px 28px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: bold;
             border-radius: 25px;
             cursor: pointer;
@@ -303,14 +278,18 @@
 
         .action-btn:hover { transform: translateY(-2px); }
 
-        /* Mobile View Adjustments */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* Inililigpit ang text menu sa mobile para malinis ang header */
-            .sticky-header { height: 40px; padding: 0 12px; }
+        /* MOBILE VIEW ADJUSTMENTS */
+        @media (max-width: 600px) {
+            .sticky-header { height: 36px; padding: 0 12px; }
+            .brand-container { gap: 8px; }
             .brand-container img { max-height: 26px; }
-            .brand-title { font-size: 16px; }
-            iframe { height: calc(100vh - 68px); margin-top: 40px; }
-            .modal-content { padding: 22px 18px; max-width: 450px; }
+            .brand-title { font-size: 15px; letter-spacing: 1px; }
+            iframe { height: calc(100vh - 64px); margin-top: 36px; }
+            .sticky-footer { height: 28px; gap: 10px; padding: 0 5px; }
+            .footer-item { font-size: 10px; }
+            .footer-item i { font-size: 11px; }
+            .modal-content { max-width: 450px; padding: 20px 15px; }
+            .modal-logo { max-height: 46px; }
             .modal-title { font-size: 19px; }
             .modal-text { font-size: 13px; }
         }
@@ -318,110 +297,42 @@
 </head>
 <body>
 
-    <!-- 1. LOADING SCREEN -->
+    <!-- LOADING SCREEN -->
     <div id="loadingScreen">
         <img src="pamanalogo.png" alt="PAMANA Loading" style="max-height: 50px;">
         <div class="spinner"></div>
     </div>
 
-    <!-- 2. WELCOME POP-UP MODAL -->
+    <!-- WELCOME POP-UP MODAL (Using pamanalogo.png) -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('welcomeModal')">&times;</span>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
             <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
             <h2 class="modal-title">Maogmang Pag-abot sa Pamana!</h2>
             <p class="modal-text">
                 Welcome to the official portal for Bicol Culture, Heritage, and Environment made by 4th year Journalism students at Bicol University. Discover and explore the rich history and beauty of the Bicolano heritage.
             </p>
-            <button class="action-btn" onclick="closeModal('welcomeModal')">ENTER WEBSITE</button>
+            <button class="action-btn" onclick="closeModal()">ENTER WEBSITE</button>
         </div>
     </div>
 
-    <!-- 3. ABOUT US MODAL -->
-    <div class="modal-overlay" id="aboutModal" style="display: none; opacity: 0;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
-            <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
-            <h2 class="modal-title">About PAMANA</h2>
-            <p class="modal-text">
-                <strong>PAMANA</strong> is a digital journalism portal created by 4th-year Journalism students from <strong>Bicol University</strong>. Our initiative aims to preserve, document, and promote the rich cultural heritage, traditions, historical sites, and environmental advocacies of the Bicol region.
-            </p>
-            <button class="action-btn" onclick="closeModal('aboutModal')">CLOSE</button>
-        </div>
-    </div>
-
-    <!-- 4. CULTURE MODAL -->
-    <div class="modal-overlay" id="cultureModal" style="display: none; opacity: 0;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('cultureModal')">&times;</span>
-            <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
-            <h2 class="modal-title">Bicol Culture</h2>
-            <p class="modal-text">Explore featured Bicolano cultural traditions and culinary heritage:</p>
-            <ul class="modal-list">
-                <li><strong>Pantomina:</strong> Traditional courtship dance of Bicol.</li>
-                <li><strong>Ibalong Epic:</strong> Legendary tales and mythology of Bicolano heroes.</li>
-                <li><strong>Culinary Delights:</strong> Sili Ice Cream, Pili delicacies, and Bicol Express.</li>
-            </ul>
-            <button class="action-btn" onclick="closeModal('cultureModal')">EXPLORE IN PRESENTATION</button>
-        </div>
-    </div>
-
-    <!-- 5. HERITAGE MODAL -->
-    <div class="modal-overlay" id="heritageModal" style="display: none; opacity: 0;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('heritageModal')">&times;</span>
-            <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
-            <h2 class="modal-title">Bicol Heritage</h2>
-            <p class="modal-text">Discover historical landmarks and ancestral sites across Bicol:</p>
-            <ul class="modal-list">
-                <li><strong>Museo de Legazpi:</strong> Artifacts & local historical archives.</li>
-                <li><strong>Camalig Ancestral Homes:</strong> Preserved Spanish-era architecture.</li>
-                <li><strong>St. John the Baptist Parish Church:</strong> Historical century-old parish.</li>
-            </ul>
-            <button class="action-btn" onclick="closeModal('heritageModal')">EXPLORE IN PRESENTATION</button>
-        </div>
-    </div>
-
-    <!-- 6. ENVIRONMENT MODAL -->
-    <div class="modal-overlay" id="environmentModal" style="display: none; opacity: 0;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('environmentModal')">&times;</span>
-            <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
-            <h2 class="modal-title">Bicol Environment</h2>
-            <p class="modal-text">Read stories and initiatives on environmental conservation in Bicol:</p>
-            <ul class="modal-list">
-                <li><strong>Basura Mo, Bigas Mo:</strong> Community solid-waste management initiative.</li>
-                <li><strong>Tree Planting Drives:</strong> Reforestation programs in Albay.</li>
-                <li><strong>Local Wildlife:</strong> Albay Park and Wildlife Sanctuary conservation.</li>
-            </ul>
-            <button class="action-btn" onclick="closeModal('environmentModal')">EXPLORE IN PRESENTATION</button>
-        </div>
-    </div>
-
-    <!-- 7. FLOATING HEADER & NAVIGATION BAR -->
+    <!-- Floating Top Header (Using pamana(1).png) -->
     <header class="sticky-header">
-        <a href="#" class="brand-container">
+        <div class="brand-container">
             <img src="pamana(1).png" alt="Pamana Logo">
             <span class="brand-title">PAMANA</span>
-        </a>
-        <ul class="nav-links">
-            <li><a onclick="scrollToTop()">Home</a></li>
-            <li><a onclick="openModal('cultureModal')">Culture</a></li>
-            <li><a onclick="openModal('heritageModal')">Heritage</a></li>
-            <li><a onclick="openModal('environmentModal')">Environment</a></li>
-            <li><a onclick="openModal('aboutModal')">About Us</a></li>
-        </ul>
+        </div>
     </header>
 
-    <!-- 8. CANVA EMBEDDED PRESENTATION -->
-    <iframe id="canvaFrame" fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
+    <!-- Canva Embed -->
+    <iframe fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
 
-    <!-- 9. BACK TO TOP BUTTON -->
+    <!-- Floating Back-to-Top Button -->
     <button class="back-to-top" onclick="scrollToTop()" title="Back to Top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- 10. COMPACT FOOTER -->
+    <!-- Fixed Compact Bottom Footer Links -->
     <footer class="sticky-footer">
         <a href="https://facebook.com" target="_blank" class="footer-item">
             <i class="fa-brands fa-facebook"></i>
@@ -437,7 +348,7 @@
         </a>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JavaScript Controls -->
     <script>
         function hideLoading() {
             var loader = document.getElementById('loadingScreen');
@@ -447,16 +358,8 @@
             }, 500);
         }
 
-        function openModal(id) {
-            var modal = document.getElementById(id);
-            modal.style.display = 'flex';
-            setTimeout(function() {
-                modal.style.opacity = '1';
-            }, 10);
-        }
-
-        function closeModal(id) {
-            var modal = document.getElementById(id);
+        function closeModal() {
+            var modal = document.getElementById('welcomeModal');
             modal.style.opacity = '0';
             setTimeout(function() {
                 modal.style.display = 'none';
