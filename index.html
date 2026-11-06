@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Website Favicon & Mobile App Icons (Using pamanalogo.png) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="pamanalogo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="pamanalogo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="pamanalogo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <link rel="shortcut icon" href="https://ang-pamana.github.io/pamana/pamanalogo.png" type="image/x-icon">
     <meta name="apple-mobile-web-app-title" content="Pamana">
     <meta name="application-name" content="Pamana">
     <meta name="theme-color" content="#ffffff">
@@ -19,7 +21,7 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <!-- SEO Title & Description -->
-    <title>Pamana: Bicol Culture, Heritage & Environment</title>
+    <title>Pamana</title>
     <meta name="description" content="Discover Pamana — the official portal for Bicol Culture, Heritage, and Environment created by 4th year Journalism students at Bicol University.">
     
     <meta name="keywords" content="Pamana, Pamana: Bicol Culture, Pamana: Bicol Heritage, Pamana: Bicol Environment, Bicol University Journalism, Pantomina, Ibalong, Museo de Legazpi">
@@ -30,8 +32,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Pamana: Bicol Culture, Heritage & Environment",
-      "alternateName": "Pamana",
+      "name": "Pamana",
+      "alternateName": ["PAMANA", "Pamana Portal"],
       "url": "https://ang-pamana.github.io/pamana/"
     }
     </script>
@@ -39,17 +41,17 @@
     <!-- ENHANCED OPEN GRAPH & SOCIAL MEDIA PREVIEW CARDS -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ang-pamana.github.io/pamana/">
-    <meta property="og:title" content="Pamana: Bicol Culture, Heritage & Environment">
+    <meta property="og:title" content="Pamana">
     <meta property="og:description" content="Official digital portal documenting the rich culture, heritage, and environmental stories of the Bicol region. Authored by Bicol University 4th-year Journalism students.">
     <meta property="og:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Pamana: Bicol Culture, Heritage & Environment">
+    <meta property="og:site_name" content="Pamana">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://ang-pamana.github.io/pamana/">
-    <meta name="twitter:title" content="Pamana: Bicol Culture, Heritage & Environment">
+    <meta name="twitter:title" content="Pamana">
     <meta name="twitter:description" content="Official digital portal documenting the rich culture, heritage, and environmental stories of Bicol by BU Journalism students.">
     <meta name="twitter:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
 
@@ -129,18 +131,20 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* FLOATING TOP HEADER */
+        /* GLASSMORPHISM FLOATING TOP HEADER */
         .sticky-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 48px;
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 16px;
             z-index: 9999;
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
@@ -148,19 +152,19 @@
         .brand-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
         }
 
         .brand-container img {
-            max-height: 38px;
+            max-height: 34px;
             width: auto;
             object-fit: contain;
         }
 
         .brand-title {
             font-family: 'Georgia', 'Times New Roman', serif;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -171,12 +175,18 @@
             text-fill-color: transparent;
         }
 
-        /* Header Share Button */
-        .header-share-btn {
-            background: rgba(255, 106, 0, 0.1);
+        /* HEADER ACTION BUTTONS GROUP */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-btn {
+            background: rgba(255, 106, 0, 0.08);
             color: #ff6a00;
-            border: 1px solid #ff6a00;
-            padding: 6px 14px;
+            border: 1px solid rgba(255, 106, 0, 0.4);
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
@@ -187,9 +197,31 @@
             transition: all 0.2s ease;
         }
 
-        .header-share-btn:hover {
-            background: #ff6a00;
+        .header-btn i {
+            font-size: 12px;
+        }
+
+        .header-btn:hover {
+            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 100%);
             color: #ffffff;
+            border-color: transparent;
+        }
+
+        /* Subtle glowing animation para sa Word of the Day button sa Header */
+        .glow-btn {
+            animation: subtleGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes subtleGlow {
+            0% {
+                box-shadow: 0 0 0 0px rgba(255, 106, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 8px 3px rgba(255, 106, 0, 0.35);
+            }
+            100% {
+                box-shadow: 0 0 0 0px rgba(255, 106, 0, 0);
+            }
         }
 
         /* EMBEDDED CANVA FRAME */
@@ -234,69 +266,6 @@
 
         .footer-item i {
             font-size: 13px;
-        }
-
-        /* FLOATING HOMEPAGE BUTTON (LOWER RIGHT) */
-        .home-btn {
-            position: fixed;
-            bottom: 42px;
-            right: 20px;
-            height: 38px;
-            padding: 0 16px;
-            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 100%);
-            color: #ffffff;
-            border: none;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-            z-index: 9999;
-            transition: transform 0.2s ease;
-        }
-
-        .home-btn i {
-            font-size: 14px;
-        }
-
-        .home-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        /* FLOATING PHRASE OF THE DAY BUTTON (UPPER LEFT DESKTOP DEFAULT) */
-        .phrase-btn {
-            position: fixed;
-            top: 60px;
-            left: 20px;
-            height: 38px;
-            padding: 0 16px;
-            background: linear-gradient(90deg, #ff6a00 0%, #ffb700 100%);
-            color: #ffffff;
-            border: none;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.35);
-            z-index: 9998;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .phrase-btn i {
-            font-size: 14px;
-        }
-
-        .phrase-btn:hover {
-            transform: translateY(2px);
-            box-shadow: 0 6px 15px rgba(255, 106, 0, 0.45);
         }
 
         /* WELCOME POP-UP OVERLAY STYLES */
@@ -441,32 +410,28 @@
 
         /* MOBILE VIEW ADJUSTMENTS */
         @media (max-width: 600px) {
-            .sticky-header { height: 36px; padding: 0 12px; }
-            .brand-container { gap: 8px; }
-            .brand-container img { max-height: 26px; }
-            .brand-title { font-size: 15px; letter-spacing: 1px; }
-            .header-share-btn span { display: none; }
-            .header-share-btn { padding: 5px 10px; }
-            iframe { height: calc(100vh - 64px); margin-top: 36px; }
-            .sticky-footer { height: 28px; gap: 10px; padding: 0 5px; }
-            .footer-item { font-size: 10px; }
-            .footer-item i { font-size: 11px; }
-            .modal-content { max-width: 450px; padding: 20px 15px; }
-            .modal-logo { max-height: 46px; }
-            .modal-title { font-size: 19px; }
-            .modal-text { font-size: 13px; }
-            .home-btn { height: 32px; padding: 0 12px; font-size: 11px; bottom: 36px; }
+            .sticky-header { height: 38px; padding: 0 8px; }
+            .brand-container { gap: 6px; }
+            .brand-container img { max-height: 24px; }
+            .brand-title { font-size: 14px; letter-spacing: 1px; }
 
-            .phrase-btn { 
-                height: 28px; 
-                padding: 0 10px; 
-                font-size: 10px; 
-                top: 42px; 
-                left: 8px; 
+            .header-actions { gap: 4px; }
+            .header-btn {
+                padding: 4px 8px;
+                font-size: 10px;
                 border-radius: 14px;
-                box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);
             }
-            .phrase-btn i { font-size: 11px; }
+            .header-btn i { font-size: 10px; }
+            .header-btn span { font-size: 10px; }
+
+            iframe { height: calc(100vh - 66px); margin-top: 38px; }
+            .sticky-footer { height: 28px; gap: 8px; padding: 0 5px; }
+            .footer-item { font-size: 9px; }
+            .footer-item i { font-size: 10px; }
+            .modal-content { max-width: 450px; padding: 20px 15px; }
+            .modal-logo { max-height: 44px; }
+            .modal-title { font-size: 18px; }
+            .modal-text { font-size: 12px; }
         }
     </style>
 </head>
@@ -515,32 +480,31 @@
         </div>
     </div>
 
-    <!-- Floating Top Header -->
+    <!-- FLOATING TOP HEADER WITH INTEGRATED ACTION BUTTONS -->
     <header class="sticky-header">
         <div class="brand-container">
             <img src="pamana(1).png" alt="Pamana Logo">
             <span class="brand-title">PAMANA</span>
         </div>
-        <button class="header-share-btn" onclick="sharePortal()" title="Share Pamana Portal">
-            <i class="fa-solid fa-share-nodes"></i>
-            <span>Share</span>
-        </button>
-    </header>
 
-    <!-- Floating Upper Left Phrase of the Day Button -->
-    <button class="phrase-btn" onclick="openModal('phraseModal')" title="Bicolano Word of the Day">
-        <i class="fa-solid fa-book-bookmark"></i>
-        <span>Word of the Day</span>
-    </button>
+        <div class="header-actions">
+            <button class="header-btn glow-btn" onclick="openModal('phraseModal')" title="Bicolano Word of the Day">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <span>Word of the Day</span>
+            </button>
+            <button class="header-btn" onclick="sharePortal()" title="Share Pamana Portal">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Share</span>
+            </button>
+            <button class="header-btn" onclick="goToHome()" title="Return to Homepage">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+        </div>
+    </header>
 
     <!-- Canva Embed -->
     <iframe id="canvaFrame" fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
-
-    <!-- Floating Homepage Button -->
-    <button class="home-btn" onclick="goToHome()" title="Return to Homepage">
-        <i class="fa-solid fa-house"></i>
-        <span>Home</span>
-    </button>
 
     <!-- Fixed Compact Bottom Footer Links -->
     <footer class="sticky-footer">
@@ -631,7 +595,7 @@
 
         function sharePortal() {
             var shareData = {
-                title: 'Pamana: Bicol Culture, Heritage & Environment',
+                title: 'Pamana',
                 text: 'Discover the rich culture, heritage, and environment of Bicol created by BU Journalism students!',
                 url: window.location.href
             };
