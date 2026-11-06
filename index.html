@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Speed Optimization: Resource Hints (Preconnect to Canva & Google) -->
+    <link rel="preconnect" href="https://www.canva.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.canva.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
     <!-- SEO Title & Description -->
     <title>Pamana: Bicol Culture, Heritage & Environment</title>
     <meta name="description" content="Tuklasin ang Pamana — ang opisyal na portal para sa Bicol Culture, Heritage, at Environment. Alamin ang tungkol sa Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, Sili Ice Cream, at iba pa.">
@@ -33,7 +39,7 @@
       gtag('config', 'G-17P5Q860F3');
     </script>
 
-    <!-- Schema.org Structured Data (JSON-LD) para sa SEO (Kulay Green sa VS Code) -->
+    <!-- Schema.org Structured Data (JSON-LD) para sa SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -88,13 +94,15 @@
             width: 100vw;
             height: 100vh;
             border: none;
+            display: block;
+            will-change: transform;
         }
     </style>
 </head>
 <body>
 
-    <!-- Original Canva Design Embed -->
-    <iframe loading="lazy" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+    <!-- Fast-Loading High Priority Canva Embed -->
+    <iframe fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
 
 </body>
 </html>
