@@ -203,15 +203,16 @@
             padding: 20px;
         }
 
+        /* Increased size for Laptop / Desktop users */
         .modal-content {
             background-color: #ffffff;
-            border-radius: 12px;
-            max-width: 450px;
+            border-radius: 14px;
+            max-width: 550px; /* Expanded from 450px for laptop screens */
             width: 100%;
-            padding: 25px 20px;
+            padding: 35px 30px; /* Slightly roomier padding */
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
             animation: popupAnimation 0.4s ease-out;
         }
 
@@ -228,9 +229,9 @@
 
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
+            top: 12px;
+            right: 18px;
+            font-size: 26px;
             font-weight: bold;
             color: #888888;
             cursor: pointer;
@@ -242,42 +243,42 @@
         }
 
         .modal-logo {
-            max-height: 50px;
+            max-height: 60px; /* Slightly larger logo for laptop view */
             width: auto;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .modal-title {
             font-family: 'Georgia', serif;
-            font-size: 22px;
+            font-size: 25px; /* Increased font size */
             color: #2c2c2c;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
         .modal-text {
-            font-size: 14px;
+            font-size: 15px; /* Increased text size for readability */
             color: #555555;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            line-height: 1.6;
+            margin-bottom: 24px;
         }
 
         .action-btn {
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
             color: #ffffff;
             border: none;
-            padding: 10px 24px;
-            font-size: 14px;
+            padding: 12px 28px;
+            font-size: 15px;
             font-weight: bold;
             border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 106, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.35);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .action-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(255, 106, 0, 0.4);
+            box-shadow: 0 6px 16px rgba(255, 106, 0, 0.45);
         }
 
         /* Mobile View Rules */
@@ -312,10 +313,14 @@
                 font-size: 11px;
             }
             .modal-content {
+                max-width: 450px;
                 padding: 20px 15px;
             }
+            .modal-logo {
+                max-height: 46px;
+            }
             .modal-title {
-                font-size: 18px;
+                font-size: 19px;
             }
             .modal-text {
                 font-size: 13px;
@@ -330,7 +335,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
-            <h2 class="modal-title">Welcome to PAMANA!</h2>
+            <h2 class="modal-title">Maogmang Pag-abot sa Pamana!</h2>
             <p class="modal-text">
                 Welcome to our official portal for <strong>Bicol Culture, Heritage, and Environment</strong>. Discover and explore the rich history and beauty of the Bicolano heritage.
             </p>
