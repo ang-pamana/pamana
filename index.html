@@ -290,20 +290,12 @@
             margin-bottom: 24px;
         }
 
-        .modal-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
         .action-btn {
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
             color: #ffffff;
             border: none;
-            padding: 12px 24px;
-            font-size: 14px;
+            padding: 12px 28px;
+            font-size: 15px;
             font-weight: bold;
             border-radius: 25px;
             cursor: pointer;
@@ -312,26 +304,6 @@
         }
 
         .action-btn:hover { transform: translateY(-2px); }
-
-        .share-btn-secondary {
-            background: #ffffff;
-            color: #333333;
-            border: 2px solid #ff6a00;
-            padding: 10px 22px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .share-btn-secondary:hover {
-            background: #ff6a00;
-            color: #ffffff;
-        }
 
         /* TOAST NOTIFICATION */
         .toast-notification {
@@ -356,7 +328,7 @@
             .brand-container { gap: 8px; }
             .brand-container img { max-height: 26px; }
             .brand-title { font-size: 15px; letter-spacing: 1px; }
-            .header-share-btn span { display: none; } /* Show icon only on small mobile */
+            .header-share-btn span { display: none; }
             .header-share-btn { padding: 5px 10px; }
             iframe { height: calc(100vh - 64px); margin-top: 36px; }
             .sticky-footer { height: 28px; gap: 10px; padding: 0 5px; }
@@ -393,12 +365,7 @@
             <p class="modal-text">
                 Welcome to the official portal for Bicol Culture, Heritage, and Environment made by 4th year Journalism students at Bicol University. Discover and explore the rich history and beauty of the Bicolano heritage.
             </p>
-            <div class="modal-buttons">
-                <button class="action-btn" onclick="closeModal()">ENTER WEBSITE</button>
-                <button class="share-btn-secondary" onclick="sharePortal()">
-                    <i class="fa-solid fa-share-nodes"></i> SHARE PORTAL
-                </button>
-            </div>
+            <button class="action-btn" onclick="closeModal()">ENTER WEBSITE</button>
         </div>
     </div>
 
@@ -478,7 +445,6 @@
                     console.log('Error sharing:', err);
                 });
             } else {
-                // Fallback for browsers that don't support Web Share API (copies URL to clipboard)
                 navigator.clipboard.writeText(window.location.href).then(function() {
                     showToast();
                 }).catch(function() {
