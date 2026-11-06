@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Website Favicon (Icon sa Browser Tab) -->
+    <!-- Website Favicon (Using pamanalogo.png) -->
     <link rel="icon" type="image/png" href="pamanalogo.png">
     
     <!-- Speed Optimization: Resource Hints -->
@@ -15,18 +15,18 @@
 
     <!-- SEO Title & Description -->
     <title>Pamana: Bicol Culture, Heritage & Environment</title>
-    <meta name="description" content="Tuklasin ang Pamana — ang opisyal na portal para sa Bicol Culture, Heritage, at Environment. Alamin ang tungkol sa Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, Sili Ice Cream, at iba pa.">
+    <meta name="description" content="Discover Pamana — the official portal for Bicol Culture, Heritage, and Environment. Explore Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, Sili Ice Cream, and more.">
     
     <!-- SEO Keywords List -->
     <meta name="keywords" content="Pamana, Pamana: Bicol Culture, Pamana: Bicol Heritage, Pamana: Bicol Environment, Pamana: Pantomina, Pamana: Ibalong, Pamana: Museo de Legazpi, Pamana: Pili, Pamana: Sili Ice Cream, Pamana: Bicol Dengue Prevention, Pamana: Bicol Tree Planting, Pamana: Bicol's Basura Mo Bigas Mo, Pamana: Bicol Haze, Pamana: Bicol Power Outage, Pamana: Camalig Ancestral Homes, Pamana: Bicol's Ube, Pamana: Camalig's St. John the Baptist Parish Church, Pamana: Albay Wildlife, Pamana: Bicol's 528 Ilawod Cafe">
     
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph (Preview para sa Facebook / Messenger) -->
+    <!-- Open Graph (Facebook / Messenger Preview) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ang-pamana.github.io/pamana/">
     <meta property="og:title" content="Pamana: Bicol Culture, Heritage & Environment">
-    <meta property="og:description" content="Tuklasin ang kultura at pamana ng Bicol — Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, at higit pa.">
+    <meta property="og:description" content="Discover the culture and heritage of Bicol — Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, and more.">
     <meta property="og:image" content="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed">
 
     <!-- Font Awesome Icons -->
@@ -45,7 +45,7 @@
       gtag('config', 'G-17P5Q860F3');
     </script>
 
-    <!-- Schema.org Structured Data (JSON-LD) para sa SEO -->
+    <!-- Schema.org Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -53,7 +53,7 @@
       "name": "Pamana",
       "alternateName": "Pamana: Bicol Culture, Heritage & Environment",
       "url": "https://ang-pamana.github.io/pamana/",
-      "description": "Tuklasin ang Pamana — ang opisyal na portal para sa Bicol Culture, Heritage, at Environment. Alamin ang tungkol sa Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, Sili Ice Cream, at iba pa.",
+      "description": "Discover Pamana — the official portal for Bicol Culture, Heritage, and Environment. Explore Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, Sili Ice Cream, and more.",
       "keywords": [
         "Pamana",
         "Pamana: Bicol Culture",
@@ -75,7 +75,7 @@
         "Pamana: Albay Wildlife",
         "Pamana: Bicol's 528 Ilawod Cafe"
       ],
-      "inLanguage": "tl",
+      "inLanguage": "en",
       "publisher": {
         "@type": "Organization",
         "name": "Pamana Bicol",
@@ -95,9 +95,10 @@
             height: 100%;
             overflow: hidden;
             background-color: #ffffff;
+            font-family: Arial, sans-serif;
         }
 
-        /* Top Header Container (Desktop View) */
+        /* Top Header Container */
         .sticky-header {
             position: fixed;
             top: 0;
@@ -141,7 +142,7 @@
             text-fill-color: transparent;
         }
 
-        /* Embedded Canva Presentation Frame */
+        /* Embedded Canva Frame */
         iframe {
             width: 100vw;
             height: calc(100vh - 78px);
@@ -165,7 +166,6 @@
             gap: 20px;
             z-index: 9999;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
-            font-family: Arial, sans-serif;
         }
 
         .footer-item {
@@ -184,6 +184,100 @@
 
         .footer-item i {
             font-size: 13px;
+        }
+
+        /* Welcome Pop-up Overlay Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            border-radius: 12px;
+            max-width: 450px;
+            width: 100%;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: popupAnimation 0.4s ease-out;
+        }
+
+        @keyframes popupAnimation {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #888888;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: #ff0000;
+        }
+
+        .modal-logo {
+            max-height: 50px;
+            width: auto;
+            margin-bottom: 10px;
+        }
+
+        .modal-title {
+            font-family: 'Georgia', serif;
+            font-size: 22px;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .modal-text {
+            font-size: 14px;
+            color: #555555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .action-btn {
+            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 106, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(255, 106, 0, 0.4);
         }
 
         /* Mobile View Rules */
@@ -217,20 +311,42 @@
             .footer-item i {
                 font-size: 11px;
             }
+            .modal-content {
+                padding: 20px 15px;
+            }
+            .modal-title {
+                font-size: 18px;
+            }
+            .modal-text {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Top Header -->
+    <!-- WELCOME POP-UP MODAL (Using pamanalogo.png) -->
+    <div class="modal-overlay" id="welcomeModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
+            <h2 class="modal-title">Welcome to PAMANA!</h2>
+            <p class="modal-text">
+                Welcome to our official portal for <strong>Bicol Culture, Heritage, and Environment</strong>. Discover and explore the rich history and beauty of the Bicolano heritage.
+            </p>
+            <button class="action-btn" onclick="closeModal()">ENTER WEBSITE</button>
+        </div>
+    </div>
+
+    <!-- Floating Top Header (Using pamana(1).png) -->
     <header class="sticky-header">
         <div class="brand-container">
-            <img src="pamanalogo.png" alt="Pamana Logo">
+            <img src="pamana(1).png" alt="Pamana Logo">
             <span class="brand-title">PAMANA</span>
         </div>
     </header>
 
-    <!-- Fast-Loading High Priority Canva Embed -->
+    <!-- Canva Embed -->
     <iframe fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
 
     <!-- Fixed Compact Bottom Footer Links -->
@@ -248,6 +364,17 @@
             <span>pamanangbicolnon@gmail.com</span>
         </a>
     </footer>
+
+    <!-- JavaScript to Close Pop-up -->
+    <script>
+        function closeModal() {
+            var modal = document.getElementById('welcomeModal');
+            modal.style.opacity = '0';
+            setTimeout(function() {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    </script>
 
 </body>
 </html>
