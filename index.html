@@ -111,7 +111,7 @@
         .brand-container {
             display: flex;
             align-items: center;
-            gap: 10px; /* Spacing sa pagitan ng logo at ng salitang PAMANA */
+            gap: 10px;
             text-decoration: none;
         }
 
@@ -121,14 +121,18 @@
             object-fit: contain;
         }
 
-        /* Styling para sa pamagat na "PAMANA" */
+        /* Styling para sa "PAMANA" text na may Red-Orange-Yellow Gradient */
         .brand-title {
             font-family: 'Georgia', 'Times New Roman', serif;
             font-size: 18px;
-            font-weight: 700;
-            color: #2c2c2c;
+            font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
+            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
 
         iframe {
@@ -143,7 +147,7 @@
 </head>
 <body>
 
-    <!-- Floating Top Header Logo with Text Title -->
+    <!-- Floating Top Header Logo with Gradient Text Title -->
     <header class="sticky-header">
         <div class="brand-container">
             <img src="pamana.png" alt="Pamana Logo">
