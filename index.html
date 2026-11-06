@@ -225,7 +225,7 @@
             font-size: 13px;
         }
 
-        /* FLOATING HOMEPAGE BUTTON */
+        /* FLOATING HOMEPAGE BUTTON (LOWER RIGHT) */
         .home-btn {
             position: fixed;
             bottom: 42px;
@@ -254,6 +254,38 @@
 
         .home-btn:hover {
             transform: translateY(-3px);
+        }
+
+        /* FLOATING PHRASE OF THE DAY BUTTON (UPPER LEFT) */
+        .phrase-btn {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            height: 38px;
+            padding: 0 16px;
+            background: linear-gradient(90deg, #ff6a00 0%, #ffb700 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.35);
+            z-index: 9998;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .phrase-btn i {
+            font-size: 14px;
+        }
+
+        .phrase-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 6px 15px rgba(255, 106, 0, 0.45);
         }
 
         /* WELCOME POP-UP OVERLAY STYLES */
@@ -324,6 +356,46 @@
             margin-bottom: 24px;
         }
 
+        .phrase-badge {
+            display: inline-block;
+            background-color: rgba(255, 106, 0, 0.12);
+            color: #ff6a00;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .phrase-bikol {
+            font-family: 'Georgia', serif;
+            font-size: 28px;
+            color: #ff0000;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .phrase-meaning {
+            font-size: 16px;
+            color: #333333;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .phrase-source {
+            font-size: 11px;
+            color: #888888;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .phrase-source a {
+            color: #ff6a00;
+            text-decoration: none;
+        }
+
         .action-btn {
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
             color: #ffffff;
@@ -373,6 +445,7 @@
             .modal-title { font-size: 19px; }
             .modal-text { font-size: 13px; }
             .home-btn { height: 32px; padding: 0 12px; font-size: 11px; bottom: 36px; }
+            .phrase-btn { height: 32px; padding: 0 12px; font-size: 11px; top: 46px; left: 10px; }
         }
     </style>
 </head>
@@ -398,13 +471,26 @@
     <!-- WELCOME POP-UP MODAL -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <span class="close-btn" onclick="closeModal('welcomeModal')">&times;</span>
             <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
             <h2 class="modal-title">Maogmang Pag-abot sa Pamana!</h2>
             <p class="modal-text">
                 Welcome to the official portal for Bicol Culture, Heritage, and Environment made by 4th year Journalism students at Bicol University. Discover and explore the rich history and beauty of the Bicolano heritage.
             </p>
-            <button class="action-btn" onclick="closeModal()">ENTER WEBSITE</button>
+            <button class="action-btn" onclick="closeModal('welcomeModal')">ENTER WEBSITE</button>
+        </div>
+    </div>
+
+    <!-- BICOLANO PHRASE OF THE DAY MODAL -->
+    <div class="modal-overlay" id="phraseModal" style="display: none; opacity: 0;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('phraseModal')">&times;</span>
+            <span class="phrase-badge"><i class="fa-solid fa-language"></i> Bicolano Word of the Day</span>
+            <h3 class="phrase-bikol" id="todayBikol">...</h3>
+            <p class="phrase-meaning" id="todayEnglish">...</p>
+            <p class="modal-text" id="todayContext">Learn a new Bicolano phrase every day to appreciate the local culture & linguistic heritage of Bicol!</p>
+            <button class="action-btn" onclick="closeModal('phraseModal')">GOT IT!</button>
+            <p class="phrase-source">Source: <a href="https://saminovic.wordpress.com/language/business/" target="_blank">BICOL-MAN / Saminovic</a></p>
         </div>
     </div>
 
@@ -419,6 +505,12 @@
             <span>Share</span>
         </button>
     </header>
+
+    <!-- Floating Upper Left Phrase of the Day Button -->
+    <button class="phrase-btn" onclick="openModal('phraseModal')" title="Bicolano Word of the Day">
+        <i class="fa-solid fa-book-bookmark"></i>
+        <span>Word of the Day</span>
+    </button>
 
     <!-- Canva Embed -->
     <iframe id="canvaFrame" fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
@@ -447,6 +539,42 @@
 
     <!-- JavaScript Controls -->
     <script>
+        // Bicolano Words / Phrases Database sourced from BICOL-MAN (saminovic.wordpress.com)
+        var bikolPhrases = [
+            { bikol: "Dios mabalos", english: "Thank you / May God reward you", note: "Traditional Bicolano expression of heartfelt gratitude." },
+            { bikol: "Daragang magayon", english: "Beautiful girl / Maiden", note: "Root phrase behind the legendary name of Mount Mayon." },
+            { bikol: "Marhay na aga", english: "Good morning", note: "Standard warm Bicolano morning greeting." },
+            { bikol: "Namomotan ta ka", english: "I love you", note: "Deep expression of love in the Bicolano language." },
+            { bikol: "Kaogmahan kong makabisto ka", english: "I'm glad to meet you", note: "Used when meeting someone for the first time." },
+            { bikol: "Kumusta ka?", english: "How are you?", note: "Common conversational greeting across Bicol." },
+            { bikol: "Marhay na hapon", english: "Good afternoon", note: "Afternoon greeting widely used in the Bicol region." },
+            { bikol: "Marhay na banggi", english: "Good evening", note: "Evening greeting used when welcoming guests." },
+            { bikol: "Patawarun mo ako", english: "I'm sorry / Forgive me", note: "Expressing sincere apologies." },
+            { bikol: "Pakiluway-luwayan man tabi", english: "Please speak slowly", note: "Polite phrase used when learning or listening to Bicolano." },
+            { bikol: "Anong pangaran mo?", english: "What is your name?", note: "Used to ask for a person's name." },
+            { bikol: "Magayon", english: "Beautiful / Lovely", note: "Used to describe pleasant things, places, or people." },
+            { bikol: "Masain ka?", english: "Where are you going?", note: "Common friendly question when passing by a friend." },
+            { bikol: "Gurano ini?", english: "How much is this?", note: "Essential phrase when shopping in local Bicol markets." },
+            { bikol: "Paaram", english: "Goodbye", note: "Traditional farewell expression." }
+        ];
+
+        // Dynamic Daily Rotation Logic based on Calendar Date
+        function loadDailyPhrase() {
+            var now = new Date();
+            var start = new Date(now.getFullYear(), 0, 0);
+            var diff = now - start;
+            var oneDay = 1000 * 60 * 60 * 24;
+            var dayOfYear = Math.floor(diff / oneDay);
+
+            // Select phrase based on day of the year
+            var selectedIndex = dayOfYear % bikolPhrases.length;
+            var today = bikolPhrases[selectedIndex];
+
+            document.getElementById('todayBikol').innerText = '"' + today.bikol + '"';
+            document.getElementById('todayEnglish').innerText = 'Translation: ' + today.english;
+            document.getElementById('todayContext').innerText = today.note;
+        }
+
         function hideLoading() {
             var loader = document.getElementById('loadingScreen');
             loader.style.opacity = '0';
@@ -455,12 +583,16 @@
             }, 500);
         }
 
-        function closeModal() {
-            var modal = document.getElementById('welcomeModal');
+        function openModal(id) {
+            var modal = document.getElementById(id);
+            modal.style.display = 'flex';
+            setTimeout(function() { modal.style.opacity = '1'; }, 10);
+        }
+
+        function closeModal(id) {
+            var modal = document.getElementById(id);
             modal.style.opacity = '0';
-            setTimeout(function() {
-                modal.style.display = 'none';
-            }, 300);
+            setTimeout(function() { modal.style.display = 'none'; }, 300);
         }
 
         function goToHome() {
@@ -510,6 +642,9 @@
                 setTimeout(function() { toast.style.display = 'none'; }, 300);
             }, 2500);
         }
+
+        // Initialize Daily Word on Page Load
+        loadDailyPhrase();
     </script>
 
 </body>
