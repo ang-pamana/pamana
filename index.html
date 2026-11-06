@@ -25,7 +25,7 @@
     <meta name="keywords" content="Pamana, Pamana: Bicol Culture, Pamana: Bicol Heritage, Pamana: Bicol Environment, Bicol University Journalism, Pantomina, Ibalong, Museo de Legazpi">
     <meta name="robots" content="index, follow">
 
-    <!-- 4. ENHANCED OPEN GRAPH & SOCIAL MEDIA PREVIEW CARDS -->
+    <!-- ENHANCED OPEN GRAPH & SOCIAL MEDIA PREVIEW CARDS -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ang-pamana.github.io/pamana/">
     <meta property="og:title" content="Pamana: Bicol Culture, Heritage & Environment">
@@ -55,27 +55,6 @@
     </script>
 
     <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --header-bg: rgba(255, 255, 255, 0.98);
-            --modal-bg: #ffffff;
-            --card-text: #555555;
-            --footer-bg: #1a1a1a;
-            --border-color: rgba(0,0,0,0.08);
-        }
-
-        /* 2. DARK MODE THEME VARIABLES */
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #f5f5f5;
-            --header-bg: rgba(26, 26, 26, 0.98);
-            --modal-bg: #1e1e1e;
-            --card-text: #cccccc;
-            --footer-bg: #0d0d0d;
-            --border-color: rgba(255,255,255,0.1);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -85,13 +64,12 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #ffffff;
+            color: #333333;
             font-family: Arial, sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* 3. READING PROGRESS BAR */
+        /* READING PROGRESS BAR */
         #progressContainer {
             position: fixed;
             top: 0;
@@ -116,7 +94,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--bg-color);
+            background-color: #ffffff;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -147,14 +125,13 @@
             left: 0;
             width: 100%;
             height: 48px;
-            background-color: var(--header-bg);
+            background-color: rgba(255, 255, 255, 0.98);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
             z-index: 9999;
-            box-shadow: 0 2px 6px var(--border-color);
-            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
         .brand-container {
@@ -181,33 +158,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Dark Mode Toggle Button */
-        .theme-toggle-btn {
-            background: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle-btn:hover {
-            color: #ff6a00;
-            border-color: #ff6a00;
         }
 
         /* Header Share Button */
@@ -247,7 +197,7 @@
             left: 0;
             width: 100%;
             height: 30px;
-            background-color: var(--footer-bg);
+            background-color: #1a1a1a;
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -255,7 +205,6 @@
             gap: 20px;
             z-index: 9999;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
-            transition: background-color 0.3s ease;
         }
 
         .footer-item {
@@ -314,7 +263,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.65);
+            background-color: rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -325,7 +274,7 @@
         }
 
         .modal-content {
-            background-color: var(--modal-bg);
+            background-color: #ffffff;
             border-radius: 14px;
             max-width: 550px;
             width: 100%;
@@ -334,7 +283,6 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0,0,0,0.35);
             animation: popupAnimation 0.4s ease-out;
-            transition: background-color 0.3s ease;
         }
 
         @keyframes popupAnimation {
@@ -364,14 +312,14 @@
         .modal-title {
             font-family: 'Georgia', serif;
             font-size: 25px;
-            color: var(--text-color);
+            color: #2c2c2c;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         .modal-text {
             font-size: 15px;
-            color: var(--card-text);
+            color: #555555;
             line-height: 1.6;
             margin-bottom: 24px;
         }
@@ -416,7 +364,6 @@
             .brand-title { font-size: 15px; letter-spacing: 1px; }
             .header-share-btn span { display: none; }
             .header-share-btn { padding: 5px 10px; }
-            .theme-toggle-btn { width: 28px; height: 28px; font-size: 12px; }
             iframe { height: calc(100vh - 64px); margin-top: 36px; }
             .sticky-footer { height: 28px; gap: 10px; padding: 0 5px; }
             .footer-item { font-size: 10px; }
@@ -431,7 +378,7 @@
 </head>
 <body>
 
-    <!-- 3. READING PROGRESS BAR -->
+    <!-- READING PROGRESS BAR -->
     <div id="progressContainer">
         <div id="progressBar"></div>
     </div>
@@ -467,16 +414,10 @@
             <img src="pamana(1).png" alt="Pamana Logo">
             <span class="brand-title">PAMANA</span>
         </div>
-        <div class="header-actions">
-            <!-- 2. Dark / Light Mode Toggle Button -->
-            <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
-                <i class="fa-solid fa-moon" id="themeIcon"></i>
-            </button>
-            <button class="header-share-btn" onclick="sharePortal()" title="Share Pamana Portal">
-                <i class="fa-solid fa-share-nodes"></i>
-                <span>Share</span>
-            </button>
-        </div>
+        <button class="header-share-btn" onclick="sharePortal()" title="Share Pamana Portal">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Share</span>
+        </button>
     </header>
 
     <!-- Canva Embed -->
@@ -530,7 +471,7 @@
             }
         }
 
-        // 3. READING PROGRESS BAR SCRIPT
+        // READING PROGRESS BAR SCRIPT
         window.onscroll = function() { updateProgressBar(); };
         function updateProgressBar() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -538,34 +479,6 @@
             var scrolled = (height > 0) ? (winScroll / height) * 100 : 0;
             document.getElementById("progressBar").style.width = scrolled + "%";
         }
-
-        // 2. DARK / LIGHT MODE TOGGLE SCRIPT
-        function toggleTheme() {
-            var currentTheme = document.documentElement.getAttribute('data-theme');
-            var icon = document.getElementById('themeIcon');
-            
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                icon.className = 'fa-solid fa-moon';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                icon.className = 'fa-solid fa-sun';
-            }
-        }
-
-        // Load saved theme preference
-        (function() {
-            var savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                document.addEventListener("DOMContentLoaded", function() {
-                    var icon = document.getElementById('themeIcon');
-                    if (icon) icon.className = 'fa-solid fa-sun';
-                });
-            }
-        })();
 
         // Web Share API & Copy-to-Clipboard Functionality
         function sharePortal() {
