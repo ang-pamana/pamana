@@ -26,6 +26,9 @@
     <meta property="og:description" content="Tuklasin ang kultura at pamana ng Bicol — Pantomina, Ibalong, Museo de Legazpi, Camalig Ancestral Homes, at higit pa.">
     <meta property="og:image" content="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed">
 
+    <!-- Font Awesome Icons (Para sa Facebook, TikTok, at Email logos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Google Search Console Verification Meta Tag -->
     <meta name="google-site-verification" content="MI4n77k-oxpB2FHwFCFgEc-NPyzN-i-UaQb-uuNvUTI" />
 
@@ -115,7 +118,6 @@
             text-decoration: none;
         }
 
-        /* Sakto at Malinis na Laki para sa Bagong Crop na Logo */
         .brand-container img {
             max-height: 38px;
             width: auto;
@@ -144,11 +146,67 @@
             display: block;
             will-change: transform;
         }
+
+        /* Pop-up Bottom Footer Styling */
+        .popup-footer {
+            position: fixed;
+            bottom: -100px; /* Naka-tago sa simula */
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            z-index: 99999;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+            transition: bottom 0.4s ease-in-out;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Klase na itatawag kapag naabot na ang pinaka-ibaba */
+        .popup-footer.show {
+            bottom: 0; /* Lalabas at aakyat */
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .footer-item:hover {
+            color: #ff6a00;
+            transform: translateY(-2px);
+        }
+
+        .footer-item i {
+            font-size: 18px;
+        }
+
+        /* Responsive styling para sa mobile screens */
+        @media (max-width: 600px) {
+            .popup-footer {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 10px;
+            }
+            .footer-item {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Floating Top Header with New Logo Source -->
+    <!-- Floating Top Header -->
     <header class="sticky-header">
         <div class="brand-container">
             <img src="pamana(1).png" alt="Pamana Logo">
@@ -158,6 +216,43 @@
 
     <!-- Fast-Loading High Priority Canva Embed -->
     <iframe fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+
+    <!-- Pop-up Footer (Lalabas lang kapag nasa pinaka-ibaba) -->
+    <footer class="popup-footer" id="socialFooter">
+        <a href="https://facebook.com" target="_blank" class="footer-item">
+            <i class="fa-brands fa-facebook"></i>
+            <span>Facebook: <strong>The Sentinel</strong></span>
+        </a>
+        <a href="https://tiktok.com/@pamana.bicolnon" target="_blank" class="footer-item">
+            <i class="fa-brands fa-tiktok"></i>
+            <span>TikTok: <strong>pamana.bicolnon</strong></span>
+        </a>
+        <a href="mailto:pamanangbicolnon@gmail.com" class="footer-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Email: <strong>pamanangbicolnon@gmail.com</strong></span>
+        </a>
+    </footer>
+
+    <!-- JavaScript para sa Pop-up Trigger -->
+    <script>
+        window.addEventListener('message', function(event) {
+            // Nakikinig sa scroll events sa loob o labas ng window
+            checkScroll();
+        });
+
+        window.addEventListener('scroll', checkScroll);
+
+        function checkScroll() {
+            var footer = document.getElementById('socialFooter');
+            
+            // Tinitingnan kung umabot na sa pinaka-ibaba ng pahina (bottom threshold)
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
+                footer.classList.add('show');
+            } else {
+                footer.classList.remove('show');
+            }
+        }
+    </script>
 
 </body>
 </html>
