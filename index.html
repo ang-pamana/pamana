@@ -25,6 +25,17 @@
     <meta name="keywords" content="Pamana, Pamana: Bicol Culture, Pamana: Bicol Heritage, Pamana: Bicol Environment, Bicol University Journalism, Pantomina, Ibalong, Museo de Legazpi">
     <meta name="robots" content="index, follow">
 
+    <!-- SCHEMA.ORG STRUCTURED DATA FOR GOOGLE SITE NAME -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Pamana: Bicol Culture, Heritage & Environment",
+      "alternateName": "Pamana",
+      "url": "https://ang-pamana.github.io/pamana/"
+    }
+    </script>
+
     <!-- ENHANCED OPEN GRAPH & SOCIAL MEDIA PREVIEW CARDS -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ang-pamana.github.io/pamana/">
@@ -33,7 +44,7 @@
     <meta property="og:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Pamana Portal">
+    <meta property="og:site_name" content="Pamana: Bicol Culture, Heritage & Environment">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -446,7 +457,6 @@
             .modal-text { font-size: 13px; }
             .home-btn { height: 32px; padding: 0 12px; font-size: 11px; bottom: 36px; }
 
-            /* SMALLER & COMPACT FLOATING WORD OF THE DAY BUTTON FOR MOBILE */
             .phrase-btn { 
                 height: 28px; 
                 padding: 0 10px; 
@@ -550,7 +560,6 @@
 
     <!-- JavaScript Controls -->
     <script>
-        // Bicolano Words / Phrases Database sourced from BICOL-MAN (saminovic.wordpress.com)
         var bikolPhrases = [
             { bikol: "Dios mabalos", english: "Thank you / May God reward you", note: "Traditional Bicolano expression of heartfelt gratitude." },
             { bikol: "Daragang magayon", english: "Beautiful girl / Maiden", note: "Root phrase behind the legendary name of Mount Mayon." },
@@ -569,7 +578,6 @@
             { bikol: "Paaram", english: "Goodbye", note: "Traditional farewell expression." }
         ];
 
-        // Dynamic Daily Rotation Logic based on Calendar Date
         function loadDailyPhrase() {
             var now = new Date();
             var start = new Date(now.getFullYear(), 0, 0);
@@ -577,7 +585,6 @@
             var oneDay = 1000 * 60 * 60 * 24;
             var dayOfYear = Math.floor(diff / oneDay);
 
-            // Select phrase based on day of the year
             var selectedIndex = dayOfYear % bikolPhrases.length;
             var today = bikolPhrases[selectedIndex];
 
@@ -614,7 +621,6 @@
             }
         }
 
-        // READING PROGRESS BAR SCRIPT
         window.onscroll = function() { updateProgressBar(); };
         function updateProgressBar() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -623,7 +629,6 @@
             document.getElementById("progressBar").style.width = scrolled + "%";
         }
 
-        // Web Share API & Copy-to-Clipboard Functionality
         function sharePortal() {
             var shareData = {
                 title: 'Pamana: Bicol Culture, Heritage & Environment',
@@ -654,7 +659,6 @@
             }, 2500);
         }
 
-        // Initialize Daily Word on Page Load
         loadDailyPhrase();
     </script>
 
