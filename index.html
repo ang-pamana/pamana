@@ -256,7 +256,7 @@
             transform: translateY(-3px);
         }
 
-        /* FLOATING PHRASE OF THE DAY BUTTON (UPPER LEFT) */
+        /* FLOATING PHRASE OF THE DAY BUTTON (UPPER LEFT DESKTOP DEFAULT) */
         .phrase-btn {
             position: fixed;
             top: 60px;
@@ -445,7 +445,18 @@
             .modal-title { font-size: 19px; }
             .modal-text { font-size: 13px; }
             .home-btn { height: 32px; padding: 0 12px; font-size: 11px; bottom: 36px; }
-            .phrase-btn { height: 32px; padding: 0 12px; font-size: 11px; top: 46px; left: 10px; }
+
+            /* SMALLER & COMPACT FLOATING WORD OF THE DAY BUTTON FOR MOBILE */
+            .phrase-btn { 
+                height: 28px; 
+                padding: 0 10px; 
+                font-size: 10px; 
+                top: 42px; 
+                left: 8px; 
+                border-radius: 14px;
+                box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);
+            }
+            .phrase-btn i { font-size: 11px; }
         }
     </style>
 </head>
