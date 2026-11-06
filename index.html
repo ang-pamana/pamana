@@ -170,28 +170,34 @@
             font-size: 13px;
         }
 
-        /* FLOATING BACK TO TOP BUTTON */
-        .back-to-top {
+        /* FLOATING HOMEPAGE BUTTON */
+        .home-btn {
             position: fixed;
             bottom: 42px;
             right: 20px;
-            width: 38px;
             height: 38px;
+            padding: 0 16px;
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 100%);
             color: #ffffff;
             border: none;
-            border-radius: 50%;
+            border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0,0,0,0.25);
             z-index: 9999;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
-        .back-to-top:hover {
+        .home-btn i {
+            font-size: 14px;
+        }
+
+        .home-btn:hover {
             transform: translateY(-3px);
         }
 
@@ -292,6 +298,7 @@
             .modal-logo { max-height: 46px; }
             .modal-title { font-size: 19px; }
             .modal-text { font-size: 13px; }
+            .home-btn { height: 32px; padding: 0 12px; font-size: 11px; bottom: 36px; }
         }
     </style>
 </head>
@@ -327,9 +334,10 @@
     <!-- Canva Embed -->
     <iframe id="canvaFrame" fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
 
-    <!-- Floating Back-to-Top Button -->
-    <button class="back-to-top" onclick="scrollToTop()" title="Back to Top">
-        <i class="fa-solid fa-arrow-up"></i>
+    <!-- Floating Homepage Button -->
+    <button class="home-btn" onclick="goToHome()" title="Return to Homepage">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
     </button>
 
     <!-- Fixed Compact Bottom Footer Links -->
@@ -366,11 +374,8 @@
             }, 300);
         }
 
-        function scrollToTop() {
-            // Scroll outer window to top
+        function goToHome() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            // Reload iframe to jump back to page 1 of Canva
             var iframe = document.getElementById('canvaFrame');
             if (iframe) {
                 iframe.src = iframe.src;
