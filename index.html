@@ -188,7 +188,7 @@
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0,0,0,0.25);
             z-index: 9999;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .back-to-top:hover {
@@ -303,7 +303,7 @@
         <div class="spinner"></div>
     </div>
 
-    <!-- WELCOME POP-UP MODAL (Using pamanalogo.png) -->
+    <!-- WELCOME POP-UP MODAL -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -316,7 +316,7 @@
         </div>
     </div>
 
-    <!-- Floating Top Header (Using pamana(1).png) -->
+    <!-- Floating Top Header -->
     <header class="sticky-header">
         <div class="brand-container">
             <img src="pamana(1).png" alt="Pamana Logo">
@@ -325,7 +325,7 @@
     </header>
 
     <!-- Canva Embed -->
-    <iframe fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
+    <iframe id="canvaFrame" fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
 
     <!-- Floating Back-to-Top Button -->
     <button class="back-to-top" onclick="scrollToTop()" title="Back to Top">
@@ -367,7 +367,14 @@
         }
 
         function scrollToTop() {
+            // Scroll outer window to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Reload iframe to jump back to page 1 of Canva
+            var iframe = document.getElementById('canvaFrame');
+            if (iframe) {
+                iframe.src = iframe.src;
+            }
         }
     </script>
 
