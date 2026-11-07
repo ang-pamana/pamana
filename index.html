@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#ffffff">
     
     <!-- Speed Optimization -->
-    <link rel="preconnect" href="https://www.canva.com" crossorigin>
+    <link rel="preconnect" href="https://snake-dghmk4.my.canva.site" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
 
     <!-- SEO Title & Description -->
@@ -46,6 +46,13 @@
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Pamana">
 
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ang-pamana.github.io/pamana/">
+    <meta name="twitter:title" content="Pamana">
+    <meta name="twitter:description" content="Official digital portal documenting the rich culture, heritage, and environmental stories of Bicol by BU Journalism students.">
+    <meta name="twitter:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -73,6 +80,7 @@
             font-family: Arial, sans-serif;
         }
 
+        /* READING PROGRESS BAR */
         #progressContainer {
             position: fixed;
             top: 0;
@@ -90,6 +98,7 @@
             transition: width 0.1s ease-out;
         }
 
+        /* CUSTOM LOADING SCREEN */
         #loadingScreen {
             position: fixed;
             top: 0;
@@ -120,6 +129,7 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* GLASSMORPHISM FLOATING TOP HEADER */
         .sticky-header {
             position: fixed;
             top: 0;
@@ -163,6 +173,7 @@
             text-fill-color: transparent;
         }
 
+        /* HEADER ACTION BUTTONS GROUP */
         .header-actions {
             display: flex;
             align-items: center;
@@ -202,6 +213,7 @@
             100% { box-shadow: 0 0 0 0px rgba(255, 106, 0, 0); }
         }
 
+        /* FULL FRAME FOR CANVA PUBLISHED SITE */
         .canva-site-wrapper {
             position: fixed;
             top: 48px;
@@ -219,40 +231,7 @@
             display: block;
         }
 
-        /* INVISIBLE CONTROL BLOCKER SHIELD */
-        .bottom-control-blocker {
-            position: fixed;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            height: 22px;
-            background: transparent;
-            z-index: 9998;
-            pointer-events: auto;
-        }
-
-        .side-arrow-blocker-left {
-            position: fixed;
-            top: 48px;
-            left: 0;
-            width: 50px;
-            height: calc(100vh - 78px);
-            background: transparent;
-            z-index: 9998;
-            pointer-events: auto;
-        }
-
-        .side-arrow-blocker-right {
-            position: fixed;
-            top: 48px;
-            right: 0;
-            width: 50px;
-            height: calc(100vh - 78px);
-            background: transparent;
-            z-index: 9998;
-            pointer-events: auto;
-        }
-
+        /* FIXED COMPACT BOTTOM FOOTER */
         .sticky-footer {
             position: fixed;
             bottom: 0;
@@ -282,6 +261,7 @@
         .footer-item:hover { color: #ff6a00; }
         .footer-item i { font-size: 13px; }
 
+        /* WELCOME POP-UP OVERLAY STYLES */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -364,6 +344,7 @@
 
         .action-btn:hover { transform: translateY(-2px); }
 
+        /* TOAST NOTIFICATION */
         .toast-notification {
             position: fixed;
             top: 60px;
@@ -380,6 +361,7 @@
             transition: opacity 0.3s ease;
         }
 
+        /* MOBILE VIEW ADJUSTMENTS */
         @media (max-width: 600px) {
             .sticky-header { height: 38px; padding: 0 8px; }
             .brand-container { gap: 6px; }
@@ -412,20 +394,24 @@
 </head>
 <body>
 
+    <!-- READING PROGRESS BAR -->
     <div id="progressContainer">
         <div id="progressBar"></div>
     </div>
 
+    <!-- TOAST NOTIFICATION FOR COPIED LINK -->
     <div id="toast" class="toast-notification">
         <i class="fa-solid fa-check-circle" style="color: #00ff66; margin-right: 6px;"></i>
         Portal link copied to clipboard!
     </div>
 
+    <!-- LOADING SCREEN -->
     <div id="loadingScreen">
         <img src="pamanalogo.png" alt="PAMANA Loading" style="max-height: 50px;">
         <div class="spinner"></div>
     </div>
 
+    <!-- WELCOME POP-UP MODAL -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('welcomeModal')">&times;</span>
@@ -438,6 +424,7 @@
         </div>
     </div>
 
+    <!-- BICOLANO PHRASE OF THE DAY MODAL -->
     <div class="modal-overlay" id="phraseModal" style="display: none; opacity: 0;">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('phraseModal')">&times;</span>
@@ -450,6 +437,7 @@
         </div>
     </div>
 
+    <!-- FLOATING TOP HEADER WITH INTEGRATED ACTION BUTTONS -->
     <header class="sticky-header">
         <div class="brand-container">
             <img src="pamana(1).png" alt="Pamana Logo">
@@ -472,15 +460,12 @@
         </div>
     </header>
 
+    <!-- DIRECT CANVA PUBLISHED WEBSITE EMBED -->
     <div class="canva-site-wrapper">
-        <iframe id="canvaFrame" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
+        <iframe id="canvaFrame" src="https://snake-dghmk4.my.canva.site/dahac-huu0u" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
     </div>
 
-    <!-- TRANSPARENT SHIELD BLOCKERS -->
-    <div class="bottom-control-blocker"></div>
-    <div class="side-arrow-blocker-left"></div>
-    <div class="side-arrow-blocker-right"></div>
-
+    <!-- FIXED COMPACT BOTTOM FOOTER -->
     <footer class="sticky-footer">
         <a href="https://facebook.com" target="_blank" class="footer-item">
             <i class="fa-brands fa-facebook"></i>
@@ -496,6 +481,7 @@
         </a>
     </footer>
 
+    <!-- JavaScript Controls -->
     <script>
         var bikolPhrases = [
             { bikol: "Dios mabalos", english: "Thank you / May God reward you", note: "Traditional Bicolano expression of heartfelt gratitude." },
@@ -592,11 +578,12 @@
             setTimeout(function() { toast.style.opacity = '1'; }, 10);
             setTimeout(function() {
                 toast.style.opacity = '0';
-                setTimeout(function() { toast.style.display = 'none'; }, 300);
+                setTimeout(function() { toast.display = 'none'; }, 300);
             }, 2500);
         }
 
         loadDailyPhrase();
     </script>
+
 </body>
 </html>
