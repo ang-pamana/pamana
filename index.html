@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Website Favicon & Mobile App Icons (Using pamanalogo.png) -->
+    <!-- Website Favicon & Mobile App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="icon" type="image/png" sizes="48x48" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="icon" type="image/png" sizes="192x192" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
@@ -75,8 +75,7 @@
         }
         html, body {
             width: 100%;
-            height: 100%;
-            overflow-x: hidden;
+            min-height: 100%;
             background-color: #ffffff;
             color: #333333;
             font-family: Arial, sans-serif;
@@ -207,30 +206,38 @@
             border-color: transparent;
         }
 
-        /* Subtle glowing animation para sa Word of the Day button sa Header */
         .glow-btn {
             animation: subtleGlow 3s infinite ease-in-out;
         }
 
         @keyframes subtleGlow {
-            0% {
-                box-shadow: 0 0 0 0px rgba(255, 106, 0, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 8px 3px rgba(255, 106, 0, 0.35);
-            }
-            100% {
-                box-shadow: 0 0 0 0px rgba(255, 106, 0, 0);
-            }
+            0% { box-shadow: 0 0 0 0px rgba(255, 106, 0, 0.3); }
+            50% { box-shadow: 0 0 8px 3px rgba(255, 106, 0, 0.35); }
+            100% { box-shadow: 0 0 0 0px rgba(255, 106, 0, 0); }
         }
 
-        /* EMBEDDED CANVA FRAME */
-        iframe {
-            width: 100vw;
-            height: calc(100vh - 78px);
+        /* RESPONSIVE CANVA CONTAINER */
+        .canva-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 275.9883%;
+            padding-bottom: 0;
             margin-top: 48px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .canva-wrapper iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
             border: none;
-            display: block;
+            padding: 0;
+            margin: 0;
         }
 
         /* FIXED COMPACT BOTTOM FOOTER */
@@ -424,7 +431,7 @@
             .header-btn i { font-size: 10px; }
             .header-btn span { font-size: 10px; }
 
-            iframe { height: calc(100vh - 66px); margin-top: 38px; }
+            .canva-wrapper { margin-top: 38px; }
             .sticky-footer { height: 28px; gap: 8px; padding: 0 5px; }
             .footer-item { font-size: 9px; }
             .footer-item i { font-size: 10px; }
@@ -503,8 +510,10 @@
         </div>
     </header>
 
-    <!-- Canva Embed with &nav=0 parameter to hide slide controls -->
-    <iframe id="canvaFrame" fetchpriority="high" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed&nav=0" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
+    <!-- OFFICIAL CANVA RESPONSIVE EMBED CONTAINER -->
+    <div class="canva-wrapper">
+        <iframe id="canvaFrame" loading="lazy" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed&nav=0" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
+    </div>
 
     <!-- Fixed Compact Bottom Footer Links -->
     <footer class="sticky-footer">
