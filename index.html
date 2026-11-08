@@ -28,6 +28,7 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 64px;
             background: #ffffff; display: flex; justify-content: space-between; align-items: center;
             padding: 0 20px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: opacity 0.3s ease;
         }
         .brand-container { display: flex; align-items: center; gap: 10px; }
         .brand-logo { height: 38px; width: 38px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
@@ -74,11 +75,12 @@
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
+        /* Modal Base Styles */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(4px);
-            display: none; justify-content: center; align-items: center;
-            z-index: 10000; padding: 20px; opacity: 0; transition: opacity 0.3s ease;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(6px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 10000; padding: 20px; opacity: 1; transition: opacity 0.3s ease;
         }
         .modal-box {
             background: #ffffff; width: 100%; max-width: 440px; border-radius: 24px;
@@ -109,18 +111,27 @@
         .wotd-meaning { font-size: 13.5px; color: #666666; line-height: 1.5; margin-bottom: 24px; padding: 0 10px; }
         .wotd-source { font-size: 11px; color: #999999; font-style: italic; margin-top: 16px; }
 
-        .content-container { margin-top: 64px; width: 100%; overflow: hidden; }
+        .content-container { 
+            margin-top: 64px; width: 100%; overflow: hidden; 
+            transition: opacity 0.4s ease;
+        }
+
+        /* Naitatago muna ang buong site hangga't 'di naki-click ang Enter Website sa first visit */
+        body.hide-content .content-container,
+        body.hide-content .sticky-header {
+            opacity: 0;
+            pointer-events: none;
+        }
         
-        /* Mobile Specific Responsive Fixes */
         @media (max-width: 850px) {
             .sticky-header { height: 56px; padding: 0 16px; }
             .brand-logo { height: 32px; width: 32px; }
-            .brand-title { display: none; } /* Tinago ang PAMANA text sa mobile para hindi masiksik ang header */
+            .brand-title { display: none; }
             .desktop-nav { display: none; }
             .mobile-menu-btn { display: block; }
             .mobile-dropdown { top: 56px; }
             .content-container { margin-top: 56px; }
-            .wotd-header-btn span { display: none; } /* Icon lang ang ilalabas para sa Word of the Day sa mobile */
+            .wotd-header-btn span { display: none; }
             .wotd-header-btn { padding: 6px 10px; }
         }
 
@@ -128,7 +139,7 @@
         .canva-block iframe { width: 100%; border: none; display: block; overflow: hidden; }
     </style>
 </head>
-<body>
+<body class="hide-content">
 
     <header class="sticky-header">
         <div class="brand-container">
@@ -178,7 +189,7 @@
     </div>
 
     <!-- 2. Word of the Day Modal Popup -->
-    <div class="modal-overlay" id="wotdModal">
+    <div class="modal-overlay" id="wotdModal" style="display: none;">
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeWotdModal()"><i class="fa-solid fa-xmark"></i></button>
             <span class="wotd-badge"><i class="fa-solid fa-language"></i> Bicolano Word of the Day</span>
@@ -201,6 +212,14 @@
     </main>
 
     <script>
+        // Suriin AGAD bago pa mag-render ang DOM kung nabisita na dati
+        if (localStorage.getItem('pamana_has_visited') === 'true') {
+            document.body.classList.remove('hide-content');
+            document.getElementById('welcomeModal').style.display = 'none';
+        } else {
+            document.getElementById('welcomeModal').style.display = 'flex';
+        }
+
         var bicolWordsList = [
             { word: '"Magayon"', trans: 'Translation: Beautiful / Lovely', meaning: 'Used to describe pleasant things, places, or people.' },
             { word: '"Mabalos"', trans: 'Translation: Thank you', meaning: 'An expression of gratitude used in everyday Bicolano conversation.' },
@@ -215,22 +234,17 @@
             menu.classList.toggle('open');
         }
 
-        function checkFirstVisit() {
-            var hasVisited = localStorage.getItem('pamana_visited');
-            if (!hasVisited) {
-                var modal = document.getElementById('welcomeModal');
-                modal.style.display = 'flex';
-                setTimeout(function() { modal.style.opacity = '1'; }, 50);
-            }
-        }
-
         function closeWelcomeModal() {
             var modal = document.getElementById('welcomeModal');
             if (modal) {
                 modal.style.opacity = '0';
-                setTimeout(function() { modal.style.display = 'none'; }, 300);
+                setTimeout(function() { 
+                    modal.style.display = 'none'; 
+                    document.body.classList.remove('hide-content');
+                }, 300);
             }
-            localStorage.setItem('pamana_visited', 'true');
+            // Permanenting itinatala na nabisita na ang site kahit i-refresh o pindutin ang Home!
+            localStorage.setItem('pamana_has_visited', 'true');
         }
 
         function openWotdModal() {
@@ -253,8 +267,6 @@
                 setTimeout(function() { modal.style.display = 'none'; }, 300);
             }
         }
-
-        window.addEventListener('load', checkFirstVisit);
     </script>
 </body>
 </html>
