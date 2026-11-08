@@ -17,58 +17,74 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #121212; font-family: Arial, sans-serif; overflow-x: hidden; }
+        body { background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
 
         .sticky-header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 50px;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            position: fixed; top: 0; left: 0; width: 100%; height: 64px;
+            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 16px; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 0 24px; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        .brand-container { display: flex; align-items: center; gap: 10px; }
         .brand-title {
-            font-family: 'Georgia', serif; font-size: 18px; font-weight: 800;
-            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
+            font-family: 'Georgia', serif; font-size: 22px; font-weight: 800; letter-spacing: 1px;
+            background: linear-gradient(90deg, #ff4e00 0%, #ec9f05 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a {
-            color: #333; text-decoration: none; font-size: 12px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s ease;
+        .desktop-nav { display: flex; gap: 28px; align-items: center; }
+        .desktop-nav a {
+            color: #e0e0e0; text-decoration: none; font-size: 14px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.8px; transition: all 0.3s ease; position: relative; padding: 8px 0;
         }
-        .nav-links a:hover { color: #ff6a00; }
-
-        @media (max-width: 650px) {
-            .nav-links { gap: 8px; }
-            .nav-links a { font-size: 9px; }
+        .desktop-nav a:hover, .desktop-nav a.active { color: #ff4e00; }
+        .desktop-nav a.active::after, .desktop-nav a:hover::after {
+            content: ''; position: absolute; width: 100%; height: 3px; bottom: 0; left: 0; background-color: #ff4e00; border-radius: 2px;
         }
 
-        .content-container { margin-top: 50px; margin-bottom: 30px; width: 100%; }
+        .mobile-bottom-nav {
+            display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 58px;
+            background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            justify-content: space-around; align-items: center; z-index: 9999;
+        }
+        .mobile-bottom-nav a {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: #8e8e93; text-decoration: none; font-size: 9px; font-weight: 600; width: 100%; height: 100%;
+            transition: color 0.2s ease;
+        }
+        .mobile-bottom-nav a i { font-size: 17px; margin-bottom: 3px; }
+        .mobile-bottom-nav a.active, .mobile-bottom-nav a:hover { color: #ff4e00; }
+
+        .content-container { margin-top: 64px; margin-bottom: 0px; width: 100%; }
+        
+        @media (max-width: 850px) {
+            .sticky-header { height: 52px; padding: 0 16px; }
+            .brand-title { font-size: 18px; }
+            .desktop-nav { display: none; }
+            .mobile-bottom-nav { display: flex; }
+            .content-container { margin-top: 52px; margin-bottom: 58px; }
+        }
+
         .canva-block { display: none; width: 100%; position: relative; background: #ffffff; }
         .canva-block.active { display: block; }
         .canva-block iframe { width: 100%; border: none; display: block; }
-
-        .sticky-footer {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 30px;
-            background: #1a1a1a; display: flex; justify-content: center; align-items: center; gap: 20px; z-index: 9999;
-        }
-        .footer-item { color: #fff; text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 6px; }
     </style>
 </head>
 <body>
 
     <header class="sticky-header">
-        <div style="display:flex; align-items:center; gap:8px;">
-            <img src="pamana(1).png" alt="Logo" style="height:28px;">
+        <div class="brand-container">
+            <img src="pamana(1).png" alt="Logo" style="height:32px;">
             <span class="brand-title">CULTURE</span>
         </div>
-        <nav class="nav-links">
-            <a href="https://ang-pamana.github.io/pamana/index.html">Home</a>
-            <a href="https://ang-pamana.github.io/pamana/culture.html">Culture</a>
-            <a href="https://ang-pamana.github.io/pamana/environment.html">Environment</a>
-            <a href="https://ang-pamana.github.io/pamana/heritage.html">Heritage</a>
-            <a href="https://ang-pamana.github.io/pamana/feature.html">Feature</a>
-            <a href="https://ang-pamana.github.io/pamana/team.html">Meet the Team</a>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="culture.html" class="active">Culture</a>
+            <a href="environment.html">Environment</a>
+            <a href="heritage.html">Heritage</a>
+            <a href="feature.html">Feature</a>
+            <a href="team.html">Meet the Team</a>
         </nav>
     </header>
 
@@ -80,35 +96,30 @@
             </div>
         </div>
 
-        <!-- Subsection 1 - Courtship -->
         <div id="courtship" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 205.9297%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 2 - Statue -->
         <div id="statue" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 258.5652%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 3 - Past Present -->
         <div id="past-present" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 246.3397%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 4 - Pili -->
         <div id="pili" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 218.8873%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 5 - Sili Ice Cream -->
         <div id="sili-ice-cream" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 266.3982%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng/view?embed" allowfullscreen></iframe>
@@ -116,11 +127,14 @@
         </div>
     </main>
 
-    <footer class="sticky-footer">
-        <a href="https://facebook.com" target="_blank" class="footer-item"><i class="fa-brands fa-facebook"></i> The Sentinel</a>
-        <a href="https://tiktok.com/@pamana.bicolnon" target="_blank" class="footer-item"><i class="fa-brands fa-tiktok"></i> pamana.bicolnon</a>
-        <a href="mailto:pamanangbicolnon@gmail.com" class="footer-item"><i class="fa-solid fa-envelope"></i> pamanangbicolnon@gmail.com</a>
-    </footer>
+    <nav class="mobile-bottom-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="culture.html" class="active"><i class="fa-solid fa-masks-theater"></i>Culture</a>
+        <a href="environment.html"><i class="fa-solid fa-leaf"></i>Environment</a>
+        <a href="heritage.html"><i class="fa-solid fa-landmark"></i>Heritage</a>
+        <a href="feature.html"><i class="fa-solid fa-newspaper"></i>Feature</a>
+        <a href="team.html"><i class="fa-solid fa-users"></i>Team</a>
+    </nav>
 
     <script>
         function handleTabSwitch() {
