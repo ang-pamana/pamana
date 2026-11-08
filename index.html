@@ -310,5 +310,65 @@
             }
         }
     </script>
+    <script>
+    // 1. Session storage check para sa Welcome Modal
+    if (sessionStorage.getItem('pamana_has_visited') === 'true') {
+        document.getElementById('welcomeModal').style.display = 'none';
+    } else {
+        document.getElementById('welcomeModal').style.display = 'flex';
+    }
+
+    // 2. Listahan ng Bicol Words (Source: BICOL - MAN / Saminovic)
+    var bicolWordsList = [
+        { word: '"Magayon"', trans: 'Translation: Beautiful / Lovely', meaning: 'Used to describe pleasant things, places, or people.' },
+        { word: '"Mabalos"', trans: 'Translation: Thank you', meaning: 'An expression of gratitude used in everyday Bicolano conversation.' },
+        { word: '"Maogma"', trans: 'Translation: Happy / Joyful', meaning: 'Used to express happiness, gladness, or pleasant feelings.' },
+        { word: '"Oragon"', trans: 'Translation: Strong / Flexible / Excellent', meaning: 'A iconic Bicolano term describing someone resilient, skilled, or impressive.' },
+        { word: '"Marhay"', trans: 'Translation: Good / Fine', meaning: 'Used in greetings like "Marhay na adalman" (Good day) or to state wellness.' },
+        { word: '"Namumutan"', trans: 'Translation: Beloved / Loved One', meaning: 'Derived from "suot" or "doot" expressing deep affection or love.' }
+    ];
+
+    function toggleMobileMenu() {
+        var menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('open');
+    }
+
+    function closeWelcomeModal() {
+        var modal = document.getElementById('welcomeModal');
+        if (modal) {
+            modal.style.opacity = '0';
+            setTimeout(function() { 
+                modal.style.display = 'none'; 
+            }, 300);
+        }
+        sessionStorage.setItem('pamana_has_visited', 'true');
+    }
+
+    // 3. Dynamic Function: Tiyak na 1 Salita Lamang Bawat Araw
+    function openWotdModal() {
+        var today = new Date();
+        // Kinukuha ang bilang ng mga araw mula noong Jan 1, 1970 (Epoch days)
+        var dayIndex = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+        
+        // Pinalilipat-lipat ang salita depende sa petsa ng araw na ito
+        var selected = bicolWordsList[dayIndex % bicolWordsList.length];
+
+        document.getElementById('wotdWord').textContent = selected.word;
+        document.getElementById('wotdTranslation').textContent = selected.trans;
+        document.getElementById('wotdMeaning').textContent = selected.meaning;
+
+        var modal = document.getElementById('wotdModal');
+        modal.style.display = 'flex';
+        setTimeout(function() { modal.style.opacity = '1'; }, 50);
+    }
+
+    function closeWotdModal() {
+        var modal = document.getElementById('wotdModal');
+        if (modal) {
+            modal.style.opacity = '0';
+            setTimeout(function() { modal.style.display = 'none'; }, 300);
+        }
+    }
+</script>
 </body>
 </html>
