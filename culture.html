@@ -6,12 +6,21 @@
     <title>Pamana — Bicol Culture</title>
     <link rel="icon" type="image/png" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-17P5Q860F3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-17P5Q860F3');
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #121212; font-family: Arial, sans-serif; overflow-x: hidden; }
 
         .sticky-header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 48px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 50px;
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 16px; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -22,8 +31,19 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .content-container { margin-top: 48px; margin-bottom: 30px; width: 100%; }
-        
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a {
+            color: #333; text-decoration: none; font-size: 12px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: #ff6a00; }
+
+        @media (max-width: 650px) {
+            .nav-links { gap: 8px; }
+            .nav-links a { font-size: 9px; }
+        }
+
+        .content-container { margin-top: 50px; margin-bottom: 30px; width: 100%; }
         .canva-block { display: none; width: 100%; position: relative; background: #ffffff; }
         .canva-block.active { display: block; }
         .canva-block iframe { width: 100%; border: none; display: block; }
@@ -40,40 +60,48 @@
     <header class="sticky-header">
         <div style="display:flex; align-items:center; gap:8px;">
             <img src="pamana(1).png" alt="Logo" style="height:28px;">
-            <span class="brand-title">BICOL CULTURE</span>
+            <span class="brand-title">CULTURE</span>
         </div>
+        <nav class="nav-links">
+            <a href="https://ang-pamana.github.io/pamana/index.html">Home</a>
+            <a href="https://ang-pamana.github.io/pamana/culture.html">Culture</a>
+            <a href="https://ang-pamana.github.io/pamana/environment.html">Environment</a>
+            <a href="https://ang-pamana.github.io/pamana/heritage.html">Heritage</a>
+            <a href="https://ang-pamana.github.io/pamana/feature.html">Feature</a>
+            <a href="https://ang-pamana.github.io/pamana/team.html">Meet the Team</a>
+        </nav>
     </header>
 
     <main class="content-container">
-        <!-- Section 2 - Bicol Culture Main -->
+        <!-- Culture Main -->
         <div id="culture-main" class="canva-block active">
             <div style="position: relative; width: 100%; height: 0; padding-top: 339.0190%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUAY48YM/jjZ81TBn3RaThz3ZDd9WmQ/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 1 - Courtship & Culture -->
+        <!-- Subsection 1 - Courtship -->
         <div id="courtship" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 205.9297%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 2 - Three-Headed Statue -->
+        <!-- Subsection 2 - Statue -->
         <div id="statue" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 258.5652%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 3 - Visiting the Past -->
+        <!-- Subsection 3 - Past Present -->
         <div id="past-present" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 246.3397%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 4 - The Pili -->
+        <!-- Subsection 4 - Pili -->
         <div id="pili" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 218.8873%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ/view?embed" allowfullscreen></iframe>
