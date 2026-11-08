@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feature — Pamana</title>
+    <title>Pamana — Bicol Feature</title>
     <link rel="icon" type="image/png" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -16,78 +16,75 @@
     </script>
 
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { width: 100%; height: 100%; overflow-x: hidden; overflow-y: auto; }
-        body { background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
 
-        /* Universal Scrollbar Killer */
-        iframe, .canva-block, .canva-embed-holder, div { -ms-overflow-style: none !important; scrollbar-width: none !important; }
-        iframe::-webkit-scrollbar, .canva-block::-webkit-scrollbar, .canva-embed-holder::-webkit-scrollbar, div::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+        .sticky-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 64px;
+            background: #ffffff;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 24px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .brand-container { display: flex; align-items: center; gap: 12px; }
+        .brand-logo { height: 38px; width: 38px; border-radius: 50%; object-fit: cover; }
+        
+        .brand-title {
+            font-family: 'Georgia', serif; font-size: 22px; font-weight: 800; letter-spacing: 1px;
+            background: linear-gradient(90deg, #ff4e00 0%, #ec9f05 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
-        .sticky-header { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: #ffffff; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-        .brand-group { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-        .brand-logo { height: 30px; width: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-
-        .brand-title { font-family: 'Georgia', serif; font-size: 17px; font-weight: 800; letter-spacing: 1px; white-space: nowrap; margin-right: 4px; }
-        .title-feature { background: linear-gradient(90deg, #ff4e00 0%, #ec9f05 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .wotd-header-btn { background: linear-gradient(135deg, #ff5100 0%, #ff8800 100%); color: #ffffff; border: none; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 3px 8px rgba(255, 81, 0, 0.25); transition: all 0.3s ease; white-space: nowrap; flex-shrink: 0; }
-        .wotd-header-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(255, 81, 0, 0.4); }
-
-        .desktop-nav { display: flex; gap: 16px; align-items: center; flex-shrink: 0; }
-        .desktop-nav a { color: #222222; text-decoration: none; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease; position: relative; padding: 4px 0; white-space: nowrap; }
+        .desktop-nav { display: flex; gap: 28px; align-items: center; }
+        .desktop-nav a {
+            color: #222222; text-decoration: none; font-size: 14px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.8px; transition: all 0.3s ease; position: relative; padding: 8px 0;
+        }
         .desktop-nav a:hover, .desktop-nav a.active { color: #ff4e00; }
-        .desktop-nav a.active::after, .desktop-nav a:hover::after { content: ''; position: absolute; width: 100%; height: 2px; bottom: 0; left: 0; background-color: #ff4e00; border-radius: 2px; }
+        .desktop-nav a.active::after, .desktop-nav a:hover::after {
+            content: ''; position: absolute; width: 100%; height: 3px; bottom: 0; left: 0; background-color: #ff4e00; border-radius: 2px;
+        }
 
-        .mobile-menu-btn { display: none; background: none; border: none; color: #222222; font-size: 20px; cursor: pointer; padding: 4px; flex-shrink: 0; }
-        .mobile-dropdown { display: none; position: fixed; top: 50px; left: 0; width: 100%; background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998; }
-        .mobile-dropdown a, .mobile-dropdown button { color: #222222; text-decoration: none; padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0; text-align: left; background: none; border: none; width: 100%; cursor: pointer; }
-        .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
+        .mobile-menu-btn {
+            display: none; background: none; border: none; color: #222222; font-size: 24px; cursor: pointer; padding: 4px;
+        }
+        
+        .mobile-dropdown {
+            display: none; position: fixed; top: 64px; left: 0; width: 100%;
+            background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998;
+        }
+        .mobile-dropdown a {
+            color: #222222; text-decoration: none; padding: 14px 24px; font-size: 14px;
+            font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0;
+        }
+        .mobile-dropdown a.active, .mobile-dropdown a:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10000; padding: 20px; transition: opacity 0.3s ease; }
-        .modal-box { background: #ffffff; width: 100%; max-width: 440px; border-radius: 24px; padding: 32px 24px 28px 24px; text-align: center; position: relative; box-shadow: 0 16px 40px rgba(0,0,0,0.3); animation: popupAnim 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
-        @keyframes popupAnim { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        .modal-close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; color: #777777; cursor: pointer; }
-        .modal-action-btn { display: inline-block; width: 75%; padding: 12px 20px; border: none; border-radius: 30px; background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%); color: #ffffff; font-size: 12.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; box-shadow: 0 6px 18px rgba(255, 78, 0, 0.4); }
-
-        .wotd-badge { display: inline-block; background: #fff1eb; color: #ff4e00; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; border: 1px solid #ffdcd0; }
-        .wotd-word { font-family: 'Georgia', serif; font-size: 30px; font-weight: 800; color: #d90000; margin-bottom: 8px; }
-        .wotd-translation { font-size: 15px; color: #333333; font-weight: 600; margin-bottom: 10px; }
-        .wotd-meaning { font-size: 13px; color: #666666; line-height: 1.5; margin-bottom: 22px; padding: 0 10px; }
-        .wotd-source { font-size: 11px; color: #999999; font-style: italic; margin-top: 14px; }
-
-        .content-container { margin-top: 50px; width: 100%; position: relative; overflow: hidden !important; }
-        .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden !important; }
-        .canva-embed-holder { position: relative; width: 100%; height: 0; padding-top: 288.6530%; overflow: hidden !important; }
-        .canva-embed-holder iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: 0 !important; outline: none !important; overflow: hidden !important; }
-
+        .content-container { margin-top: 64px; width: 100%; }
+        
         @media (max-width: 850px) {
-            .sticky-header { height: 46px; padding: 0 14px; }
-            .brand-logo { height: 26px; width: 26px; }
-            .brand-title { display: none; }
+            .sticky-header { height: 56px; padding: 0 16px; }
+            .brand-logo { height: 32px; width: 32px; }
+            .brand-title { font-size: 18px; }
             .desktop-nav { display: none; }
             .mobile-menu-btn { display: block; }
-            .mobile-dropdown { top: 46px; }
-            .content-container { margin-top: 46px; }
-            .wotd-header-btn span { display: none; }
-            .wotd-header-btn { padding: 4px 8px; margin: 0; }
+            .mobile-dropdown { top: 56px; }
+            .content-container { margin-top: 56px; }
         }
+
+        .canva-block { display: none; width: 100%; position: relative; background: #ffffff; }
+        .canva-block.active { display: block; }
+        .canva-block iframe { width: 100%; border: none; display: block; }
     </style>
 </head>
 <body>
 
     <header class="sticky-header">
-        <div class="brand-group">
+        <div class="brand-container">
             <img src="pamanalogo.png" alt="Logo" class="brand-logo">
-            <span class="brand-title title-feature">FEATURE</span>
-            <button class="wotd-header-btn" onclick="openWotdModal()">
-                <i class="fa-solid fa-book-open"></i> <span>Word of the Day</span>
-            </button>
+            <span class="brand-title">FEATURE</span>
         </div>
-
+        
         <nav class="desktop-nav">
             <a href="index.html">Home</a>
             <a href="culture.html">Culture</a>
@@ -103,7 +100,6 @@
     </header>
 
     <div class="mobile-dropdown" id="mobileMenu">
-        <button onclick="openWotdModal(); toggleMobileMenu();"><i class="fa-solid fa-book-open"></i> Word of the Day</button>
         <a href="index.html">Home</a>
         <a href="culture.html">Culture</a>
         <a href="environment.html">Environment</a>
@@ -112,65 +108,80 @@
         <a href="team.html">Meet the Team</a>
     </div>
 
-    <!-- Word of the Day Modal Popup -->
-    <div class="modal-overlay" id="wotdModal" style="display: none;">
-        <div class="modal-box">
-            <button class="modal-close-btn" onclick="closeWotdModal()"><i class="fa-solid fa-xmark"></i></button>
-            <span class="wotd-badge"><i class="fa-solid fa-language"></i> Bicolano Word of the Day</span>
-            
-            <h1 class="wotd-word" id="wotdWord">"Magayon"</h1>
-            <p class="wotd-translation" id="wotdTranslation">Translation: Beautiful / Lovely</p>
-            <p class="wotd-meaning" id="wotdMeaning">Used to describe pleasant things, places, or people.</p>
-            
-            <button class="modal-action-btn" onclick="closeWotdModal()">GOT IT!</button>
-            <div class="wotd-source">Source: BICOL - MAN / Saminovic</div>
-        </div>
-    </div>
-
     <main class="content-container">
-        <div class="canva-block">
-            <div class="canva-embed-holder">
-                <iframe loading="lazy" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen scrolling="no"></iframe>
+        <!-- Feature Main -->
+        <div id="feature-main" class="canva-block active">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 215.3001%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUaigGpc/NtTccHxF5WaRShg1uHPUvQ/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="creatives" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 514.0556%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="mabelin" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 509.2240%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="over-ice" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 250.3660%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="welcomed-family" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 585.6515%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="balinghoy" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 427.4524%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="el-nino-farmers" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 449.7072%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="kiko-canteen" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 585.6515%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ/view?embed" allowfullscreen></iframe>
             </div>
         </div>
     </main>
 
     <script>
-        var bicolWordsList = [
-            { word: '"Magayon"', trans: 'Translation: Beautiful / Lovely', meaning: 'Used to describe pleasant things, places, or people.' },
-            { word: '"Mabalos"', trans: 'Translation: Thank you', meaning: 'An expression of gratitude used in everyday Bicolano conversation.' },
-            { word: '"Maogma"', trans: 'Translation: Happy / Joyful', meaning: 'Used to express happiness, gladness, or pleasant feelings.' },
-            { word: '"Oragon"', trans: 'Translation: Strong / Flexible / Excellent', meaning: 'A iconic Bicolano term describing someone resilient, skilled, or impressive.' },
-            { word: '"Marhay"', trans: 'Translation: Good / Fine', meaning: 'Used in greetings like "Marhay na adalman" (Good day) or to state wellness.' },
-            { word: '"Namumutan"', trans: 'Translation: Beloved / Loved One', meaning: 'Derived from "suot" or "doot" expressing deep affection or love.' }
-        ];
-
         function toggleMobileMenu() {
             var menu = document.getElementById('mobileMenu');
             menu.classList.toggle('open');
         }
 
-        function openWotdModal() {
-            var today = new Date();
-            var dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-            var selected = bicolWordsList[dateSeed % bicolWordsList.length];
-
-            document.getElementById('wotdWord').textContent = selected.word;
-            document.getElementById('wotdTranslation').textContent = selected.trans;
-            document.getElementById('wotdMeaning').textContent = selected.meaning;
-
-            var modal = document.getElementById('wotdModal');
-            modal.style.display = 'flex';
-            setTimeout(function() { modal.style.opacity = '1'; }, 50);
-        }
-
-        function closeWotdModal() {
-            var modal = document.getElementById('wotdModal');
-            if (modal) {
-                modal.style.opacity = '0';
-                setTimeout(function() { modal.style.display = 'none'; }, 300);
+        function handleTabSwitch() {
+            var hash = window.location.hash;
+            var blocks = document.querySelectorAll('.canva-block');
+            if (hash) {
+                var targetBlock = document.querySelector(hash);
+                if (targetBlock) {
+                    blocks.forEach(function(b) { b.classList.remove('active'); });
+                    targetBlock.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+            } else {
+                blocks.forEach(function(b) { b.classList.remove('active'); });
+                document.getElementById('feature-main').classList.add('active');
             }
         }
+        window.addEventListener('hashchange', handleTabSwitch);
+        window.addEventListener('load', handleTabSwitch);
     </script>
 </body>
 </html>
