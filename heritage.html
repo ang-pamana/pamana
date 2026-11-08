@@ -17,60 +17,96 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #121212; font-family: Arial, sans-serif; overflow-x: hidden; }
+        body { background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
 
         .sticky-header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 50px;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            position: fixed; top: 0; left: 0; width: 100%; height: 64px;
+            background: #ffffff;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 16px; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 0 24px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
+        .brand-container { display: flex; align-items: center; gap: 12px; }
+        .brand-logo { height: 38px; width: 38px; border-radius: 50%; object-fit: cover; }
+        
         .brand-title {
-            font-family: 'Georgia', serif; font-size: 18px; font-weight: 800;
-            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
+            font-family: 'Georgia', serif; font-size: 22px; font-weight: 800; letter-spacing: 1px;
+            background: linear-gradient(90deg, #ff4e00 0%, #ec9f05 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a {
-            color: #333; text-decoration: none; font-size: 12px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s ease;
+        .desktop-nav { display: flex; gap: 28px; align-items: center; }
+        .desktop-nav a {
+            color: #222222; text-decoration: none; font-size: 14px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.8px; transition: all 0.3s ease; position: relative; padding: 8px 0;
         }
-        .nav-links a:hover { color: #ff6a00; }
-
-        @media (max-width: 650px) {
-            .nav-links { gap: 8px; }
-            .nav-links a { font-size: 9px; }
+        .desktop-nav a:hover, .desktop-nav a.active { color: #ff4e00; }
+        .desktop-nav a.active::after, .desktop-nav a:hover::after {
+            content: ''; position: absolute; width: 100%; height: 3px; bottom: 0; left: 0; background-color: #ff4e00; border-radius: 2px;
         }
 
-        .content-container { margin-top: 50px; margin-bottom: 30px; width: 100%; }
+        .mobile-menu-btn {
+            display: none; background: none; border: none; color: #222222; font-size: 24px; cursor: pointer; padding: 4px;
+        }
+        
+        .mobile-dropdown {
+            display: none; position: fixed; top: 64px; left: 0; width: 100%;
+            background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998;
+        }
+        .mobile-dropdown a {
+            color: #222222; text-decoration: none; padding: 14px 24px; font-size: 14px;
+            font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0;
+        }
+        .mobile-dropdown a.active, .mobile-dropdown a:hover { background: #fff5f0; color: #ff4e00; }
+        .mobile-dropdown.open { display: flex; }
+
+        .content-container { margin-top: 64px; width: 100%; }
+        
+        @media (max-width: 850px) {
+            .sticky-header { height: 56px; padding: 0 16px; }
+            .brand-logo { height: 32px; width: 32px; }
+            .brand-title { font-size: 18px; }
+            .desktop-nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-dropdown { top: 56px; }
+            .content-container { margin-top: 56px; }
+        }
+
         .canva-block { display: none; width: 100%; position: relative; background: #ffffff; }
         .canva-block.active { display: block; }
         .canva-block iframe { width: 100%; border: none; display: block; }
-
-        .sticky-footer {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 30px;
-            background: #1a1a1a; display: flex; justify-content: center; align-items: center; gap: 20px; z-index: 9999;
-        }
-        .footer-item { color: #fff; text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 6px; }
     </style>
 </head>
 <body>
 
     <header class="sticky-header">
-        <div style="display:flex; align-items:center; gap:8px;">
-            <img src="pamana(1).png" alt="Logo" style="height:28px;">
+        <div class="brand-container">
+            <img src="pamanalogo.png" alt="Logo" class="brand-logo">
             <span class="brand-title">HERITAGE</span>
         </div>
-        <nav class="nav-links">
-            <a href="https://ang-pamana.github.io/pamana/index.html">Home</a>
-            <a href="https://ang-pamana.github.io/pamana/culture.html">Culture</a>
-            <a href="https://ang-pamana.github.io/pamana/environment.html">Environment</a>
-            <a href="https://ang-pamana.github.io/pamana/heritage.html">Heritage</a>
-            <a href="https://ang-pamana.github.io/pamana/feature.html">Feature</a>
-            <a href="https://ang-pamana.github.io/pamana/team.html">Meet the Team</a>
+        
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="culture.html">Culture</a>
+            <a href="environment.html">Environment</a>
+            <a href="heritage.html" class="active">Heritage</a>
+            <a href="feature.html">Feature</a>
+            <a href="team.html">Meet the Team</a>
         </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </header>
+
+    <div class="mobile-dropdown" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="culture.html">Culture</a>
+        <a href="environment.html">Environment</a>
+        <a href="heritage.html" class="active">Heritage</a>
+        <a href="feature.html">Feature</a>
+        <a href="team.html">Meet the Team</a>
+    </div>
 
     <main class="content-container">
         <!-- Heritage Main -->
@@ -80,35 +116,30 @@
             </div>
         </div>
 
-        <!-- Subsection 1 - Built a Year Ago -->
         <div id="heritage-built" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 229.2826%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 2 - Purple Yam -->
         <div id="purple-yam" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 248.9751%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 3 - Camalig Church -->
         <div id="camalig-church" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 260.9810%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 4 - Coffee -->
         <div id="coffee" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 232.0644%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA/view?embed" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Subsection 5 - Wildlife -->
         <div id="wildlife" class="canva-block">
             <div style="position: relative; width: 100%; height: 0; padding-top: 270.1318%;">
                 <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A/view?embed" allowfullscreen></iframe>
@@ -116,13 +147,12 @@
         </div>
     </main>
 
-    <footer class="sticky-footer">
-        <a href="https://facebook.com" target="_blank" class="footer-item"><i class="fa-brands fa-facebook"></i> The Sentinel</a>
-        <a href="https://tiktok.com/@pamana.bicolnon" target="_blank" class="footer-item"><i class="fa-brands fa-tiktok"></i> pamana.bicolnon</a>
-        <a href="mailto:pamanangbicolnon@gmail.com" class="footer-item"><i class="fa-solid fa-envelope"></i> pamanangbicolnon@gmail.com</a>
-    </footer>
-
     <script>
+        function toggleMobileMenu() {
+            var menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
         function handleTabSwitch() {
             var hash = window.location.hash;
             var blocks = document.querySelectorAll('.canva-block');
