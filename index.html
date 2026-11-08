@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Analytics 4 (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-17P5Q860F3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -20,15 +19,12 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; min-height: 100%; background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
 
-        /* Tanggalin ang Scrollbar sa Inner Elements */
         iframe, .canva-block, .canva-embed-holder, div { -ms-overflow-style: none !important; scrollbar-width: none !important; }
         iframe::-webkit-scrollbar, .canva-block::-webkit-scrollbar, .canva-embed-holder::-webkit-scrollbar, div::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
 
-        /* Slim Header (50px) */
         .sticky-header { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: #ffffff; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
         .brand-group { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
         .brand-logo { height: 30px; width: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-
         .brand-title { font-family: 'Georgia', serif; font-size: 17px; font-weight: 800; letter-spacing: 1px; white-space: nowrap; margin-right: 4px; }
         .title-pamana { background: linear-gradient(90deg, #ff4e00 0%, #ec9f05 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
@@ -55,7 +51,6 @@
         .modal-logo { width: 48px; height: 48px; margin: 0 auto 16px auto; display: block; border-radius: 50%; }
         .modal-title { font-family: 'Georgia', serif; font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 14px; line-height: 1.3; }
         .modal-desc { font-size: 13.5px; color: #555555; line-height: 1.6; margin-bottom: 26px; padding: 0 8px; }
-
         .modal-action-btn { display: inline-block; width: 75%; padding: 12px 20px; border: none; border-radius: 30px; background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%); color: #ffffff; font-size: 12.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; box-shadow: 0 6px 18px rgba(255, 78, 0, 0.4); }
 
         .wotd-badge { display: inline-block; background: #fff1eb; color: #ff4e00; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; border: 1px solid #ffdcd0; }
@@ -64,7 +59,6 @@
         .wotd-meaning { font-size: 13px; color: #666666; line-height: 1.5; margin-bottom: 22px; padding: 0 10px; }
         .wotd-source { font-size: 11px; color: #999999; font-style: italic; margin-top: 14px; }
 
-        /* Orihinal na Canva Layout Structure */
         .content-container { margin-top: 50px; width: 100%; position: relative; overflow: hidden; }
         .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden; }
         .canva-embed-holder { position: relative; width: 100%; height: 0; padding-top: 288.6530%; overflow: hidden; }
@@ -118,7 +112,6 @@
         <a href="team.html">Meet the Team</a>
     </div>
 
-    <!-- 1. Welcome Modal Popup -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeWelcomeModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -131,16 +124,13 @@
         </div>
     </div>
 
-    <!-- 2. Word of the Day Modal Popup -->
     <div class="modal-overlay" id="wotdModal" style="display: none;">
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeWotdModal()"><i class="fa-solid fa-xmark"></i></button>
             <span class="wotd-badge"><i class="fa-solid fa-language"></i> Bicolano Word of the Day</span>
-            
             <h1 class="wotd-word" id="wotdWord">"Magayon"</h1>
             <p class="wotd-translation" id="wotdTranslation">Translation: Beautiful / Lovely</p>
             <p class="wotd-meaning" id="wotdMeaning">Used to describe pleasant things, places, or people.</p>
-            
             <button class="modal-action-btn" onclick="closeWotdModal()">GOT IT!</button>
             <div class="wotd-source">Source: BICOL - MAN / Saminovic</div>
         </div>
@@ -149,6 +139,7 @@
     <main class="content-container">
         <div class="canva-block">
             <div class="canva-embed-holder">
+                <!-- HOMEPAGE LINK: DAHaUonab1A -->
                 <iframe loading="lazy" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen scrolling="no"></iframe>
             </div>
         </div>
