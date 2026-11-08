@@ -3,61 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Website Favicon & Mobile App Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
-    <link rel="shortcut icon" href="https://ang-pamana.github.io/pamana/pamanalogo.png" type="image/x-icon">
-    <meta name="apple-mobile-web-app-title" content="Pamana">
-    <meta name="application-name" content="Pamana">
-    <meta name="theme-color" content="#ffffff">
-    
-    <!-- Speed Optimization -->
-    <link rel="preconnect" href="https://www.canva.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://www.canva.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-    <!-- SEO Title & Description -->
-    <title>Pamana</title>
-    <meta name="description" content="Discover Pamana — the official portal for Bicol Culture, Heritage, and Environment created by 4th year Journalism students at Bicol University.">
-    
-    <meta name="keywords" content="Pamana, Pamana: Bicol Culture, Pamana: Bicol Heritage, Pamana: Bicol Environment, Bicol University Journalism, Pantomina, Ibalong, Museo de Legazpi">
-    <meta name="robots" content="index, follow">
-
-    <!-- SCHEMA.ORG STRUCTURED DATA FOR GOOGLE SITE NAME -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Pamana",
-      "alternateName": ["PAMANA", "Pamana Portal"],
-      "url": "https://ang-pamana.github.io/pamana/"
-    }
-    </script>
-
-    <!-- ENHANCED OPEN GRAPH & SOCIAL MEDIA PREVIEW CARDS -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ang-pamana.github.io/pamana/">
-    <meta property="og:title" content="Pamana">
-    <meta property="og:description" content="Official digital portal documenting the rich culture, heritage, and environmental stories of the Bicol region. Authored by Bicol University 4th-year Journalism students.">
-    <meta property="og:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Pamana">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://ang-pamana.github.io/pamana/">
-    <meta name="twitter:title" content="Pamana">
-    <meta name="twitter:description" content="Official digital portal documenting the rich culture, heritage, and environmental stories of Bicol by BU Journalism students.">
-    <meta name="twitter:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
-
-    <!-- Font Awesome Icons -->
+    <title>Pamana — Official Portal</title>
+    <link rel="icon" type="image/png" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <!-- Google Analytics 4 (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-17P5Q860F3"></script>
     <script>
@@ -68,532 +17,55 @@
     </script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #ffffff;
-            color: #333333;
-            font-family: Arial, sans-serif;
-        }
-
-        /* READING PROGRESS BAR */
-        #progressContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: transparent;
-            z-index: 10000;
-        }
-
-        #progressBar {
-            height: 3px;
-            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
-            width: 0%;
-            transition: width 0.1s ease-out;
-        }
-
-        /* CUSTOM LOADING SCREEN */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #ff6a00;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-top: 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* GLASSMORPHISM FLOATING TOP HEADER */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #121212; font-family: Arial, sans-serif; overflow-x: hidden; }
+        
         .sticky-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 48px;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 16px;
-            z-index: 9999;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            position: fixed; top: 0; left: 0; width: 100%; height: 48px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 16px; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .brand-container img {
-            max-height: 34px;
-            width: auto;
-            object-fit: contain;
-        }
-
         .brand-title {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-size: 19px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-family: 'Georgia', serif; font-size: 18px; font-weight: 800;
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* HEADER ACTION BUTTONS GROUP */
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .content-container { margin-top: 48px; margin-bottom: 30px; width: 100%; }
+        .canva-block { width: 100%; position: relative; background: #ffffff; }
+        .canva-block iframe { width: 100%; border: none; display: block; }
 
-        .header-btn {
-            background: rgba(255, 106, 0, 0.08);
-            color: #ff6a00;
-            border: 1px solid rgba(255, 106, 0, 0.4);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .header-btn i { font-size: 12px; }
-
-        .header-btn:hover {
-            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 100%);
-            color: #ffffff;
-            border-color: transparent;
-        }
-
-        .glow-btn {
-            animation: subtleGlow 3s infinite ease-in-out;
-        }
-
-        @keyframes subtleGlow {
-            0% { box-shadow: 0 0 0 0px rgba(255, 106, 0, 0.3); }
-            50% { box-shadow: 0 0 8px 3px rgba(255, 106, 0, 0.35); }
-            100% { box-shadow: 0 0 0 0px rgba(255, 106, 0, 0); }
-        }
-
-        /* CSS CLIPPING HACK CONTAINER */
-        .canva-clip-wrapper {
-            position: fixed;
-            top: 48px;
-            left: 0;
-            width: 100vw;
-            height: calc(100vh - 78px);
-            overflow: hidden; /* Kinukintab at pino-crop ang anumang lalabas sa container */
-            background: #ffffff;
-        }
-
-        .canva-clip-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            /* Dinadagdagan ang height gamit ang calc() para maitaboy ang slide controls sa ibaba */
-            height: calc(100% + 48px);
-            border: none;
-            margin-bottom: -48px; /* Negative margin hack para i-pull pababa ang iframe window */
-        }
-
-        /* FIXED COMPACT BOTTOM FOOTER */
         .sticky-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            z-index: 9999;
-            box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 30px;
+            background: #1a1a1a; display: flex; justify-content: center; align-items: center; gap: 20px; z-index: 9999;
         }
-
-        .footer-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 11px;
-            transition: color 0.2s ease;
-        }
-
-        .footer-item:hover { color: #ff6a00; }
-        .footer-item i { font-size: 13px; }
-
-        /* WELCOME POP-UP OVERLAY STYLES */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999999;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            border-radius: 14px;
-            max-width: 550px;
-            width: 100%;
-            padding: 35px 30px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-            animation: popupAnimation 0.4s ease-out;
-        }
-
-        @keyframes popupAnimation {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 18px;
-            font-size: 26px;
-            font-weight: bold;
-            color: #888888;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .close-btn:hover { color: #ff0000; }
-        .modal-logo { max-height: 60px; width: auto; margin-bottom: 12px; }
-        .modal-title { font-family: 'Georgia', serif; font-size: 25px; color: #2c2c2c; margin-bottom: 12px; font-weight: 700; }
-        .modal-text { font-size: 15px; color: #555555; line-height: 1.6; margin-bottom: 24px; }
-
-        .phrase-badge {
-            display: inline-block;
-            background-color: rgba(255, 106, 0, 0.12);
-            color: #ff6a00;
-            padding: 4px 14px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .phrase-bikol { font-family: 'Georgia', serif; font-size: 28px; color: #ff0000; font-weight: 800; margin-bottom: 8px; }
-        .phrase-meaning { font-size: 16px; color: #333333; font-weight: 600; margin-bottom: 15px; }
-        .phrase-source { font-size: 11px; color: #888888; margin-top: 15px; font-style: italic; }
-        .phrase-source a { color: #ff6a00; text-decoration: none; }
-
-        .action-btn {
-            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
-            color: #ffffff;
-            border: none;
-            padding: 12px 28px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.35);
-            transition: transform 0.2s ease;
-        }
-
-        .action-btn:hover { transform: translateY(-2px); }
-
-        /* TOAST NOTIFICATION */
-        .toast-notification {
-            position: fixed;
-            top: 60px;
-            right: 20px;
-            background: #1a1a1a;
-            color: #ffffff;
-            padding: 10px 18px;
-            border-radius: 8px;
-            font-size: 13px;
-            z-index: 999999;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        /* MOBILE VIEW ADJUSTMENTS */
-        @media (max-width: 600px) {
-            .sticky-header { height: 38px; padding: 0 8px; }
-            .brand-container { gap: 6px; }
-            .brand-container img { max-height: 24px; }
-            .brand-title { font-size: 14px; letter-spacing: 1px; }
-
-            .header-actions { gap: 4px; }
-            .header-btn {
-                padding: 4px 8px;
-                font-size: 10px;
-                border-radius: 14px;
-            }
-            .header-btn i { font-size: 10px; }
-            .header-btn span { font-size: 10px; }
-
-            .canva-clip-wrapper {
-                top: 38px;
-                height: calc(100vh - 66px);
-            }
-            .canva-clip-wrapper iframe {
-                height: calc(100% + 52px);
-                margin-bottom: -52px;
-            }
-
-            .sticky-footer { height: 28px; gap: 8px; padding: 0 5px; }
-            .footer-item { font-size: 9px; }
-            .footer-item i { font-size: 10px; }
-            .modal-content { max-width: 450px; padding: 20px 15px; }
-            .modal-logo { max-height: 44px; }
-            .modal-title { font-size: 18px; }
-            .modal-text { font-size: 12px; }
-        }
+        .footer-item { color: #fff; text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 6px; }
     </style>
 </head>
 <body>
 
-    <!-- READING PROGRESS BAR -->
-    <div id="progressContainer">
-        <div id="progressBar"></div>
-    </div>
-
-    <!-- TOAST NOTIFICATION FOR COPIED LINK -->
-    <div id="toast" class="toast-notification">
-        <i class="fa-solid fa-check-circle" style="color: #00ff66; margin-right: 6px;"></i>
-        Portal link copied to clipboard!
-    </div>
-
-    <!-- LOADING SCREEN -->
-    <div id="loadingScreen">
-        <img src="pamanalogo.png" alt="PAMANA Loading" style="max-height: 50px;">
-        <div class="spinner"></div>
-    </div>
-
-    <!-- WELCOME POP-UP MODAL -->
-    <div class="modal-overlay" id="welcomeModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('welcomeModal')">&times;</span>
-            <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
-            <h2 class="modal-title">Maogmang Pag-abot sa Pamana!</h2>
-            <p class="modal-text">
-                Welcome to the official portal for Bicol Culture, Heritage, and Environment made by 4th year Journalism students at Bicol University. Discover and explore the rich history and beauty of the Bicolano heritage.
-            </p>
-            <button class="action-btn" onclick="closeModal('welcomeModal')">ENTER WEBSITE</button>
-        </div>
-    </div>
-
-    <!-- BICOLANO PHRASE OF THE DAY MODAL -->
-    <div class="modal-overlay" id="phraseModal" style="display: none; opacity: 0;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('phraseModal')">&times;</span>
-            <span class="phrase-badge"><i class="fa-solid fa-language"></i> Bicolano Word of the Day</span>
-            <h3 class="phrase-bikol" id="todayBikol">...</h3>
-            <p class="phrase-meaning" id="todayEnglish">...</p>
-            <p class="modal-text" id="todayContext">Learn a new Bicolano phrase every day to appreciate the local culture & linguistic heritage of Bicol!</p>
-            <button class="action-btn" onclick="closeModal('phraseModal')">GOT IT!</button>
-            <p class="phrase-source">Source: <a href="https://saminovic.wordpress.com/language/business/" target="_blank">BICOL-MAN / Saminovic</a></p>
-        </div>
-    </div>
-
-    <!-- FLOATING TOP HEADER WITH INTEGRATED ACTION BUTTONS -->
     <header class="sticky-header">
-        <div class="brand-container">
-            <img src="pamana(1).png" alt="Pamana Logo">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <img src="pamana(1).png" alt="Logo" style="height:28px;">
             <span class="brand-title">PAMANA</span>
-        </div>
-
-        <div class="header-actions">
-            <button class="header-btn glow-btn" onclick="openModal('phraseModal')" title="Bicolano Word of the Day">
-                <i class="fa-solid fa-book-bookmark"></i>
-                <span>Word of the Day</span>
-            </button>
-            <button class="header-btn" onclick="sharePortal()" title="Share Pamana Portal">
-                <i class="fa-solid fa-share-nodes"></i>
-                <span>Share</span>
-            </button>
-            <button class="header-btn" onclick="goToHome()" title="Return to Homepage">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-            </button>
         </div>
     </header>
 
-    <!-- CSS CLIPPED CANVA CONTAINER -->
-    <div class="canva-clip-wrapper">
-        <iframe id="canvaFrame" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
-    </div>
+    <main class="content-container">
+        <!-- Main Section 1 - Pamana (Homepage) -->
+        <div class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 288.6530%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
 
-    <!-- FIXED COMPACT BOTTOM FOOTER -->
     <footer class="sticky-footer">
-        <a href="https://facebook.com" target="_blank" class="footer-item">
-            <i class="fa-brands fa-facebook"></i>
-            <span>The Sentinel</span>
-        </a>
-        <a href="https://tiktok.com/@pamana.bicolnon" target="_blank" class="footer-item">
-            <i class="fa-brands fa-tiktok"></i>
-            <span>pamana.bicolnon</span>
-        </a>
-        <a href="mailto:pamanangbicolnon@gmail.com" class="footer-item">
-            <i class="fa-solid fa-envelope"></i>
-            <span>pamanangbicolnon@gmail.com</span>
-        </a>
+        <a href="https://facebook.com" target="_blank" class="footer-item"><i class="fa-brands fa-facebook"></i> The Sentinel</a>
+        <a href="https://tiktok.com/@pamana.bicolnon" target="_blank" class="footer-item"><i class="fa-brands fa-tiktok"></i> pamana.bicolnon</a>
+        <a href="mailto:pamanangbicolnon@gmail.com" class="footer-item"><i class="fa-solid fa-envelope"></i> pamanangbicolnon@gmail.com</a>
     </footer>
-
-    <!-- JavaScript Controls -->
-    <script>
-        var bikolPhrases = [
-            { bikol: "Dios mabalos", english: "Thank you / May God reward you", note: "Traditional Bicolano expression of heartfelt gratitude." },
-            { bikol: "Daragang magayon", english: "Beautiful girl / Maiden", note: "Root phrase behind the legendary name of Mount Mayon." },
-            { bikol: "Marhay na aga", english: "Good morning", note: "Standard warm Bicolano morning greeting." },
-            { bikol: "Namomotan ta ka", english: "I love you", note: "Deep expression of love in the Bicolano language." },
-            { bikol: "Kaogmahan kong makabisto ka", english: "I'm glad to meet you", note: "Used when meeting someone for the first time." },
-            { bikol: "Kumusta ka?", english: "How are you?", note: "Common conversational greeting across Bicol." },
-            { bikol: "Marhay na hapon", english: "Good afternoon", note: "Afternoon greeting widely used in the Bicol region." },
-            { bikol: "Marhay na banggi", english: "Good evening", note: "Evening greeting used when welcoming guests." },
-            { bikol: "Patawarun mo ako", english: "I'm sorry / Forgive me", note: "Expressing sincere apologies." },
-            { bikol: "Pakiluway-luwayan man tabi", english: "Please speak slowly", note: "Polite phrase used when learning or listening to Bicolano." },
-            { bikol: "Anong pangaran mo?", english: "What is your name?", note: "Used to ask for a person's name." },
-            { bikol: "Magayon", english: "Beautiful / Lovely", note: "Used to describe pleasant things, places, or people." },
-            { bikol: "Masain ka?", english: "Where are you going?", note: "Common friendly question when passing by a friend." },
-            { bikol: "Gurano ini?", english: "How much is this?", note: "Essential phrase when shopping in local Bicol markets." },
-            { bikol: "Paaram", english: "Goodbye", note: "Traditional farewell expression." }
-        ];
-
-        function loadDailyPhrase() {
-            var now = new Date();
-            var start = new Date(now.getFullYear(), 0, 0);
-            var diff = now - start;
-            var oneDay = 1000 * 60 * 60 * 24;
-            var dayOfYear = Math.floor(diff / oneDay);
-
-            var selectedIndex = dayOfYear % bikolPhrases.length;
-            var today = bikolPhrases[selectedIndex];
-
-            document.getElementById('todayBikol').innerText = '"' + today.bikol + '"';
-            document.getElementById('todayEnglish').innerText = 'Translation: ' + today.english;
-            document.getElementById('todayContext').innerText = today.note;
-        }
-
-        function hideLoading() {
-            var loader = document.getElementById('loadingScreen');
-            loader.style.opacity = '0';
-            setTimeout(function() {
-                loader.style.display = 'none';
-            }, 500);
-        }
-
-        function openModal(id) {
-            var modal = document.getElementById(id);
-            modal.style.display = 'flex';
-            setTimeout(function() { modal.style.opacity = '1'; }, 10);
-        }
-
-        function closeModal(id) {
-            var modal = document.getElementById(id);
-            modal.style.opacity = '0';
-            setTimeout(function() { modal.style.display = 'none'; }, 300);
-        }
-
-        function goToHome() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            var iframe = document.getElementById('canvaFrame');
-            if (iframe) {
-                iframe.src = iframe.src;
-            }
-        }
-
-        window.onscroll = function() { updateProgressBar(); };
-        function updateProgressBar() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (height > 0) ? (winScroll / height) * 100 : 0;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-        }
-
-        function sharePortal() {
-            var shareData = {
-                title: 'Pamana',
-                text: 'Discover the rich culture, heritage, and environment of Bicol created by BU Journalism students!',
-                url: window.location.href
-            };
-
-            if (navigator.share) {
-                navigator.share(shareData).catch(function(err) {
-                    console.log('Error sharing:', err);
-                });
-            } else {
-                navigator.clipboard.writeText(window.location.href).then(function() {
-                    showToast();
-                }).catch(function() {
-                    alert('Share this link: ' + window.location.href);
-                });
-            }
-        }
-
-        function showToast() {
-            var toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(function() { toast.style.opacity = '1'; }, 10);
-            setTimeout(function() {
-                toast.style.opacity = '0';
-                setTimeout(function() { toast.style.display = 'none'; }, 300);
-            }, 2500);
-        }
-
-        loadDailyPhrase();
-    </script>
 
 </body>
 </html>
