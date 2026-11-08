@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
         
-        /* Fixed Header Alignment */
+        /* Fixed Header Layout */
         .sticky-header {
             position: fixed; 
             top: 0; 
@@ -59,7 +59,7 @@
             white-space: nowrap; margin-right: 4px;
         }
 
-        /* Word of the Day Header Button na may Subtle Effect sa katabi ng PAMANA */
+        /* Word of the Day Header Button na may Subtle Hover Effect sa tabi ng PAMANA */
         .wotd-header-btn {
             background: linear-gradient(135deg, #ff5100 0%, #ff8800 100%);
             color: #ffffff; border: none;
@@ -70,7 +70,6 @@
             white-space: nowrap; flex-shrink: 0;
         }
         
-        /* Subtle Hover Effect */
         .wotd-header-btn:hover { 
             transform: translateY(-2px);
             box-shadow: 0 6px 14px rgba(255, 81, 0, 0.4);
@@ -117,7 +116,7 @@
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
-        /* Glassmorphism Blur Modal Backdrop overlay */
+        /* Glassmorphism Blurred Modal Backdrop overlay */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.45); 
@@ -258,12 +257,14 @@
     </main>
 
     <script>
+        // 1. Session Storage Check (isang beses lang bawat browser session)
         if (sessionStorage.getItem('pamana_has_visited') === 'true') {
             document.getElementById('welcomeModal').style.display = 'none';
         } else {
             document.getElementById('welcomeModal').style.display = 'flex';
         }
 
+        // 2. Listahan ng Bicol Words (Source: BICOL - MAN / Saminovic)
         var bicolWordsList = [
             { word: '"Magayon"', trans: 'Translation: Beautiful / Lovely', meaning: 'Used to describe pleasant things, places, or people.' },
             { word: '"Mabalos"', trans: 'Translation: Thank you', meaning: 'An expression of gratitude used in everyday Bicolano conversation.' },
@@ -289,9 +290,12 @@
             sessionStorage.setItem('pamana_has_visited', 'true');
         }
 
+        // 3. Absolute Date Seed Calculation (YYYYMMDD): 100% 1 Word Per Day
         function openWotdModal() {
-            var randomIndex = Math.floor(Math.random() * bicolWordsList.length);
-            var selected = bicolWordsList[randomIndex];
+            var today = new Date();
+            var dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+            
+            var selected = bicolWordsList[dateSeed % bicolWordsList.length];
 
             document.getElementById('wotdWord').textContent = selected.word;
             document.getElementById('wotdTranslation').textContent = selected.trans;
@@ -310,65 +314,5 @@
             }
         }
     </script>
-    <script>
-    // 1. Session storage check para sa Welcome Modal
-    if (sessionStorage.getItem('pamana_has_visited') === 'true') {
-        document.getElementById('welcomeModal').style.display = 'none';
-    } else {
-        document.getElementById('welcomeModal').style.display = 'flex';
-    }
-
-    // 2. Listahan ng Bicol Words (Source: BICOL - MAN / Saminovic)
-    var bicolWordsList = [
-        { word: '"Magayon"', trans: 'Translation: Beautiful / Lovely', meaning: 'Used to describe pleasant things, places, or people.' },
-        { word: '"Mabalos"', trans: 'Translation: Thank you', meaning: 'An expression of gratitude used in everyday Bicolano conversation.' },
-        { word: '"Maogma"', trans: 'Translation: Happy / Joyful', meaning: 'Used to express happiness, gladness, or pleasant feelings.' },
-        { word: '"Oragon"', trans: 'Translation: Strong / Flexible / Excellent', meaning: 'A iconic Bicolano term describing someone resilient, skilled, or impressive.' },
-        { word: '"Marhay"', trans: 'Translation: Good / Fine', meaning: 'Used in greetings like "Marhay na adalman" (Good day) or to state wellness.' },
-        { word: '"Namumutan"', trans: 'Translation: Beloved / Loved One', meaning: 'Derived from "suot" or "doot" expressing deep affection or love.' }
-    ];
-
-    function toggleMobileMenu() {
-        var menu = document.getElementById('mobileMenu');
-        menu.classList.toggle('open');
-    }
-
-    function closeWelcomeModal() {
-        var modal = document.getElementById('welcomeModal');
-        if (modal) {
-            modal.style.opacity = '0';
-            setTimeout(function() { 
-                modal.style.display = 'none'; 
-            }, 300);
-        }
-        sessionStorage.setItem('pamana_has_visited', 'true');
-    }
-
-    // 3. Dynamic Function: Tiyak na 1 Salita Lamang Bawat Araw
-    function openWotdModal() {
-        var today = new Date();
-        // Kinukuha ang bilang ng mga araw mula noong Jan 1, 1970 (Epoch days)
-        var dayIndex = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
-        
-        // Pinalilipat-lipat ang salita depende sa petsa ng araw na ito
-        var selected = bicolWordsList[dayIndex % bicolWordsList.length];
-
-        document.getElementById('wotdWord').textContent = selected.word;
-        document.getElementById('wotdTranslation').textContent = selected.trans;
-        document.getElementById('wotdMeaning').textContent = selected.meaning;
-
-        var modal = document.getElementById('wotdModal');
-        modal.style.display = 'flex';
-        setTimeout(function() { modal.style.opacity = '1'; }, 50);
-    }
-
-    function closeWotdModal() {
-        var modal = document.getElementById('wotdModal');
-        if (modal) {
-            modal.style.opacity = '0';
-            setTimeout(function() { modal.style.display = 'none'; }, 300);
-        }
-    }
-</script>
 </body>
 </html>
