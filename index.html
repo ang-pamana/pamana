@@ -17,17 +17,44 @@
     </script>
 
     <style>
-        /* 1. Global Reset & Hard Overflow Lock sa Window Level */
-        html, body {
+        /* 1. ABSOLUTE SCROLLBAR KILLER FOR IFRAMES & EXTRA ELEMENTS */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
             width: 100%;
             height: 100%;
             overflow-x: hidden;
-            background: #121212;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-y: auto;
         }
 
+        body {
+            background: #121212; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%; 
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Tanggalin ang Scrollbar ng Lahat ng Inner Elements & iFrames */
+        iframe, .canva-block, .canva-embed-holder, div {
+            -ms-overflow-style: none !important;  /* IE at Edge */
+            scrollbar-width: none !important;  /* Firefox */
+        }
+        
+        iframe::-webkit-scrollbar, 
+        .canva-block::-webkit-scrollbar, 
+        .canva-embed-holder::-webkit-scrollbar,
+        div::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+        
         /* 2. Header Layout */
         .sticky-header {
             position: fixed; 
@@ -149,25 +176,27 @@
         .wotd-meaning { font-size: 13.5px; color: #666666; line-height: 1.5; margin-bottom: 24px; padding: 0 10px; }
         .wotd-source { font-size: 11px; color: #999999; font-style: italic; margin-top: 16px; }
 
-        /* 3. Content Container & Canva iFrame Scrollbar Eliminator */
+        /* 3. Content Container */
         .content-container { 
             margin-top: 64px; 
             width: 100%; 
             position: relative;
+            overflow: hidden !important;
         }
         
         .canva-block { 
             width: 100%; 
             position: relative; 
             background: #ffffff; 
+            overflow: hidden !important;
         }
 
-        /* Pag-lock sa Canva Iframe height para hindi mag-create ng inner scrollbar */
         .canva-embed-holder {
             position: relative; 
             width: 100%; 
             height: 0; 
             padding-top: 288.6530%; 
+            overflow: hidden !important;
         }
 
         .canva-embed-holder iframe { 
@@ -178,6 +207,7 @@
             left: 0; 
             border: 0 !important; 
             outline: none !important;
+            overflow: hidden !important;
         }
 
         @media (max-width: 850px) {
@@ -265,7 +295,7 @@
     <main class="content-container">
         <div class="canva-block">
             <div class="canva-embed-holder">
-                <iframe loading="lazy" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen></iframe>
+                <iframe loading="lazy" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen scrolling="no"></iframe>
             </div>
         </div>
     </main>
