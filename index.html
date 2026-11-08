@@ -23,30 +23,32 @@
             width: 100%; overflow-x: hidden;
         }
         
+        /* Sticky Header */
         .sticky-header {
             position: fixed; top: 0; left: 0; width: 100%; height: 64px;
             background: #ffffff; display: flex; justify-content: space-between; align-items: center;
-            padding: 0 24px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            padding: 0 20px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        .brand-container { display: flex; align-items: center; gap: 12px; }
-        .brand-logo { height: 38px; width: 38px; border-radius: 50%; object-fit: cover; }
+        .brand-container { display: flex; align-items: center; gap: 10px; }
+        .brand-logo { height: 38px; width: 38px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .brand-title {
-            font-family: 'Georgia', serif; font-size: 22px; font-weight: 800; letter-spacing: 1px;
+            font-family: 'Georgia', serif; font-size: 20px; font-weight: 800; letter-spacing: 1px;
             background: linear-gradient(90deg, #ff4e00 0%, #ec9f05 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            white-space: nowrap;
         }
 
         .wotd-header-btn {
             background: #fff5f0; color: #ff4e00; border: 1.5px solid #ff4e00;
-            padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
+            padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;
             cursor: pointer; display: flex; align-items: center; gap: 6px;
-            transition: all 0.2s ease; margin-left: 10px;
+            transition: all 0.2s ease; white-space: nowrap;
         }
         .wotd-header-btn:hover { background: #ff4e00; color: #ffffff; }
 
-        .desktop-nav { display: flex; gap: 24px; align-items: center; }
+        .desktop-nav { display: flex; gap: 20px; align-items: center; }
         .desktop-nav a {
-            color: #222222; text-decoration: none; font-size: 14px; font-weight: 700;
+            color: #222222; text-decoration: none; font-size: 13px; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.8px; transition: all 0.3s ease; position: relative; padding: 8px 0;
         }
         .desktop-nav a:hover, .desktop-nav a.active { color: #ff4e00; }
@@ -54,7 +56,10 @@
             content: ''; position: absolute; width: 100%; height: 3px; bottom: 0; left: 0; background-color: #ff4e00; border-radius: 2px;
         }
 
-        .mobile-menu-btn { display: none; background: none; border: none; color: #222222; font-size: 24px; cursor: pointer; padding: 4px; }
+        .mobile-menu-btn { 
+            display: none; background: none; border: none; color: #222222; 
+            font-size: 22px; cursor: pointer; padding: 6px; margin-left: 8px; flex-shrink: 0;
+        }
         
         .mobile-dropdown {
             display: none; position: fixed; top: 64px; left: 0; width: 100%;
@@ -69,7 +74,6 @@
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
-        /* Welcome Modal Style (Default na nakatago) */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(4px);
@@ -107,15 +111,17 @@
 
         .content-container { margin-top: 64px; width: 100%; overflow: hidden; }
         
+        /* Mobile Specific Responsive Fixes */
         @media (max-width: 850px) {
             .sticky-header { height: 56px; padding: 0 16px; }
             .brand-logo { height: 32px; width: 32px; }
-            .brand-title { font-size: 18px; }
+            .brand-title { display: none; } /* Tinago ang PAMANA text sa mobile para hindi masiksik ang header */
             .desktop-nav { display: none; }
             .mobile-menu-btn { display: block; }
             .mobile-dropdown { top: 56px; }
             .content-container { margin-top: 56px; }
-            .wotd-header-btn span { display: none; }
+            .wotd-header-btn span { display: none; } /* Icon lang ang ilalabas para sa Word of the Day sa mobile */
+            .wotd-header-btn { padding: 6px 10px; }
         }
 
         .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden; }
@@ -128,10 +134,11 @@
         <div class="brand-container">
             <img src="pamanalogo.png" alt="Logo" class="brand-logo">
             <span class="brand-title">PAMANA</span>
-            <button class="wotd-header-btn" onclick="openWotdModal()">
-                <i class="fa-solid fa-book-open"></i> <span>Word of the Day</span>
-            </button>
         </div>
+
+        <button class="wotd-header-btn" onclick="openWotdModal()">
+            <i class="fa-solid fa-book-open"></i> <span>Word of the Day</span>
+        </button>
 
         <nav class="desktop-nav">
             <a href="index.html" class="active">Home</a>
@@ -208,7 +215,6 @@
             menu.classList.toggle('open');
         }
 
-        // Tinitingnan kung nabuksan na ang Welcome Modal bago magpakita
         function checkFirstVisit() {
             var hasVisited = localStorage.getItem('pamana_visited');
             if (!hasVisited) {
@@ -224,7 +230,6 @@
                 modal.style.opacity = '0';
                 setTimeout(function() { modal.style.display = 'none'; }, 300);
             }
-            // Ise-save sa browser na nabisita na para hindi na mag-popup uli
             localStorage.setItem('pamana_visited', 'true');
         }
 
@@ -249,7 +254,6 @@
             }
         }
 
-        // Lalabas lang ang Welcome modal kapag unang bisita pa lang
         window.addEventListener('load', checkFirstVisit);
     </script>
 </body>
