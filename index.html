@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Website Favicon & App Icons -->
+    <!-- Website Favicon & Mobile App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="icon" type="image/png" sizes="48x48" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
     <link rel="icon" type="image/png" sizes="192x192" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
@@ -17,12 +17,43 @@
     <!-- Speed Optimization -->
     <link rel="preconnect" href="https://www.canva.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.canva.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <!-- SEO Title & Description -->
-    <title>Pamana — Bicol Culture, Heritage & Environment</title>
+    <title>Pamana</title>
     <meta name="description" content="Discover Pamana — the official portal for Bicol Culture, Heritage, and Environment created by 4th year Journalism students at Bicol University.">
-    <meta name="keywords" content="Pamana, Bicol Culture, Bicol Heritage, Bicol Environment, Bicol University Journalism, Pantomina, Ibalong, Museo de Legazpi">
+    
+    <meta name="keywords" content="Pamana, Pamana: Bicol Culture, Pamana: Bicol Heritage, Pamana: Bicol Environment, Bicol University Journalism, Pantomina, Ibalong, Museo de Legazpi">
     <meta name="robots" content="index, follow">
+
+    <!-- SCHEMA.ORG STRUCTURED DATA FOR GOOGLE SITE NAME -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Pamana",
+      "alternateName": ["PAMANA", "Pamana Portal"],
+      "url": "https://ang-pamana.github.io/pamana/"
+    }
+    </script>
+
+    <!-- ENHANCED OPEN GRAPH & SOCIAL MEDIA PREVIEW CARDS -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ang-pamana.github.io/pamana/">
+    <meta property="og:title" content="Pamana">
+    <meta property="og:description" content="Official digital portal documenting the rich culture, heritage, and environmental stories of the Bicol region. Authored by Bicol University 4th-year Journalism students.">
+    <meta property="og:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Pamana">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ang-pamana.github.io/pamana/">
+    <meta name="twitter:title" content="Pamana">
+    <meta name="twitter:description" content="Official digital portal documenting the rich culture, heritage, and environmental stories of Bicol by BU Journalism students.">
+    <meta name="twitter:image" content="https://ang-pamana.github.io/pamana/pamanalogo.png">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -42,26 +73,71 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
+        html, body {
             width: 100%;
-            background-color: #121212;
-            color: #ffffff;
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
+            color: #333333;
             font-family: Arial, sans-serif;
-            overflow-x: hidden;
         }
 
-        /* STICKY TOP HEADER */
+        /* READING PROGRESS BAR */
+        #progressContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 10000;
+        }
+
+        #progressBar {
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        /* CUSTOM LOADING SCREEN */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff6a00;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* GLASSMORPHISM FLOATING TOP HEADER */
         .sticky-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50px;
+            height: 48px;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -69,8 +145,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 16px;
-            z-index: 99999;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 9999;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
         .brand-container {
@@ -81,82 +157,101 @@
         }
 
         .brand-container img {
-            max-height: 32px;
+            max-height: 34px;
             width: auto;
+            object-fit: contain;
         }
 
         .brand-title {
-            font-family: 'Georgia', serif;
-            font-size: 18px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 19px;
             font-weight: 800;
             letter-spacing: 2px;
+            text-transform: uppercase;
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
 
-        .nav-links {
+        /* HEADER ACTION BUTTONS GROUP */
+        .header-actions {
             display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            padding: 4px 0;
+            align-items: center;
+            gap: 8px;
         }
 
-        .nav-btn {
+        .header-btn {
             background: rgba(255, 106, 0, 0.08);
             color: #ff6a00;
             border: 1px solid rgba(255, 106, 0, 0.4);
             padding: 5px 12px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
-            text-decoration: none;
-            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             transition: all 0.2s ease;
         }
 
-        .nav-btn:hover {
+        .header-btn i { font-size: 12px; }
+
+        .header-btn:hover {
             background: linear-gradient(90deg, #ff0000 0%, #ff6a00 100%);
             color: #ffffff;
             border-color: transparent;
         }
 
-        /* MAIN CONTENT CONTAINER */
-        .content-wrapper {
-            margin-top: 50px;
-            margin-bottom: 42px;
-            width: 100%;
+        .glow-btn {
+            animation: subtleGlow 3s infinite ease-in-out;
         }
 
-        .canva-block {
-            width: 100%;
-            position: relative;
+        @keyframes subtleGlow {
+            0% { box-shadow: 0 0 0 0px rgba(255, 106, 0, 0.3); }
+            50% { box-shadow: 0 0 8px 3px rgba(255, 106, 0, 0.35); }
+            100% { box-shadow: 0 0 0 0px rgba(255, 106, 0, 0); }
+        }
+
+        /* CSS CLIPPING HACK CONTAINER */
+        .canva-clip-wrapper {
+            position: fixed;
+            top: 48px;
+            left: 0;
+            width: 100vw;
+            height: calc(100vh - 78px);
+            overflow: hidden; /* Kinukintab at pino-crop ang anumang lalabas sa container */
             background: #ffffff;
-            margin-bottom: 12px;
         }
 
-        .canva-block iframe {
+        .canva-clip-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            /* Dinadagdagan ang height gamit ang calc() para maitaboy ang slide controls sa ibaba */
+            height: calc(100% + 48px);
             border: none;
-            display: block;
+            margin-bottom: -48px; /* Negative margin hack para i-pull pababa ang iframe window */
         }
 
-        /* STICKY FOOTER */
+        /* FIXED COMPACT BOTTOM FOOTER */
         .sticky-footer {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 42px;
+            height: 30px;
             background-color: #1a1a1a;
             color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
-            z-index: 99999;
-            box-shadow: 0 -3px 8px rgba(0,0,0,0.3);
+            z-index: 9999;
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
         }
 
         .footer-item {
@@ -170,233 +265,217 @@
         }
 
         .footer-item:hover { color: #ff6a00; }
+        .footer-item i { font-size: 13px; }
 
+        /* WELCOME POP-UP OVERLAY STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            border-radius: 14px;
+            max-width: 550px;
+            width: 100%;
+            padding: 35px 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+            animation: popupAnimation 0.4s ease-out;
+        }
+
+        @keyframes popupAnimation {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 26px;
+            font-weight: bold;
+            color: #888888;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover { color: #ff0000; }
+        .modal-logo { max-height: 60px; width: auto; margin-bottom: 12px; }
+        .modal-title { font-family: 'Georgia', serif; font-size: 25px; color: #2c2c2c; margin-bottom: 12px; font-weight: 700; }
+        .modal-text { font-size: 15px; color: #555555; line-height: 1.6; margin-bottom: 24px; }
+
+        .phrase-badge {
+            display: inline-block;
+            background-color: rgba(255, 106, 0, 0.12);
+            color: #ff6a00;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .phrase-bikol { font-family: 'Georgia', serif; font-size: 28px; color: #ff0000; font-weight: 800; margin-bottom: 8px; }
+        .phrase-meaning { font-size: 16px; color: #333333; font-weight: 600; margin-bottom: 15px; }
+        .phrase-source { font-size: 11px; color: #888888; margin-top: 15px; font-style: italic; }
+        .phrase-source a { color: #ff6a00; text-decoration: none; }
+
+        .action-btn {
+            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.35);
+            transition: transform 0.2s ease;
+        }
+
+        .action-btn:hover { transform: translateY(-2px); }
+
+        /* TOAST NOTIFICATION */
+        .toast-notification {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            z-index: 999999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* MOBILE VIEW ADJUSTMENTS */
         @media (max-width: 600px) {
-            .brand-title { font-size: 15px; }
-            .nav-btn { font-size: 10px; padding: 4px 8px; }
+            .sticky-header { height: 38px; padding: 0 8px; }
+            .brand-container { gap: 6px; }
+            .brand-container img { max-height: 24px; }
+            .brand-title { font-size: 14px; letter-spacing: 1px; }
+
+            .header-actions { gap: 4px; }
+            .header-btn {
+                padding: 4px 8px;
+                font-size: 10px;
+                border-radius: 14px;
+            }
+            .header-btn i { font-size: 10px; }
+            .header-btn span { font-size: 10px; }
+
+            .canva-clip-wrapper {
+                top: 38px;
+                height: calc(100vh - 66px);
+            }
+            .canva-clip-wrapper iframe {
+                height: calc(100% + 52px);
+                margin-bottom: -52px;
+            }
+
+            .sticky-footer { height: 28px; gap: 8px; padding: 0 5px; }
+            .footer-item { font-size: 9px; }
+            .footer-item i { font-size: 10px; }
+            .modal-content { max-width: 450px; padding: 20px 15px; }
+            .modal-logo { max-height: 44px; }
+            .modal-title { font-size: 18px; }
+            .modal-text { font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- STICKY NAVIGATION HEADER -->
+    <!-- READING PROGRESS BAR -->
+    <div id="progressContainer">
+        <div id="progressBar"></div>
+    </div>
+
+    <!-- TOAST NOTIFICATION FOR COPIED LINK -->
+    <div id="toast" class="toast-notification">
+        <i class="fa-solid fa-check-circle" style="color: #00ff66; margin-right: 6px;"></i>
+        Portal link copied to clipboard!
+    </div>
+
+    <!-- LOADING SCREEN -->
+    <div id="loadingScreen">
+        <img src="pamanalogo.png" alt="PAMANA Loading" style="max-height: 50px;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- WELCOME POP-UP MODAL -->
+    <div class="modal-overlay" id="welcomeModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('welcomeModal')">&times;</span>
+            <img src="pamanalogo.png" alt="Pamana Logo" class="modal-logo">
+            <h2 class="modal-title">Maogmang Pag-abot sa Pamana!</h2>
+            <p class="modal-text">
+                Welcome to the official portal for Bicol Culture, Heritage, and Environment made by 4th year Journalism students at Bicol University. Discover and explore the rich history and beauty of the Bicolano heritage.
+            </p>
+            <button class="action-btn" onclick="closeModal('welcomeModal')">ENTER WEBSITE</button>
+        </div>
+    </div>
+
+    <!-- BICOLANO PHRASE OF THE DAY MODAL -->
+    <div class="modal-overlay" id="phraseModal" style="display: none; opacity: 0;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('phraseModal')">&times;</span>
+            <span class="phrase-badge"><i class="fa-solid fa-language"></i> Bicolano Word of the Day</span>
+            <h3 class="phrase-bikol" id="todayBikol">...</h3>
+            <p class="phrase-meaning" id="todayEnglish">...</p>
+            <p class="modal-text" id="todayContext">Learn a new Bicolano phrase every day to appreciate the local culture & linguistic heritage of Bicol!</p>
+            <button class="action-btn" onclick="closeModal('phraseModal')">GOT IT!</button>
+            <p class="phrase-source">Source: <a href="https://saminovic.wordpress.com/language/business/" target="_blank">BICOL-MAN / Saminovic</a></p>
+        </div>
+    </div>
+
+    <!-- FLOATING TOP HEADER WITH INTEGRATED ACTION BUTTONS -->
     <header class="sticky-header">
-        <a href="#sec-1" class="brand-container">
+        <div class="brand-container">
             <img src="pamana(1).png" alt="Pamana Logo">
             <span class="brand-title">PAMANA</span>
-        </a>
-        <nav class="nav-links">
-            <a href="#sec-1" class="nav-btn">Home</a>
-            <a href="#sec-2" class="nav-btn">Culture</a>
-            <a href="#sec-3" class="nav-btn">Environment</a>
-            <a href="#sec-4" class="nav-btn">Heritage</a>
-            <a href="#sec-20" class="nav-btn">Feature</a>
-            <a href="#sec-28" class="nav-btn">Team</a>
-        </nav>
+        </div>
+
+        <div class="header-actions">
+            <button class="header-btn glow-btn" onclick="openModal('phraseModal')" title="Bicolano Word of the Day">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <span>Word of the Day</span>
+            </button>
+            <button class="header-btn" onclick="sharePortal()" title="Share Pamana Portal">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Share</span>
+            </button>
+            <button class="header-btn" onclick="goToHome()" title="Return to Homepage">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+        </div>
     </header>
 
-    <!-- 28 SEPARATED CANVA SECTIONS -->
-    <main class="content-wrapper">
+    <!-- CSS CLIPPED CANVA CONTAINER -->
+    <div class="canva-clip-wrapper">
+        <iframe id="canvaFrame" src="https://www.canva.com/design/DAHVziFBY2c/gG6N_M4zl5NhV3enYfFhRg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" onload="hideLoading()"></iframe>
+    </div>
 
-        <!-- Section 1: Homepage -->
-        <div id="sec-1" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 288.6530%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 2: Bicol Culture -->
-        <div id="sec-2" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 339.0190%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUAY48YM/jjZ81TBn3RaThz3ZDd9WmQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 3: Bicol Environment -->
-        <div id="sec-3" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 339.6047%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUK-vWBw/X8dV06rrbT6iVYUyQNqyDQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 4: Bicol Heritage -->
-        <div id="sec-4" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 343.5578%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUNvF_T4/BzXvx8NAO0MWhOYtzS7Rxg/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 5: Where Courtship, Culture, and Community Dance Together -->
-        <div id="sec-5" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 205.9297%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 6: Legacy of the Three-Headed Statue in Legazpi -->
-        <div id="sec-6" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 258.5652%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 7: Visiting the Past in the Present -->
-        <div id="sec-7" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 246.3397%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 8: The Pili That is Bicol Itself -->
-        <div id="sec-8" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 218.8873%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 9: What if an Ice Cream Comes With Sili? -->
-        <div id="sec-9" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 266.3982%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 10: Four O’Clock in Albay -->
-        <div id="sec-10" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 302.0498%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUe1uVkQ/1IW-kB9Q5r1TXifFlxWLfA/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 11: Reclaiming their Natural Shield -->
-        <div id="sec-11" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 271.0835%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUdSEVao/sCFVAVC2lUiXEVgjc-Grcg/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 12: A Kilo of Hope -->
-        <div id="sec-12" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 260.5417%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUX1d--M/U9BgNAt-Qk8rRz30lnN8wQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 13: Haze blankets CamSur -->
-        <div id="sec-13" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 289.1654%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUQ3Ql94/9w6qtVB8MOlwgAYabliNsw/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 14: Sustainability in Electricity -->
-        <div id="sec-14" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 283.9678%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUVUA_gc/otX3zbBqSp9zYYNDrXa5TA/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 15: A Heritage Built a Year Ago -->
-        <div id="sec-15" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 229.2826%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 16: Tabaco’s Purple Yam -->
-        <div id="sec-16" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 248.9751%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 17: Camalig's Historic Church -->
-        <div id="sec-17" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 260.9810%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 18: Every Cup of Coffee Tells a Story -->
-        <div id="sec-18" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 232.0644%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 19: Rescued Wildlife Goes to Heal -->
-        <div id="sec-19" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 270.1318%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 20: Feature -->
-        <div id="sec-20" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 215.3001%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUaigGpc/NtTccHxF5WaRShg1uHPUvQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 21: Unseen labor of Bicolano creatives -->
-        <div id="sec-21" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 514.0556%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 22: Mabelin’s mental mastery -->
-        <div id="sec-22" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 509.2240%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 23: Over ice and overhyped -->
-        <div id="sec-23" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 250.3660%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 24: Welcomed like family -->
-        <div id="sec-24" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 585.6515%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 25: Livelihood from Balinghoy -->
-        <div id="sec-25" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 427.4524%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 26: Albay farmers seek timely aid -->
-        <div id="sec-26" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 449.7072%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 27: Kiko canteen’s daily hustle -->
-        <div id="sec-27" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 585.6515%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Section 28: Pamana Meet the Team -->
-        <div id="sec-28" class="canva-block">
-            <div style="position: relative; width: 100%; height: 0; padding-top: 237.3353%;">
-                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUEaJS5E/NVYjwwE_qYVcoHpzTp_LSA/view?embed" allowfullscreen></iframe>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- STICKY FOOTER -->
+    <!-- FIXED COMPACT BOTTOM FOOTER -->
     <footer class="sticky-footer">
         <a href="https://facebook.com" target="_blank" class="footer-item">
             <i class="fa-brands fa-facebook"></i>
@@ -412,43 +491,109 @@
         </a>
     </footer>
 
-    <!-- SOLUSYON 2: JAVASCRIPT LINK INTERCEPTOR -->
+    <!-- JavaScript Controls -->
     <script>
-        // Nakikinig sa anumang navigation events mula sa Canva embed links
-        window.addEventListener('message', function(event) {
-            if (event.data) {
-                try {
-                    var payload = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-                    
-                    // Pinipigilan ang paglabas papuntang canva.com kapag may in-click na hyperlink sa loob ng Canva
-                    if (payload.type === 'navigate' || (payload.url && payload.url.includes('canva.com'))) {
-                        var targetUrl = payload.url || '';
-                        
-                        // Kung ang link ay tumuturo sa isa sa mga section natin, ire-redirect ito sa internal section ID
-                        var match = targetUrl.match(/sec-\d+/);
-                        if (match) {
-                            var sectionElement = document.getElementById(match[0]);
-                            if (sectionElement) {
-                                sectionElement.scrollIntoView({ behavior: 'smooth' });
-                            }
-                        }
-                    }
-                } catch (e) {
-                    // Safe error handling para sa cross-origin responses
-                }
-            }
-        });
+        var bikolPhrases = [
+            { bikol: "Dios mabalos", english: "Thank you / May God reward you", note: "Traditional Bicolano expression of heartfelt gratitude." },
+            { bikol: "Daragang magayon", english: "Beautiful girl / Maiden", note: "Root phrase behind the legendary name of Mount Mayon." },
+            { bikol: "Marhay na aga", english: "Good morning", note: "Standard warm Bicolano morning greeting." },
+            { bikol: "Namomotan ta ka", english: "I love you", note: "Deep expression of love in the Bicolano language." },
+            { bikol: "Kaogmahan kong makabisto ka", english: "I'm glad to meet you", note: "Used when meeting someone for the first time." },
+            { bikol: "Kumusta ka?", english: "How are you?", note: "Common conversational greeting across Bicol." },
+            { bikol: "Marhay na hapon", english: "Good afternoon", note: "Afternoon greeting widely used in the Bicol region." },
+            { bikol: "Marhay na banggi", english: "Good evening", note: "Evening greeting used when welcoming guests." },
+            { bikol: "Patawarun mo ako", english: "I'm sorry / Forgive me", note: "Expressing sincere apologies." },
+            { bikol: "Pakiluway-luwayan man tabi", english: "Please speak slowly", note: "Polite phrase used when learning or listening to Bicolano." },
+            { bikol: "Anong pangaran mo?", english: "What is your name?", note: "Used to ask for a person's name." },
+            { bikol: "Magayon", english: "Beautiful / Lovely", note: "Used to describe pleasant things, places, or people." },
+            { bikol: "Masain ka?", english: "Where are you going?", note: "Common friendly question when passing by a friend." },
+            { bikol: "Gurano ini?", english: "How much is this?", note: "Essential phrase when shopping in local Bicol markets." },
+            { bikol: "Paaram", english: "Goodbye", note: "Traditional farewell expression." }
+        ];
 
-        // Dagdag na window focus listener para i-smooth scroll pabalik kung may lumabas na internal anchor hash
-        window.addEventListener('hashchange', function() {
-            var hash = window.location.hash;
-            if (hash) {
-                var target = document.querySelector(hash);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+        function loadDailyPhrase() {
+            var now = new Date();
+            var start = new Date(now.getFullYear(), 0, 0);
+            var diff = now - start;
+            var oneDay = 1000 * 60 * 60 * 24;
+            var dayOfYear = Math.floor(diff / oneDay);
+
+            var selectedIndex = dayOfYear % bikolPhrases.length;
+            var today = bikolPhrases[selectedIndex];
+
+            document.getElementById('todayBikol').innerText = '"' + today.bikol + '"';
+            document.getElementById('todayEnglish').innerText = 'Translation: ' + today.english;
+            document.getElementById('todayContext').innerText = today.note;
+        }
+
+        function hideLoading() {
+            var loader = document.getElementById('loadingScreen');
+            loader.style.opacity = '0';
+            setTimeout(function() {
+                loader.style.display = 'none';
+            }, 500);
+        }
+
+        function openModal(id) {
+            var modal = document.getElementById(id);
+            modal.style.display = 'flex';
+            setTimeout(function() { modal.style.opacity = '1'; }, 10);
+        }
+
+        function closeModal(id) {
+            var modal = document.getElementById(id);
+            modal.style.opacity = '0';
+            setTimeout(function() { modal.style.display = 'none'; }, 300);
+        }
+
+        function goToHome() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            var iframe = document.getElementById('canvaFrame');
+            if (iframe) {
+                iframe.src = iframe.src;
             }
-        });
+        }
+
+        window.onscroll = function() { updateProgressBar(); };
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (height > 0) ? (winScroll / height) * 100 : 0;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        }
+
+        function sharePortal() {
+            var shareData = {
+                title: 'Pamana',
+                text: 'Discover the rich culture, heritage, and environment of Bicol created by BU Journalism students!',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(function(err) {
+                    console.log('Error sharing:', err);
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(function() {
+                    showToast();
+                }).catch(function() {
+                    alert('Share this link: ' + window.location.href);
+                });
+            }
+        }
+
+        function showToast() {
+            var toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(function() { toast.style.opacity = '1'; }, 10);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                setTimeout(function() { toast.style.display = 'none'; }, 300);
+            }, 2500);
+        }
+
+        loadDailyPhrase();
     </script>
+
 </body>
 </html>
