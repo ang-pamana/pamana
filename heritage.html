@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pamana — Bicol Heritage</title>
+    <link rel="icon" type="image/png" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #121212; font-family: Arial, sans-serif; overflow-x: hidden; }
+        .sticky-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 48px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 16px; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .brand-title {
+            font-family: 'Georgia', serif; font-size: 18px; font-weight: 800;
+            background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .content-container { margin-top: 48px; margin-bottom: 30px; width: 100%; }
+        .canva-block { display: none; width: 100%; position: relative; background: #ffffff; }
+        .canva-block.active { display: block; }
+        .canva-block iframe { width: 100%; border: none; display: block; }
+        .sticky-footer {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 30px;
+            background: #1a1a1a; display: flex; justify-content: center; align-items: center; gap: 20px; z-index: 9999;
+        }
+        .footer-item { color: #fff; text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 6px; }
+    </style>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <img src="pamana(1).png" alt="Logo" style="height:28px;">
+            <span class="brand-title">BICOL HERITAGE</span>
+        </div>
+    </header>
+
+    <main class="content-container">
+        <!-- Section 4 - Heritage Main -->
+        <div id="heritage-main" class="canva-block active">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 343.5578%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUNvF_T4/BzXvx8NAO0MWhOYtzS7Rxg/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Subsection 1 - Built a Year Ago -->
+        <div id="heritage-built" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 229.2826%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Subsection 2 - Tabaco Purple Yam -->
+        <div id="purple-yam" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 248.9751%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Subsection 3 - Camalig Church -->
+        <div id="camalig-church" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 260.9810%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Subsection 4 - Coffee Story -->
+        <div id="coffee" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 232.0644%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Subsection 5 - Rescued Wildlife -->
+        <div id="wildlife" class="canva-block">
+            <div style="position: relative; width: 100%; height: 0; padding-top: 270.1318%;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;" src="https://www.canva.com/design/DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A/view?embed" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="sticky-footer">
+        <a href="https://facebook.com" target="_blank" class="footer-item"><i class="fa-brands fa-facebook"></i> The Sentinel</a>
+        <a href="https://tiktok.com/@pamana.bicolnon" target="_blank" class="footer-item"><i class="fa-brands fa-tiktok"></i> pamana.bicolnon</a>
+        <a href="mailto:pamanangbicolnon@gmail.com" class="footer-item"><i class="fa-solid fa-envelope"></i> pamanangbicolnon@gmail.com</a>
+    </footer>
+
+    <script>
+        function handleTabSwitch() {
+            var hash = window.location.hash;
+            var blocks = document.querySelectorAll('.canva-block');
+            if (hash) {
+                var targetBlock = document.querySelector(hash);
+                if (targetBlock) {
+                    blocks.forEach(function(b) { b.classList.remove('active'); });
+                    targetBlock.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+            } else {
+                blocks.forEach(function(b) { b.classList.remove('active'); });
+                document.getElementById('heritage-main').classList.add('active');
+            }
+        }
+        window.addEventListener('hashchange', handleTabSwitch);
+        window.addEventListener('load', handleTabSwitch);
+    </script>
+</body>
+</html>
