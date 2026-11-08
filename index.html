@@ -23,14 +23,16 @@
             width: 100%; overflow-x: hidden;
         }
         
-        /* Sticky Header */
+        /* Sticky Header Alignment Fix */
         .sticky-header {
             position: fixed; top: 0; left: 0; width: 100%; height: 64px;
             background: #ffffff; display: flex; justify-content: space-between; align-items: center;
-            padding: 0 20px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            padding: 0 24px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             transition: opacity 0.3s ease;
         }
-        .brand-container { display: flex; align-items: center; gap: 10px; }
+        
+        /* Brand Container (Logo + PAMANA + Word of the Day) */
+        .brand-container { display: flex; align-items: center; gap: 14px; }
         .brand-logo { height: 38px; width: 38px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .brand-title {
             font-family: 'Georgia', serif; font-size: 20px; font-weight: 800; letter-spacing: 1px;
@@ -39,14 +41,16 @@
             white-space: nowrap;
         }
 
+        /* Word of the Day Header Button */
         .wotd-header-btn {
             background: #fff5f0; color: #ff4e00; border: 1.5px solid #ff4e00;
-            padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;
+            padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
             cursor: pointer; display: flex; align-items: center; gap: 6px;
-            transition: all 0.2s ease; white-space: nowrap;
+            transition: all 0.2s ease; white-space: nowrap; margin-left: 4px;
         }
         .wotd-header-btn:hover { background: #ff4e00; color: #ffffff; }
 
+        /* Desktop Navigation Links */
         .desktop-nav { display: flex; gap: 20px; align-items: center; }
         .desktop-nav a {
             color: #222222; text-decoration: none; font-size: 13px; font-weight: 700;
@@ -75,7 +79,7 @@
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
-        /* Modal Overlay Base Style */
+        /* Modal Base Styles */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(6px);
@@ -116,13 +120,13 @@
             transition: opacity 0.4s ease;
         }
 
-        /* Tinitiyak na nakatago muna ang website content habang may welcome modal sa bagong session */
         body.hide-content .content-container,
         body.hide-content .sticky-header {
             opacity: 0;
             pointer-events: none;
         }
         
+        /* Mobile Layout Adjustments */
         @media (max-width: 850px) {
             .sticky-header { height: 56px; padding: 0 16px; }
             .brand-logo { height: 32px; width: 32px; }
@@ -132,7 +136,7 @@
             .mobile-dropdown { top: 56px; }
             .content-container { margin-top: 56px; }
             .wotd-header-btn span { display: none; }
-            .wotd-header-btn { padding: 6px 10px; }
+            .wotd-header-btn { padding: 6px 10px; margin-left: 0; }
         }
 
         .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden; }
@@ -145,11 +149,10 @@
         <div class="brand-container">
             <img src="pamanalogo.png" alt="Logo" class="brand-logo">
             <span class="brand-title">PAMANA</span>
+            <button class="wotd-header-btn" onclick="openWotdModal()">
+                <i class="fa-solid fa-book-open"></i> <span>Word of the Day</span>
+            </button>
         </div>
-
-        <button class="wotd-header-btn" onclick="openWotdModal()">
-            <i class="fa-solid fa-book-open"></i> <span>Word of the Day</span>
-        </button>
 
         <nav class="desktop-nav">
             <a href="index.html" class="active">Home</a>
@@ -212,7 +215,6 @@
     </main>
 
     <script>
-        // Titingnan kung nabuksan na ang site ngayong browser session
         if (sessionStorage.getItem('pamana_has_visited') === 'true') {
             document.body.classList.remove('hide-content');
             document.getElementById('welcomeModal').style.display = 'none';
@@ -243,7 +245,6 @@
                     document.body.classList.remove('hide-content');
                 }, 300);
             }
-            // Isasave sa sessionStorage para ngayong session lang tatandaan
             sessionStorage.setItem('pamana_has_visited', 'true');
         }
 
