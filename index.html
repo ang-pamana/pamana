@@ -412,5 +412,43 @@
         </a>
     </footer>
 
+    <!-- SOLUSYON 2: JAVASCRIPT LINK INTERCEPTOR -->
+    <script>
+        // Nakikinig sa anumang navigation events mula sa Canva embed links
+        window.addEventListener('message', function(event) {
+            if (event.data) {
+                try {
+                    var payload = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+                    
+                    // Pinipigilan ang paglabas papuntang canva.com kapag may in-click na hyperlink sa loob ng Canva
+                    if (payload.type === 'navigate' || (payload.url && payload.url.includes('canva.com'))) {
+                        var targetUrl = payload.url || '';
+                        
+                        // Kung ang link ay tumuturo sa isa sa mga section natin, ire-redirect ito sa internal section ID
+                        var match = targetUrl.match(/sec-\d+/);
+                        if (match) {
+                            var sectionElement = document.getElementById(match[0]);
+                            if (sectionElement) {
+                                sectionElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    }
+                } catch (e) {
+                    // Safe error handling para sa cross-origin responses
+                }
+            }
+        });
+
+        // Dagdag na window focus listener para i-smooth scroll pabalik kung may lumabas na internal anchor hash
+        window.addEventListener('hashchange', function() {
+            var hash = window.location.hash;
+            if (hash) {
+                var target = document.querySelector(hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
