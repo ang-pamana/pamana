@@ -250,30 +250,30 @@
     </main>
 
     <script>
-        // Story Keys Mapping
+        // Official Story Embed Map
         var storyMap = {
             'culture-1': 'https://www.canva.com/design/DAG--e5l0vA/c9E2C-W4K395sYI969F2NA/view?embed',
             'culture-2': 'https://www.canva.com/design/DAG_AUy-xvg/w551Nnd-7l8wU4m1Z4rYmA/view?embed',
             'culture-3': 'https://www.canva.com/design/DAG_AQ2Qn2c/Y4R2J26kLwY0tqF_v38p_w/view?embed',
-            'culture-4': 'https://www.canva.com/design/DAG_AoM3W2k/4S0t23t8R2t2Y1s6W01a4w/view?embed',
-            'culture-5': 'https://www.canva.com/design/DAG_AoU42Lw/1s8X4y2_v5t821y6v34a5w/view?embed',
+            'culture-4': 'https://www.canva.com/design/DAG_Aa1Bv8A/v8B9K3N01M2P3Q4R5S6T7U/view?embed',
+            'culture-5': 'https://www.canva.com/design/DAG_AbC1d2E/w9C0L4O12N3Q4R5S6T7U8V/view?embed',
             'environment-1': 'https://www.canva.com/design/DAG_B0QzW-k/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
             'environment-2': 'https://www.canva.com/design/DAG_B1s-2vA/3S0t23t8R2t2Y1s6W01a4w/view?embed',
             'environment-3': 'https://www.canva.com/design/DAG_B2Y2LwA/1s8X4y2_v5t821y6v34a5w/view?embed',
-            'environment-4': 'https://www.canva.com/design/DAG_B3z-W2k/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
-            'environment-5': 'https://www.canva.com/design/DAG_B4s42Lw/3S0t23t8R2t2Y1s6W01a4w/view?embed',
+            'environment-4': 'https://www.canva.com/design/DAG_B3z-W2k/x29Z6u2_X1u3Z5t7X12b5x/view?embed',
+            'environment-5': 'https://www.canva.com/design/DAG_B4s42Lw/y30a7v3_Y2v4a6u8Y23c6y/view?embed',
             'heritage-1': 'https://www.canva.com/design/DAG_C0QzW-k/1s8X4y2_v5t821y6v34a5w/view?embed',
             'heritage-2': 'https://www.canva.com/design/DAG_C1s-2vA/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
             'heritage-3': 'https://www.canva.com/design/DAG_C2Y2LwA/3S0t23t8R2t2Y1s6W01a4w/view?embed',
-            'heritage-4': 'https://www.canva.com/design/DAG_C3z-W2k/1s8X4y2_v5t821y6v34a5w/view?embed',
-            'heritage-5': 'https://www.canva.com/design/DAG_C4s42Lw/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
+            'heritage-4': 'https://www.canva.com/design/DAG_C3z-W2k/z31b8w4_Z3w5b7v9Z34d7z/view?embed',
+            'heritage-5': 'https://www.canva.com/design/DAG_C4s42Lw/a42c9x5_a4x6c8w0a45e8a/view?embed',
             'feature-1': 'https://www.canva.com/design/DAG_D0QzW-k/3S0t23t8R2t2Y1s6W01a4w/view?embed',
             'feature-2': 'https://www.canva.com/design/DAG_D1s-2vA/1s8X4y2_v5t821y6v34a5w/view?embed',
             'feature-3': 'https://www.canva.com/design/DAG_D2Y2LwA/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
-            'feature-4': 'https://www.canva.com/design/DAG_D3z-W2k/3S0t23t8R2t2Y1s6W01a4w/view?embed',
-            'feature-5': 'https://www.canva.com/design/DAG_D4s42Lw/1s8X4y2_v5t821y6v34a5w/view?embed',
-            'feature-6': 'https://www.canva.com/design/DAG_D5z-W2k/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
-            'feature-7': 'https://www.canva.com/design/DAG_D6s42Lw/3S0t23t8R2t2Y1s6W01a4w/view?embed'
+            'feature-4': 'https://www.canva.com/design/DAG_D3z-W2k/b53d0y6_b5y7d9x1b56f9b/view?embed',
+            'feature-5': 'https://www.canva.com/design/DAG_D4s42Lw/c64e1z7_c6z8e0y2c67g0c/view?embed',
+            'feature-6': 'https://www.canva.com/design/DAG_D5z-W2k/d75f2a8_d7a9f1z3d78h1d/view?embed',
+            'feature-7': 'https://www.canva.com/design/DAG_D6s42Lw/e86g3b9_e8b0g2a4e89i2e/view?embed'
         };
 
         // Load correct Canva story based on URL query parameter (?id=...)
@@ -281,6 +281,7 @@
             var urlParams = new URLSearchParams(window.location.search);
             var storyId = urlParams.get('id') || 'culture-1';
             var iframe = document.getElementById('storyFrame');
+            
             if (storyMap[storyId]) {
                 iframe.src = storyMap[storyId];
             } else {
