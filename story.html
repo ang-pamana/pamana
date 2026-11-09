@@ -43,6 +43,7 @@
         .brand-logo { height: 28px; width: 28px; border-radius: 50%; object-fit: cover; }
         .brand-title { font-family: 'Georgia', serif; font-size: 16px; font-weight: 800; letter-spacing: 1px; color: #ff4e00; }
 
+        /* IISANG NAVIGATION BAR ALONG WITH EXPERIENCE BUTTON */
         .desktop-nav {
             display: flex;
             gap: 14px;
@@ -73,6 +74,7 @@
             border-radius: 2px;
         }
 
+        /* INTEGRATED EXPERIENCE BUTTON IN THE HEADER NAV */
         .nav-exp-btn {
             background: linear-gradient(135deg, #ff4e00 0%, #ff8800 100%);
             color: #ffffff;
@@ -98,12 +100,14 @@
             box-shadow: 0 5px 12px rgba(255, 78, 0, 0.45);
         }
 
+        /* Mobile Responsive Elements */
         .mobile-menu-btn { display: none; background: none; border: none; color: #222222; font-size: 20px; cursor: pointer; padding: 4px; }
         .mobile-dropdown { display: none; position: fixed; top: 52px; left: 0; width: 100%; background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998; }
         .mobile-dropdown a, .mobile-dropdown button { color: #222222; text-decoration: none; padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0; text-align: left; background: none; border: none; width: 100%; cursor: pointer; }
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
+        /* 2-Step Rating Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -137,6 +141,7 @@
 
         .modal-close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; color: #777777; cursor: pointer; }
 
+        /* Star Rating & Comments */
         .rating-badge { display: inline-block; background: #fff5f0; color: #ff4e00; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid #ffdcd0; }
         .rating-title { font-family: 'Georgia', serif; font-size: 22px; font-weight: 800; color: #222222; margin-bottom: 6px; }
         .rating-subtitle { font-size: 13px; color: #666666; margin-bottom: 20px; line-height: 1.4; }
@@ -153,10 +158,41 @@
         .rating-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255, 78, 0, 0.45); }
         .rating-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        .content-container { margin-top: 52px; width: 100%; position: relative; overflow: hidden; }
-        .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden; }
-        .canva-embed-holder { position: relative; width: 100%; height: 0; padding-top: 339.0190%; overflow: hidden; }
-        .canva-embed-holder iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: 0 !important; outline: none !important; }
+        /* FIXED FULL-SCREEN CANVA EMBED HOLDER (NO BLACK SPACE) */
+        .content-container {
+            margin-top: 52px;
+            width: 100%;
+            height: calc(100vh - 52px);
+            position: relative;
+            overflow: hidden;
+            background: #121212;
+        }
+
+        .canva-block {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .canva-embed-holder {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding-top: 0 !important;
+            overflow: hidden;
+        }
+
+        .canva-embed-holder iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: 0 !important;
+            outline: none !important;
+        }
 
         @media (max-width: 950px) {
             .desktop-nav { display: none; }
@@ -166,6 +202,7 @@
 </head>
 <body>
 
+    <!-- SINGLE STICKY HEADER WITH EXPERIENCE BUTTON INTEGRATED -->
     <header class="sticky-header">
         <div class="brand-group">
             <img src="https://ang-pamana.github.io/pamana/pamanalogo.png" alt="Logo" class="brand-logo">
@@ -190,6 +227,7 @@
         </button>
     </header>
 
+    <!-- Mobile Dropdown Navigation -->
     <div class="mobile-dropdown" id="mobileMenu">
         <a href="index.html">Home</a>
         <a href="culture.html">Culture</a>
@@ -200,10 +238,12 @@
         <button onclick="openRatingModal(); toggleMobileMenu();"><i class="fa-solid fa-star"></i> How's Your Experience?</button>
     </div>
 
+    <!-- 5-Star Rating & Feedback Pop-up Modal -->
     <div class="modal-overlay" id="ratingModal" style="display: none;">
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeRatingModal()"><i class="fa-solid fa-xmark"></i></button>
             
+            <!-- Step 1: Star Rating -->
             <div id="ratingStep1">
                 <span class="rating-badge"><i class="fa-solid fa-heart"></i> Your Feedback Matters</span>
                 <h2 class="rating-title">How's Your Experience?</h2>
@@ -218,6 +258,7 @@
                 </div>
             </div>
 
+            <!-- Step 2: Give Us Your Feedback -->
             <div id="ratingStep2" style="display: none;">
                 <span class="rating-badge"><i class="fa-solid fa-comment-dots"></i> We'd Love to Hear More</span>
                 <h2 class="rating-title">Give Us Your Feedback</h2>
@@ -229,6 +270,7 @@
         </div>
     </div>
 
+    <!-- Main Dynamic Story Frame -->
     <main class="content-container">
         <div class="canva-block">
             <div class="canva-embed-holder">
@@ -279,10 +321,8 @@
             if (storyId && storyMap[storyId]) {
                 iframe.src = storyMap[storyId];
             } else if (storyId) {
-                // Direct fallback para sa anumang Canva ID na wala pa sa listahan
                 iframe.src = 'https://www.canva.com/design/' + storyId + '/view?embed';
             } else {
-                // Default story kapag walang id parameter
                 iframe.src = 'https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed';
             }
         });
