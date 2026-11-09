@@ -107,6 +107,39 @@
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
+        /* FLOATING BACK TO SECTION BUTTON STYLING */
+        .floating-back-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9995;
+            background: rgba(34, 34, 34, 0.9);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .floating-back-btn:hover {
+            background: #ff4e00;
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(255, 78, 0, 0.45);
+            border-color: transparent;
+        }
+
         /* 2-Step Rating Modal Overlay */
         .modal-overlay {
             position: fixed;
@@ -158,7 +191,7 @@
         .rating-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255, 78, 0, 0.45); }
         .rating-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        /* FIXED FULL-SCREEN CANVA EMBED HOLDER (NO BLACK SPACE) */
+        /* FULL-SCREEN CANVA EMBED HOLDER */
         .content-container {
             margin-top: 52px;
             width: 100%;
@@ -190,19 +223,19 @@
             height: 100%;
             top: 0;
             left: 0;
-            border: 0 !important;
-            outline: none !important;
+            border: 0 !important; outline: none !important;
         }
 
         @media (max-width: 950px) {
             .desktop-nav { display: none; }
             .mobile-menu-btn { display: block; }
+            .floating-back-btn { bottom: 16px; right: 16px; padding: 8px 14px; font-size: 11px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SINGLE STICKY HEADER WITH EXPERIENCE BUTTON INTEGRATED -->
+    <!-- SINGLE STICKY HEADER -->
     <header class="sticky-header">
         <div class="brand-group">
             <img src="https://ang-pamana.github.io/pamana/pamanalogo.png" alt="Logo" class="brand-logo">
@@ -237,6 +270,11 @@
         <a href="team.html">Meet the Team</a>
         <button onclick="openRatingModal(); toggleMobileMenu();"><i class="fa-solid fa-star"></i> How's Your Experience?</button>
     </div>
+
+    <!-- FLOATING BACK TO SECTION BUTTON -->
+    <a href="index.html" class="floating-back-btn" id="floatingBackBtn">
+        <i class="fa-solid fa-arrow-left"></i> <span id="floatingBackText">Back to Stories</span>
+    </a>
 
     <!-- 5-Star Rating & Feedback Pop-up Modal -->
     <div class="modal-overlay" id="ratingModal" style="display: none;">
@@ -280,50 +318,59 @@
     </main>
 
     <script>
-        // Updated Story Map containing all 22 Exact Story IDs & Canva Embed URLs
+        // Story Mapping with Category Metadata for Floating Button Routing
         var storyMap = {
             // 1. Bicol Culture
-            'DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w': 'https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed',
-            'DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A': 'https://www.canva.com/design/DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A/view?embed',
-            'DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA': 'https://www.canva.com/design/DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA/view?embed',
-            'DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ': 'https://www.canva.com/design/DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ/view?embed',
-            'DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng': 'https://www.canva.com/design/DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng/view?embed',
+            'DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w': { embed: 'https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed', category: 'culture', label: 'Back to Culture' },
+            'DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A': { embed: 'https://www.canva.com/design/DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A/view?embed', category: 'culture', label: 'Back to Culture' },
+            'DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA': { embed: 'https://www.canva.com/design/DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA/view?embed', category: 'culture', label: 'Back to Culture' },
+            'DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ': { embed: 'https://www.canva.com/design/DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ/view?embed', category: 'culture', label: 'Back to Culture' },
+            'DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng': { embed: 'https://www.canva.com/design/DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng/view?embed', category: 'culture', label: 'Back to Culture' },
 
             // 2. Bicol Environment
-            'DAHaUe1uVkQ/1IW-kB9Q5r1TXifFlxWLfA': 'https://www.canva.com/design/DAHaUe1uVkQ/1IW-kB9Q5r1TXifFlxWLfA/view?embed',
-            'DAHaUdSEVao/sCFVAVC2lUiXEVgjc-Grcg': 'https://www.canva.com/design/DAHaUdSEVao/sCFVAVC2lUiXEVgjc-Grcg/view?embed',
-            'DAHaUX1d--M/U9BgNAt-Qk8rRz30lnN8wQ': 'https://www.canva.com/design/DAHaUX1d--M/U9BgNAt-Qk8rRz30lnN8wQ/view?embed',
-            'DAHaUQ3Ql94/9w6qtVB8MOlwgAYabliNsw': 'https://www.canva.com/design/DAHaUQ3Ql94/9w6qtVB8MOlwgAYabliNsw/view?embed',
-            'DAHaUVUA_gc/otX3zbBqSp9zYYNDrXa5TA': 'https://www.canva.com/design/DAHaUVUA_gc/otX3zbBqSp9zYYNDrXa5TA/view?embed',
+            'DAHaUe1uVkQ/1IW-kB9Q5r1TXifFlxWLfA': { embed: 'https://www.canva.com/design/DAHaUe1uVkQ/1IW-kB9Q5r1TXifFlxWLfA/view?embed', category: 'environment', label: 'Back to Environment' },
+            'DAHaUdSEVao/sCFVAVC2lUiXEVgjc-Grcg': { embed: 'https://www.canva.com/design/DAHaUdSEVao/sCFVAVC2lUiXEVgjc-Grcg/view?embed', category: 'environment', label: 'Back to Environment' },
+            'DAHaUX1d--M/U9BgNAt-Qk8rRz30lnN8wQ': { embed: 'https://www.canva.com/design/DAHaUX1d--M/U9BgNAt-Qk8rRz30lnN8wQ/view?embed', category: 'environment', label: 'Back to Environment' },
+            'DAHaUQ3Ql94/9w6qtVB8MOlwgAYabliNsw': { embed: 'https://www.canva.com/design/DAHaUQ3Ql94/9w6qtVB8MOlwgAYabliNsw/view?embed', category: 'environment', label: 'Back to Environment' },
+            'DAHaUVUA_gc/otX3zbBqSp9zYYNDrXa5TA': { embed: 'https://www.canva.com/design/DAHaUVUA_gc/otX3zbBqSp9zYYNDrXa5TA/view?embed', category: 'environment', label: 'Back to Environment' },
 
             // 3. Bicol Heritage
-            'DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w': 'https://www.canva.com/design/DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w/view?embed',
-            'DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ': 'https://www.canva.com/design/DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ/view?embed',
-            'DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg': 'https://www.canva.com/design/DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg/view?embed',
-            'DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA': 'https://www.canva.com/design/DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA/view?embed',
-            'DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A': 'https://www.canva.com/design/DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A/view?embed',
+            'DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w': { embed: 'https://www.canva.com/design/DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w/view?embed', category: 'heritage', label: 'Back to Heritage' },
+            'DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ': { embed: 'https://www.canva.com/design/DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ/view?embed', category: 'heritage', label: 'Back to Heritage' },
+            'DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg': { embed: 'https://www.canva.com/design/DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg/view?embed', category: 'heritage', label: 'Back to Heritage' },
+            'DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA': { embed: 'https://www.canva.com/design/DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA/view?embed', category: 'heritage', label: 'Back to Heritage' },
+            'DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A': { embed: 'https://www.canva.com/design/DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A/view?embed', category: 'heritage', label: 'Back to Heritage' },
 
             // 4. Feature
-            'DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ': 'https://www.canva.com/design/DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ/view?embed',
-            'DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ': 'https://www.canva.com/design/DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ/view?embed',
-            'DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew': 'https://www.canva.com/design/DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew/view?embed',
-            'DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ': 'https://www.canva.com/design/DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ/view?embed',
-            'DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q': 'https://www.canva.com/design/DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q/view?embed',
-            'DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA': 'https://www.canva.com/design/DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA/view?embed',
-            'DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ': 'https://www.canva.com/design/DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ/view?embed'
+            'DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ': { embed: 'https://www.canva.com/design/DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ/view?embed', category: 'feature', label: 'Back to Feature' },
+            'DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ': { embed: 'https://www.canva.com/design/DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ/view?embed', category: 'feature', label: 'Back to Feature' },
+            'DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew': { embed: 'https://www.canva.com/design/DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew/view?embed', category: 'feature', label: 'Back to Feature' },
+            'DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ': { embed: 'https://www.canva.com/design/DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ/view?embed', category: 'feature', label: 'Back to Feature' },
+            'DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q': { embed: 'https://www.canva.com/design/DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q/view?embed', category: 'feature', label: 'Back to Feature' },
+            'DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA': { embed: 'https://www.canva.com/design/DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA/view?embed', category: 'feature', label: 'Back to Feature' },
+            'DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ': { embed: 'https://www.canva.com/design/DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ/view?embed', category: 'feature', label: 'Back to Feature' }
         };
 
         window.addEventListener('DOMContentLoaded', function() {
             var urlParams = new URLSearchParams(window.location.search);
             var storyId = urlParams.get('id');
             var iframe = document.getElementById('storyFrame');
+            var floatingBtn = document.getElementById('floatingBackBtn');
+            var floatingText = document.getElementById('floatingBackText');
             
             if (storyId && storyMap[storyId]) {
-                iframe.src = storyMap[storyId];
+                var currentStory = storyMap[storyId];
+                iframe.src = currentStory.embed;
+                floatingBtn.href = currentStory.category + '.html';
+                floatingText.textContent = currentStory.label;
             } else if (storyId) {
                 iframe.src = 'https://www.canva.com/design/' + storyId + '/view?embed';
+                floatingBtn.href = 'index.html';
+                floatingText.textContent = 'Back to Home';
             } else {
                 iframe.src = 'https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed';
+                floatingBtn.href = 'culture.html';
+                floatingText.textContent = 'Back to Culture';
             }
         });
 
