@@ -43,7 +43,6 @@
         .brand-logo { height: 28px; width: 28px; border-radius: 50%; object-fit: cover; }
         .brand-title { font-family: 'Georgia', serif; font-size: 16px; font-weight: 800; letter-spacing: 1px; color: #ff4e00; }
 
-        /* IISANG NAVIGATION BAR ALONG WITH EXPERIENCE BUTTON */
         .desktop-nav {
             display: flex;
             gap: 14px;
@@ -74,7 +73,6 @@
             border-radius: 2px;
         }
 
-        /* INTEGRATED EXPERIENCE BUTTON IN THE HEADER NAV */
         .nav-exp-btn {
             background: linear-gradient(135deg, #ff4e00 0%, #ff8800 100%);
             color: #ffffff;
@@ -100,14 +98,12 @@
             box-shadow: 0 5px 12px rgba(255, 78, 0, 0.45);
         }
 
-        /* Mobile Responsive Elements */
         .mobile-menu-btn { display: none; background: none; border: none; color: #222222; font-size: 20px; cursor: pointer; padding: 4px; }
         .mobile-dropdown { display: none; position: fixed; top: 52px; left: 0; width: 100%; background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998; }
         .mobile-dropdown a, .mobile-dropdown button { color: #222222; text-decoration: none; padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0; text-align: left; background: none; border: none; width: 100%; cursor: pointer; }
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
-        /* 2-Step Rating Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -141,7 +137,6 @@
 
         .modal-close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; color: #777777; cursor: pointer; }
 
-        /* Star Rating & Comments */
         .rating-badge { display: inline-block; background: #fff5f0; color: #ff4e00; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid #ffdcd0; }
         .rating-title { font-family: 'Georgia', serif; font-size: 22px; font-weight: 800; color: #222222; margin-bottom: 6px; }
         .rating-subtitle { font-size: 13px; color: #666666; margin-bottom: 20px; line-height: 1.4; }
@@ -158,7 +153,6 @@
         .rating-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255, 78, 0, 0.45); }
         .rating-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        /* Story Canva Embed Holder */
         .content-container { margin-top: 52px; width: 100%; position: relative; overflow: hidden; }
         .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden; }
         .canva-embed-holder { position: relative; width: 100%; height: 0; padding-top: 339.0190%; overflow: hidden; }
@@ -172,7 +166,6 @@
 </head>
 <body>
 
-    <!-- SINGLE STICKY HEADER WITH EXPERIENCE BUTTON INTEGRATED -->
     <header class="sticky-header">
         <div class="brand-group">
             <img src="https://ang-pamana.github.io/pamana/pamanalogo.png" alt="Logo" class="brand-logo">
@@ -197,7 +190,6 @@
         </button>
     </header>
 
-    <!-- Mobile Dropdown Navigation -->
     <div class="mobile-dropdown" id="mobileMenu">
         <a href="index.html">Home</a>
         <a href="culture.html">Culture</a>
@@ -208,12 +200,10 @@
         <button onclick="openRatingModal(); toggleMobileMenu();"><i class="fa-solid fa-star"></i> How's Your Experience?</button>
     </div>
 
-    <!-- 5-Star Rating & Feedback Pop-up Modal -->
     <div class="modal-overlay" id="ratingModal" style="display: none;">
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeRatingModal()"><i class="fa-solid fa-xmark"></i></button>
             
-            <!-- Step 1: Star Rating -->
             <div id="ratingStep1">
                 <span class="rating-badge"><i class="fa-solid fa-heart"></i> Your Feedback Matters</span>
                 <h2 class="rating-title">How's Your Experience?</h2>
@@ -228,7 +218,6 @@
                 </div>
             </div>
 
-            <!-- Step 2: Give Us Your Feedback -->
             <div id="ratingStep2" style="display: none;">
                 <span class="rating-badge"><i class="fa-solid fa-comment-dots"></i> We'd Love to Hear More</span>
                 <h2 class="rating-title">Give Us Your Feedback</h2>
@@ -240,7 +229,6 @@
         </div>
     </div>
 
-    <!-- Main Dynamic Story Frame -->
     <main class="content-container">
         <div class="canva-block">
             <div class="canva-embed-holder">
@@ -250,42 +238,52 @@
     </main>
 
     <script>
-        // Official Story Embed Map
+        // Updated Story Map containing all 22 Exact Story IDs & Canva Embed URLs
         var storyMap = {
-            'culture-1': 'https://www.canva.com/design/DAG--e5l0vA/c9E2C-W4K395sYI969F2NA/view?embed',
-            'culture-2': 'https://www.canva.com/design/DAG_AUy-xvg/w551Nnd-7l8wU4m1Z4rYmA/view?embed',
-            'culture-3': 'https://www.canva.com/design/DAG_AQ2Qn2c/Y4R2J26kLwY0tqF_v38p_w/view?embed',
-            'culture-4': 'https://www.canva.com/design/DAG_Aa1Bv8A/v8B9K3N01M2P3Q4R5S6T7U/view?embed',
-            'culture-5': 'https://www.canva.com/design/DAG_AbC1d2E/w9C0L4O12N3Q4R5S6T7U8V/view?embed',
-            'environment-1': 'https://www.canva.com/design/DAG_B0QzW-k/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
-            'environment-2': 'https://www.canva.com/design/DAG_B1s-2vA/3S0t23t8R2t2Y1s6W01a4w/view?embed',
-            'environment-3': 'https://www.canva.com/design/DAG_B2Y2LwA/1s8X4y2_v5t821y6v34a5w/view?embed',
-            'environment-4': 'https://www.canva.com/design/DAG_B3z-W2k/x29Z6u2_X1u3Z5t7X12b5x/view?embed',
-            'environment-5': 'https://www.canva.com/design/DAG_B4s42Lw/y30a7v3_Y2v4a6u8Y23c6y/view?embed',
-            'heritage-1': 'https://www.canva.com/design/DAG_C0QzW-k/1s8X4y2_v5t821y6v34a5w/view?embed',
-            'heritage-2': 'https://www.canva.com/design/DAG_C1s-2vA/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
-            'heritage-3': 'https://www.canva.com/design/DAG_C2Y2LwA/3S0t23t8R2t2Y1s6W01a4w/view?embed',
-            'heritage-4': 'https://www.canva.com/design/DAG_C3z-W2k/z31b8w4_Z3w5b7v9Z34d7z/view?embed',
-            'heritage-5': 'https://www.canva.com/design/DAG_C4s42Lw/a42c9x5_a4x6c8w0a45e8a/view?embed',
-            'feature-1': 'https://www.canva.com/design/DAG_D0QzW-k/3S0t23t8R2t2Y1s6W01a4w/view?embed',
-            'feature-2': 'https://www.canva.com/design/DAG_D1s-2vA/1s8X4y2_v5t821y6v34a5w/view?embed',
-            'feature-3': 'https://www.canva.com/design/DAG_D2Y2LwA/v18Y5t1_W0t2Y4s6W01a4w/view?embed',
-            'feature-4': 'https://www.canva.com/design/DAG_D3z-W2k/b53d0y6_b5y7d9x1b56f9b/view?embed',
-            'feature-5': 'https://www.canva.com/design/DAG_D4s42Lw/c64e1z7_c6z8e0y2c67g0c/view?embed',
-            'feature-6': 'https://www.canva.com/design/DAG_D5z-W2k/d75f2a8_d7a9f1z3d78h1d/view?embed',
-            'feature-7': 'https://www.canva.com/design/DAG_D6s42Lw/e86g3b9_e8b0g2a4e89i2e/view?embed'
+            // 1. Bicol Culture
+            'DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w': 'https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed',
+            'DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A': 'https://www.canva.com/design/DAHaUWaX9DE/EVsmPcA47_hchUXGqrml9A/view?embed',
+            'DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA': 'https://www.canva.com/design/DAHaUTEGMyI/iVzJsca9dQaUIRnmjvpRBA/view?embed',
+            'DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ': 'https://www.canva.com/design/DAHaUeXRvEs/sq596t1pP9azFl3ZVqeydQ/view?embed',
+            'DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng': 'https://www.canva.com/design/DAHaUWtWOPo/_-ubVIFZvvobBvY6nEa5ng/view?embed',
+
+            // 2. Bicol Environment
+            'DAHaUe1uVkQ/1IW-kB9Q5r1TXifFlxWLfA': 'https://www.canva.com/design/DAHaUe1uVkQ/1IW-kB9Q5r1TXifFlxWLfA/view?embed',
+            'DAHaUdSEVao/sCFVAVC2lUiXEVgjc-Grcg': 'https://www.canva.com/design/DAHaUdSEVao/sCFVAVC2lUiXEVgjc-Grcg/view?embed',
+            'DAHaUX1d--M/U9BgNAt-Qk8rRz30lnN8wQ': 'https://www.canva.com/design/DAHaUX1d--M/U9BgNAt-Qk8rRz30lnN8wQ/view?embed',
+            'DAHaUQ3Ql94/9w6qtVB8MOlwgAYabliNsw': 'https://www.canva.com/design/DAHaUQ3Ql94/9w6qtVB8MOlwgAYabliNsw/view?embed',
+            'DAHaUVUA_gc/otX3zbBqSp9zYYNDrXa5TA': 'https://www.canva.com/design/DAHaUVUA_gc/otX3zbBqSp9zYYNDrXa5TA/view?embed',
+
+            // 3. Bicol Heritage
+            'DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w': 'https://www.canva.com/design/DAHaUTCDmDY/tthOeUEPebcu0PwcQX_T0w/view?embed',
+            'DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ': 'https://www.canva.com/design/DAHaUezk3I0/tLs-IYJChA9eJMqXUjcVAQ/view?embed',
+            'DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg': 'https://www.canva.com/design/DAHaUW3bDS4/6hGni3b3iPza8eqYX70iKg/view?embed',
+            'DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA': 'https://www.canva.com/design/DAHaUSo6aEA/ThaPFWBj4PFzPqNF_gacbA/view?embed',
+            'DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A': 'https://www.canva.com/design/DAHaUeHFmQ8/xlfdmx4AgHDvR97uCs8_6A/view?embed',
+
+            // 4. Feature
+            'DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ': 'https://www.canva.com/design/DAHaUQzJ-zE/W_txZYrkgzlvMx6KIBPAhQ/view?embed',
+            'DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ': 'https://www.canva.com/design/DAHaUVBBg20/UudeQ15CrhMmEp_XxcO3HQ/view?embed',
+            'DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew': 'https://www.canva.com/design/DAHaUcxQ4R8/zo2g1vBSGZ5tZMOUyhsXew/view?embed',
+            'DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ': 'https://www.canva.com/design/DAHaUbdvMTc/7M3xRflOYqSrSYB0h5UlDQ/view?embed',
+            'DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q': 'https://www.canva.com/design/DAHaUis5990/2epHSbNM2jw5dnNUGRDg9Q/view?embed',
+            'DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA': 'https://www.canva.com/design/DAHaUqEA1j4/PplmfWP4cxfuZzki-72JSA/view?embed',
+            'DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ': 'https://www.canva.com/design/DAHaUqKb6n8/GhuLSa6Ez3lLV39nYKsotQ/view?embed'
         };
 
-        // Load correct Canva story based on URL query parameter (?id=...)
         window.addEventListener('DOMContentLoaded', function() {
             var urlParams = new URLSearchParams(window.location.search);
-            var storyId = urlParams.get('id') || 'culture-1';
+            var storyId = urlParams.get('id');
             var iframe = document.getElementById('storyFrame');
             
-            if (storyMap[storyId]) {
+            if (storyId && storyMap[storyId]) {
                 iframe.src = storyMap[storyId];
+            } else if (storyId) {
+                // Direct fallback para sa anumang Canva ID na wala pa sa listahan
+                iframe.src = 'https://www.canva.com/design/' + storyId + '/view?embed';
             } else {
-                iframe.src = storyMap['culture-1'];
+                // Default story kapag walang id parameter
+                iframe.src = 'https://www.canva.com/design/DAHaUZ1_B6I/mDc403l44re_WCzgH0sl8w/view?embed';
             }
         });
 
