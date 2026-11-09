@@ -5,47 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story View — Pamana</title>
     <link rel="icon" type="image/png" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-17P5Q860F3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-17P5Q860F3');
+    </script>
+
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
-            width: 100%;
-            height: 100%;
-            background: #121212;
-            overflow: hidden;
-        }
-        iframe {
-            width: 100%;
-            height: 100vh;
-            border: 0 !important;
-            outline: none !important;
-            display: block;
-        }
-        .error-msg {
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            margin-top: 20vh;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
+
+        /* Hide scrollbars */
+        iframe, div { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+        iframe::-webkit-scrollbar, div::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+
+        /* Navigation Header */
+        .sticky-header { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: #ffffff; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .brand-group { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+        .brand-logo { height: 30px; width: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .brand-title { font-family: 'Georgia', serif; font-size: 17px; font-weight: 800; letter-spacing: 1px; white-space: nowrap; margin-right: 4px; color: #ff4e00; }
+
+        .wotd-header-btn { background: linear-gradient(135deg, #ff5100 0%, #ff8800 100%); color: #ffffff; border: none; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 3px 8px rgba(255, 81, 0, 0.25); transition: all 0.3s ease; white-space: nowrap; flex-shrink: 0; }
+        .wotd-header-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(255, 81, 0, 0.4); }
+
+        .desktop-nav { display: flex; gap: 16px; align-items: center; flex-shrink: 0; }
+        .desktop-nav a { color: #222222; text-decoration: none; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease; position: relative; padding: 4px 0; white-space: nowrap; }
+        .desktop-nav a:hover { color: #ff4e00; }
+
+        .mobile-menu-btn { display: none; background: none; border: none; color: #222222; font-size: 20px; cursor: pointer; padding: 4px; flex-shrink: 0; }
+        .mobile-dropdown { display: none; position: fixed; top: 50px; left: 0; width: 100%; background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998; }
+        .mobile-dropdown a, .mobile-dropdown button { color: #222222; text-decoration: none; padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0; text-align: left; background: none; border: none; width: 100%; cursor: pointer; }
+        .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
+        .mobile-dropdown.open { display: flex; }
+
+        /* Modal Overlay */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10000; padding: 20px; transition: opacity 0.3s ease; }
+        .modal-box { background: #ffffff; width: 100%; max-width: 440px; border-radius: 24px; padding: 32px 24px 28px 24px; text-align: center; position: relative; box-shadow: 0 16px 40px rgba(0,0,0,0.3); animation: popupAnim 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        @keyframes popupAnim { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .modal-close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; color: #777777; cursor: pointer; }
+        .modal-action-btn { display: inline-block; width: 75%; padding: 12px 20px; border: none; border-radius: 30px; background: linear-gradient(90deg, #ff0000 0%, #ff6a00 50%, #ffb700 100%); color: #ffffff; font-size: 12.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; box-shadow: 0 6px 18px rgba(255, 78, 0, 0.4); }
+
+        .wotd-badge { display: inline-block; background: #fff1eb; color: #ff4e00; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; border: 1px solid #ffdcd0; }
+        .wotd-word { font-family: 'Georgia', serif; font-size: 30px; font-weight: 800; color: #d90000; margin-bottom: 8px; }
+        .wotd-translation { font-size: 15px; color: #333333; font-weight: 600; margin-bottom: 10px; }
+        .wotd-meaning { font-size: 13px; color: #666666; line-height: 1.5; margin-bottom: 22px; padding: 0 10px; }
+        .wotd-source { font-size: 11px; color: #999999; font-style: italic; margin-top: 14px; }
+
+        /* Story Container */
+        .content-container { margin-top: 50px; width: 100%; height: calc(100vh - 50px); position: relative; overflow: hidden; }
+        iframe { width: 100%; height: 100%; border: 0 !important; outline: none !important; display: block; }
+        .error-msg { color: #ffffff; text-align: center; margin-top: 20vh; font-size: 18px; }
+
+        @media (max-width: 850px) {
+            .sticky-header { height: 46px; padding: 0 14px; }
+            .brand-logo { height: 26px; width: 26px; }
+            .brand-title { display: none; }
+            .desktop-nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-dropdown { top: 46px; }
+            .content-container { margin-top: 46px; height: calc(100vh - 46px); }
+            .wotd-header-btn span { display: none; }
+            .wotd-header-btn { padding: 4px 8px; margin: 0; }
         }
     </style>
 </head>
 <body>
 
-    <iframe id="storyFrame" src="" allowfullscreen scrolling="no"></iframe>
+    <!-- Header Navigation -->
+    <header class="sticky-header">
+        <div class="brand-group">
+            <img src="https://ang-pamana.github.io/pamana/pamanalogo.png" alt="Logo" class="brand-logo">
+            <span class="brand-title">PAMANA</span>
+            <button class="wotd-header-btn" onclick="openWotdModal()">
+                <i class="fa-solid fa-book-open"></i> <span>Word of the Day</span>
+            </button>
+        </div>
+
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="culture.html">Culture</a>
+            <a href="environment.html">Environment</a>
+            <a href="heritage.html">Heritage</a>
+            <a href="feature.html">Feature</a>
+            <a href="team.html">Meet the Team</a>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Dropdown -->
+    <div class="mobile-dropdown" id="mobileMenu">
+        <button onclick="openWotdModal(); toggleMobileMenu();"><i class="fa-solid fa-book-open"></i> Word of the Day</button>
+        <a href="index.html">Home</a>
+        <a href="culture.html">Culture</a>
+        <a href="environment.html">Environment</a>
+        <a href="heritage.html">Heritage</a>
+        <a href="feature.html">Feature</a>
+        <a href="team.html">Meet the Team</a>
+    </div>
+
+    <!-- Word of the Day Modal -->
+    <div class="modal-overlay" id="wotdModal" style="display: none;">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeWotdModal()"><i class="fa-solid fa-xmark"></i></button>
+            <span class="wotd-badge"><i class="fa-solid fa-language"></i> Bicolano Word of the Day</span>
+            <h1 class="wotd-word" id="wotdWord">"Magayon"</h1>
+            <p class="wotd-translation" id="wotdTranslation">Translation: Beautiful / Lovely</p>
+            <p class="wotd-meaning" id="wotdMeaning">Used to describe pleasant things, places, or people.</p>
+            <button class="modal-action-btn" onclick="closeWotdModal()">GOT IT!</button>
+            <div class="wotd-source">Source: BICOL - MAN / Saminovic</div>
+        </div>
+    </div>
+
+    <!-- Story Viewer Frame -->
+    <main class="content-container">
+        <iframe id="storyFrame" src="" allowfullscreen scrolling="no"></iframe>
+    </main>
 
     <script>
-        // Kukunin ang Canva Design ID mula sa URL parameter (?id=...)
+        // Canva Embed Loader Script
         var urlParams = new URLSearchParams(window.location.search);
         var canvaId = urlParams.get('id');
 
         if (canvaId) {
-            // Direktang ipapakita ang malinis na Canva Embed View ng kwento
             document.getElementById('storyFrame').src = 'https://www.canva.com/design/' + canvaId + '/view?embed';
         } else {
-            document.body.innerHTML = '<h2 class="error-msg">Hindi mahanap ang kuwento. Bumalik sa main page.</h2>';
+            document.querySelector('.content-container').innerHTML = '<h2 class="error-msg">Hindi mahanap ang kuwento. Bumalik sa main page.</h2>';
+        }
+
+        // Word of the Day Script
+        var bicolWordsList = [
+            { word: '"Magayon"', trans: 'Translation: Beautiful / Lovely', meaning: 'Used to describe pleasant things, places, or people.' },
+            { word: '"Mabalos"', trans: 'Translation: Thank you', meaning: 'An expression of gratitude used in everyday Bicolano conversation.' },
+            { word: '"Maogma"', trans: 'Translation: Happy / Joyful', meaning: 'Used to express happiness, gladness, or pleasant feelings.' },
+            { word: '"Oragon"', trans: 'Translation: Strong / Flexible / Excellent', meaning: 'A iconic Bicolano term describing someone resilient, skilled, or impressive.' },
+            { word: '"Marhay"', trans: 'Translation: Good / Fine', meaning: 'Used in greetings like "Marhay na adalman" (Good day) or to state wellness.' },
+            { word: '"Namumutan"', trans: 'Translation: Beloved / Loved One', meaning: 'Derived from "suot" or "doot" expressing deep affection or love.' }
+        ];
+
+        function toggleMobileMenu() {
+            var menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        function openWotdModal() {
+            var today = new Date();
+            var dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+            var selected = bicolWordsList[dateSeed % bicolWordsList.length];
+
+            document.getElementById('wotdWord').textContent = selected.word;
+            document.getElementById('wotdTranslation').textContent = selected.trans;
+            document.getElementById('wotdMeaning').textContent = selected.meaning;
+
+            var modal = document.getElementById('wotdModal');
+            modal.style.display = 'flex';
+            setTimeout(function() { modal.style.opacity = '1'; }, 50);
+        }
+
+        function closeWotdModal() {
+            var modal = document.getElementById('wotdModal');
+            if (modal) {
+                modal.style.opacity = '0';
+                setTimeout(function() { modal.style.display = 'none'; }, 300);
+            }
         }
     </script>
 </body>
