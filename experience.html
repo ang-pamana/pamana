@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How's Your Experience — Pamana</title>
+    <link rel="icon" type="image/png" href="https://ang-pamana.github.io/pamana/pamanalogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-17P5Q860F3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-17P5Q860F3');
+    </script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; min-height: 100%; background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
+
+        /* Single Sticky Header Bar */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 52px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+
+        .brand-group { display: flex; align-items: center; gap: 10px; }
+        .brand-logo { height: 28px; width: 28px; border-radius: 50%; object-fit: cover; }
+        .brand-title { font-family: 'Georgia', serif; font-size: 16px; font-weight: 800; letter-spacing: 1px; color: #ff4e00; }
+
+        .desktop-nav {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            color: #222222;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+        .desktop-nav a:hover, .desktop-nav a.active { color: #ff4e00; }
+
+        /* DEDICATED EXPERIENCE BUTTON STYLING */
+        .nav-exp-btn {
+            background: linear-gradient(135deg, #ff4e00 0%, #ff8800 100%);
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 8px;
+            box-shadow: 0 3px 8px rgba(255, 78, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .nav-exp-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 12px rgba(255, 78, 0, 0.45);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn { display: none; background: none; border: none; color: #222222; font-size: 20px; cursor: pointer; padding: 4px; }
+        .mobile-dropdown { display: none; position: fixed; top: 52px; left: 0; width: 100%; background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998; }
+        .mobile-dropdown a, .mobile-dropdown button { color: #222222; text-decoration: none; padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0; text-align: left; background: none; border: none; width: 100%; cursor: pointer; }
+        .mobile-dropdown.open { display: flex; }
+
+        /* Modal Base */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            width: 100%;
+            max-width: 440px;
+            border-radius: 24px;
+            padding: 32px 24px 28px 24px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+            animation: popupAnim 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popupAnim { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .modal-close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; color: #777777; cursor: pointer; }
+
+        /* Rating & Feedback Elements */
+        .rating-badge { display: inline-block; background: #fff5f0; color: #ff4e00; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid #ffdcd0; }
+        .rating-title { font-family: 'Georgia', serif; font-size: 22px; font-weight: 800; color: #222222; margin-bottom: 6px; }
+        .rating-subtitle { font-size: 13px; color: #666666; margin-bottom: 20px; line-height: 1.4; }
+
+        .stars-group { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+        .stars-group i { font-size: 34px; color: #dddddd; cursor: pointer; transition: color 0.2s ease, transform 0.2s ease; }
+        .stars-group i:hover, .stars-group i.active { color: #ffb700; }
+        .stars-group i:hover { transform: scale(1.15); }
+
+        .rating-comment { width: 100%; height: 85px; border: 1px solid #e0e0e0; border-radius: 12px; padding: 12px; font-family: inherit; font-size: 13px; resize: none; outline: none; margin-bottom: 20px; transition: border-color 0.3s ease; }
+        .rating-comment:focus { border-color: #ff4e00; }
+
+        .rating-submit-btn { width: 100%; padding: 12px 20px; border: none; border-radius: 30px; background: linear-gradient(90deg, #ff4e00 0%, #ff8800 100%); color: #ffffff; font-size: 12.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; box-shadow: 0 6px 18px rgba(255, 78, 0, 0.35); transition: all 0.3s ease; }
+        .rating-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255, 78, 0, 0.45); }
+        .rating-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Container Layout */
+        .content-container { margin-top: 52px; width: 100%; min-height: calc(100vh - 52px); display: flex; justify-content: center; align-items: center; padding: 40px 20px; text-align: center; color: #ffffff; }
+
+        @media (max-width: 850px) {
+            .desktop-nav { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="brand-group">
+            <img src="https://ang-pamana.github.io/pamana/pamanalogo.png" alt="Logo" class="brand-logo">
+            <span class="brand-title">PAMANA</span>
+        </div>
+
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="culture.html">Culture</a>
+            <a href="environment.html">Environment</a>
+            <a href="heritage.html">Heritage</a>
+            <a href="feature.html">Feature</a>
+            <a href="team.html">Meet the Team</a>
+            
+            <button class="nav-exp-btn" onclick="openRatingModal()">
+                <i class="fa-solid fa-star"></i> How's Your Experience?
+            </button>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div class="mobile-dropdown" id="mobileMenu">
+        <button onclick="openRatingModal(); toggleMobileMenu();"><i class="fa-solid fa-star"></i> How's Your Experience?</button>
+        <a href="index.html">Home</a>
+        <a href="culture.html">Culture</a>
+        <a href="environment.html">Environment</a>
+        <a href="heritage.html">Heritage</a>
+        <a href="feature.html">Feature</a>
+        <a href="team.html">Meet the Team</a>
+    </div>
+
+    <!-- 5-Star Interactive Rating Pop-up Modal -->
+    <div class="modal-overlay" id="ratingModal" style="display: none;">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeRatingModal()"><i class="fa-solid fa-xmark"></i></button>
+            
+            <!-- Step 1: Star Rating -->
+            <div id="ratingStep1">
+                <span class="rating-badge"><i class="fa-solid fa-heart"></i> Your Feedback Matters</span>
+                <h2 class="rating-title">How's Your Experience?</h2>
+                <p class="rating-subtitle">Tap a star to rate your experience reading Pamana!</p>
+                
+                <div class="stars-group" id="starsGroup">
+                    <i class="fa-solid fa-star" onclick="setRating(1)"></i>
+                    <i class="fa-solid fa-star" onclick="setRating(2)"></i>
+                    <i class="fa-solid fa-star" onclick="setRating(3)"></i>
+                    <i class="fa-solid fa-star" onclick="setRating(4)"></i>
+                    <i class="fa-solid fa-star" onclick="setRating(5)"></i>
+                </div>
+            </div>
+
+            <!-- Step 2: Give Us Your Feedback -->
+            <div id="ratingStep2" style="display: none;">
+                <span class="rating-badge"><i class="fa-solid fa-comment-dots"></i> We'd Love to Hear More</span>
+                <h2 class="rating-title">Give Us Your Feedback</h2>
+                <p class="rating-subtitle" id="selectedStarText">Thank you for rating!</p>
+
+                <textarea class="rating-comment" id="ratingComment" placeholder="Write your feedback or thoughts here..."></textarea>
+                <button class="rating-submit-btn" id="submitBtn" onclick="submitRating()">SUBMIT FEEDBACK</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="content-container">
+        <div>
+            <h2>Share Your Reading Experience</h2>
+            <p style="margin-top: 10px; color: #aaaaaa;">Click the <strong>"How's Your Experience?"</strong> button in the navigation header to rate us!</p>
+        </div>
+    </main>
+
+    <script>
+        var FORMSPREE_URL = "https://formspree.io/f/xrppwbpz";
+        var selectedRating = 0;
+
+        function toggleMobileMenu() {
+            var menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        function openRatingModal() {
+            var modal = document.getElementById('ratingModal');
+            document.getElementById('ratingStep1').style.display = 'block';
+            document.getElementById('ratingStep2').style.display = 'none';
+            setRating(0);
+            document.getElementById('ratingComment').value = '';
+
+            modal.style.display = 'flex';
+            setTimeout(function() { modal.style.opacity = '1'; }, 50);
+        }
+
+        function closeRatingModal() {
+            var modal = document.getElementById('ratingModal');
+            if (modal) {
+                modal.style.opacity = '0';
+                setTimeout(function() { modal.style.display = 'none'; }, 300);
+            }
+        }
+
+        function setRating(rating) {
+            selectedRating = rating;
+            var stars = document.querySelectorAll('#starsGroup i');
+            stars.forEach(function(star, index) {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+
+            if (rating > 0) {
+                setTimeout(function() {
+                    document.getElementById('ratingStep1').style.display = 'none';
+                    document.getElementById('ratingStep2').style.display = 'block';
+                    document.getElementById('selectedStarText').textContent = "You gave us " + rating + " star" + (rating > 1 ? "s" : "") + "! Give us your feedback below:";
+                }, 300);
+            }
+        }
+
+        function submitRating() {
+            if (selectedRating === 0) {
+                alert("Pumili muna ng star rating bago mag-submit!");
+                return;
+            }
+
+            var comment = document.getElementById('ratingComment').value;
+            var submitBtn = document.getElementById('submitBtn');
+            
+            submitBtn.textContent = "SENDING...";
+            submitBtn.disabled = true;
+
+            fetch(FORMSPREE_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    Rating: selectedRating + " Stars",
+                    Feedback: comment || "No written feedback provided.",
+                    Page_Submitted: window.location.href,
+                    Submitted_At: new Date().toLocaleString()
+                })
+            })
+            .then(function(response) {
+                alert("Maraming salamat sa iyong " + selectedRating + "-star rating at feedback!");
+                closeRatingModal();
+            })
+            .catch(function(error) {
+                alert("Salamat sa feedback! Na-record na ang iyong rating.");
+                closeRatingModal();
+            })
+            .finally(function() {
+                submitBtn.textContent = "SUBMIT FEEDBACK";
+                submitBtn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
