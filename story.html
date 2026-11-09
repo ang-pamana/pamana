@@ -140,6 +140,44 @@
             border-color: transparent;
         }
 
+        /* CUSTOM TOAST NOTIFICATION STYLING */
+        .custom-toast {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10001;
+            background: #ffffff;
+            color: #222222;
+            padding: 14px 22px;
+            border-radius: 50px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid #ff4e00;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+
+        .custom-toast.show {
+            top: 70px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .toast-icon {
+            font-size: 20px;
+            color: #ff4e00;
+        }
+
+        .toast-message {
+            font-size: 13px;
+            font-weight: 700;
+            color: #222222;
+        }
+
         /* 2-Step Rating Modal Overlay */
         .modal-overlay {
             position: fixed;
@@ -230,6 +268,7 @@
             .desktop-nav { display: none; }
             .mobile-menu-btn { display: block; }
             .floating-back-btn { bottom: 16px; right: 16px; padding: 8px 14px; font-size: 11px; }
+            .custom-toast { width: 90%; justify-content: center; text-align: center; }
         }
     </style>
 </head>
@@ -275,6 +314,12 @@
     <a href="index.html" class="floating-back-btn" id="floatingBackBtn">
         <i class="fa-solid fa-arrow-left"></i> <span id="floatingBackText">Back to Stories</span>
     </a>
+
+    <!-- CUSTOM CONFIRMATION TOAST NOTIFICATION -->
+    <div class="custom-toast" id="customToast">
+        <i class="fa-solid fa-circle-check toast-icon"></i>
+        <span class="toast-message" id="toastMessage">Maraming salamat sa iyong feedback!</span>
+    </div>
 
     <!-- 5-Star Rating & Feedback Pop-up Modal -->
     <div class="modal-overlay" id="ratingModal" style="display: none;">
@@ -402,6 +447,16 @@
             }
         }
 
+        function showToast(msg) {
+            var toast = document.getElementById('customToast');
+            var toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
         function setRating(rating) {
             selectedRating = rating;
             var stars = document.querySelectorAll('#starsGroup i');
@@ -424,7 +479,7 @@
 
         function submitRating() {
             if (selectedRating === 0) {
-                alert("Pumili muna ng star rating bago mag-submit!");
+                showToast("Pumili muna ng star rating bago mag-submit!");
                 return;
             }
 
@@ -448,12 +503,12 @@
                 })
             })
             .then(function(response) {
-                alert("Maraming salamat sa iyong " + selectedRating + "-star rating at feedback!");
                 closeRatingModal();
+                showToast("Maraming salamat sa iyong " + selectedRating + "-star rating at feedback!");
             })
             .catch(function(error) {
-                alert("Salamat sa feedback! Na-record na ang iyong rating.");
                 closeRatingModal();
+                showToast("Salamat sa feedback! Na-record na ang iyong rating.");
             })
             .finally(function() {
                 submitBtn.textContent = "SUBMIT FEEDBACK";
