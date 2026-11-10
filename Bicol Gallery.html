@@ -20,7 +20,7 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; min-height: 100%; background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff; overflow-x: hidden; }
 
-        /* SINGLE STICKY HEADER BAR */
+        /* STICKY HEADER BAR */
         .sticky-header {
             position: fixed;
             top: 0;
@@ -101,7 +101,7 @@
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
-        /* GALLERY LAYOUT */
+        /* GALLERY CONTAINER */
         .gallery-container {
             margin-top: 52px;
             max-width: 1280px;
@@ -220,7 +220,7 @@
         }
 
         .photo-title {
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 6px;
@@ -234,6 +234,21 @@
             justify-content: space-between;
         }
 
+        /* EMPTY STATE NOTICE */
+        .empty-province-notice {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: #181818;
+            border-radius: 20px;
+            border: 1px dashed #333333;
+        }
+
+        .empty-province-notice i { font-size: 40px; color: #ff4e00; margin-bottom: 12px; }
+        .empty-province-notice h3 { font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 6px; }
+        .empty-province-notice p { font-size: 13px; color: #888888; }
+
         /* LIGHTBOX MODAL */
         .lightbox-modal {
             position: fixed;
@@ -241,7 +256,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.88);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 10005;
@@ -319,10 +334,7 @@
             padding-top: 12px;
         }
 
-        .lightbox-submeta i {
-            color: #ff4e00;
-            margin-right: 6px;
-        }
+        .lightbox-submeta i { color: #ff4e00; margin-right: 6px; }
 
         .lightbox-close-btn {
             position: absolute;
@@ -342,7 +354,109 @@
 
         .lightbox-close-btn:hover { background: #ff4e00; }
 
-        /* RATING & TOAST */
+        /* WELCOME REMARKS MODAL STYLING */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10010;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .welcome-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .welcome-card {
+            background: #ffffff;
+            color: #222222;
+            width: 100%;
+            max-width: 460px;
+            border-radius: 24px;
+            padding: 32px 28px 28px 28px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            animation: popupAnim 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        @keyframes popupAnim { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .welcome-icon-box {
+            width: 60px;
+            height: 60px;
+            background: #fff5f0;
+            color: #ff4e00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin: 0 auto 16px auto;
+            border: 2px solid #ffdcd0;
+        }
+
+        .welcome-title {
+            font-family: 'Georgia', serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #222222;
+            margin-bottom: 8px;
+        }
+
+        .welcome-text {
+            font-size: 13.5px;
+            color: #555555;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .welcome-highlight {
+            background: #fff5f0;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border-left: 3px solid #ff4e00;
+            font-size: 12px;
+            color: #ff4e00;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .welcome-btn {
+            width: 100%;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #ff4e00 0%, #ff8800 100%);
+            color: #ffffff;
+            font-size: 12.5px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(255, 78, 0, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .welcome-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(255, 78, 0, 0.45);
+        }
+
+        /* RATING & TOAST MODALS */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10000; padding: 20px; transition: opacity 0.3s ease; }
         .modal-box { background: #ffffff; width: 100%; max-width: 440px; border-radius: 24px; padding: 32px 24px 28px 24px; text-align: center; position: relative; color: #222222; }
         .modal-close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; color: #777777; cursor: pointer; }
@@ -401,11 +515,29 @@
         <button onclick="openRatingModal(); toggleMobileMenu();"><i class="fa-solid fa-star"></i> How's Your Experience?</button>
     </div>
 
-    <!-- MAIN GALLERY -->
+    <!-- WELCOME REMARKS MODAL -->
+    <div class="welcome-overlay" id="welcomeModal">
+        <div class="welcome-card">
+            <div class="welcome-icon-box">
+                <i class="fa-solid fa-camera-retro"></i>
+            </div>
+            <h2 class="welcome-title">Maligayang Pagdating sa Bicol Gallery!</h2>
+            <p class="welcome-text">
+                Tuklasin ang kagandahan ng Rehiyon ng Bicol sa pamamagitan ng aming visual collection.
+            </p>
+            <div class="welcome-highlight">
+                <i class="fa-solid fa-shield-halved" style="margin-right: 6px;"></i>
+                Ang lahat ng larawan sa gallery na ito ay orihinal na kuha ng mga miyembro ng Pamana Team.
+            </div>
+            <button class="welcome-btn" onclick="closeWelcomeModal()">TUMULOY SA GALLERY</button>
+        </div>
+    </div>
+
+    <!-- MAIN GALLERY CONTAINER -->
     <main class="gallery-container">
         <div class="gallery-header">
             <h1>Bicol Region Gallery</h1>
-            <p>Explore the stunning landscapes, culture, and heritage of Bicol across its 6 provinces.</p>
+            <p>Explore the stunning landscapes, culture, and heritage of Bicol captured by the Pamana Team.</p>
         </div>
 
         <!-- Province Filter Buttons -->
@@ -419,149 +551,178 @@
             <button class="filter-btn" onclick="filterProvince('sorsogon')">Sorsogon</button>
         </div>
 
-        <!-- Photo Grid Container -->
+        <!-- Photo Grid Container (37 Images Total) -->
         <div class="gallery-grid" id="galleryGrid">
             
-            <!-- ALBAY PHOTOS (8 Images) -->
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW', 'Albay Heritage & Scenery Photo 1', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW" alt="Albay Photo 1" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 1</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
+            <!-- ALBAY PHOTOS (28 Images) -->
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW', 'Albay Heritage Photo 1', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW" alt="Albay Photo 1" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU', 'Albay Heritage Photo 2', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU" alt="Albay Photo 2" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 2</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T', 'Albay Heritage Photo 3', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T" alt="Albay Photo 3" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 3</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc', 'Albay Heritage Photo 4', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc" alt="Albay Photo 4" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 4</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj', 'Albay Heritage Photo 5', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj" alt="Albay Photo 5" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 5</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV', 'Albay Heritage Photo 6', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV" alt="Albay Photo 6" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 6</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H', 'Albay Heritage Photo 7', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H" alt="Albay Photo 7" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 7</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1bltdbSd-00cIRz8LmUld1aFzhJPuso_z', 'Albay Heritage Photo 8', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1bltdbSd-00cIRz8LmUld1aFzhJPuso_z" alt="Albay Photo 8" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 8</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1I-IVsgIF9Cz33OG3zajTG3shqlDu7mz5', 'Albay Heritage Photo 9', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1I-IVsgIF9Cz33OG3zajTG3shqlDu7mz5" alt="Albay Photo 9" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 9</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1QuIOMnPvYCcM4Je_pkefNlb5Sd3uPihM', 'Albay Heritage Photo 10', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1QuIOMnPvYCcM4Je_pkefNlb5Sd3uPihM" alt="Albay Photo 10" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 10</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1Ja-am9yVZXGefiNNdt86BlQXe4wJcTJm', 'Albay Heritage Photo 11', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1Ja-am9yVZXGefiNNdt86BlQXe4wJcTJm" alt="Albay Photo 11" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 11</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1xJO55HmYdOcoOBCkKvOPRle_QxSOHPEG', 'Albay Heritage Photo 12', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1xJO55HmYdOcoOBCkKvOPRle_QxSOHPEG" alt="Albay Photo 12" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 12</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1doIKgz02eP4MmhHGPwnm-e1eghddzBM-', 'Albay Heritage Photo 13', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1doIKgz02eP4MmhHGPwnm-e1eghddzBM-" alt="Albay Photo 13" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 13</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/13po7nBj4EGwGg2YapPB0iCP0MrbfC5M1', 'Albay Heritage Photo 14', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/13po7nBj4EGwGg2YapPB0iCP0MrbfC5M1" alt="Albay Photo 14" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 14</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1TN02kcCTMFQnxiqQqEDOHiht3ojoNPUy', 'Albay Heritage Photo 15', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1TN02kcCTMFQnxiqQqEDOHiht3ojoNPUy" alt="Albay Photo 15" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 15</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1QT2eugPwjFqvRtH4mnGMzl_YRQwQLNl4', 'Albay Heritage Photo 16', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1QT2eugPwjFqvRtH4mnGMzl_YRQwQLNl4" alt="Albay Photo 16" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 16</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1JaJKiMMcQ7pXw-R74qXSHv6A5o22PicV', 'Albay Heritage Photo 17', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1JaJKiMMcQ7pXw-R74qXSHv6A5o22PicV" alt="Albay Photo 17" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 17</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1CVzMuNUIoSw3gLfS91V6tnKmmJlu3f34', 'Albay Heritage Photo 18', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1CVzMuNUIoSw3gLfS91V6tnKmmJlu3f34" alt="Albay Photo 18" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 18</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/11z9kGfVVZOlPy2A85KmY0Qa4dEELFqQN', 'Albay Heritage Photo 19', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/11z9kGfVVZOlPy2A85KmY0Qa4dEELFqQN" alt="Albay Photo 19" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 19</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1GkBoi2OYnYRcmpmNCnA_-Ra3Dds-1YBc', 'Albay Heritage Photo 20', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1GkBoi2OYnYRcmpmNCnA_-Ra3Dds-1YBc" alt="Albay Photo 20" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 20</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1DfMiMB9xkZaHaqwXorhouElcGWjl2f_V', 'Albay Heritage Photo 21', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1DfMiMB9xkZaHaqwXorhouElcGWjl2f_V" alt="Albay Photo 21" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 21</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1-EoPMBWzJRZFmJO09jIm8dgm8K1zBlv_', 'Albay Heritage Photo 22', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1-EoPMBWzJRZFmJO09jIm8dgm8K1zBlv_" alt="Albay Photo 22" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 22</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1qGPx5SDukbCrhWdZwm0LwrVXBdDruKRP', 'Albay Heritage Photo 23', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1qGPx5SDukbCrhWdZwm0LwrVXBdDruKRP" alt="Albay Photo 23" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 23</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1dphiAnGvtRtsvm3mn_CKxywflfRzkgtI', 'Albay Heritage Photo 24', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1dphiAnGvtRtsvm3mn_CKxywflfRzkgtI" alt="Albay Photo 24" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 24</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1maCC_QzXCho6TerqKqkHij4HtByN4Gvx', 'Albay Heritage Photo 25', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1maCC_QzXCho6TerqKqkHij4HtByN4Gvx" alt="Albay Photo 25" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 25</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1qUK7XpZEk4fFp-8PRi861rbcq2G3pnfb', 'Albay Heritage Photo 26', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1qUK7XpZEk4fFp-8PRi861rbcq2G3pnfb" alt="Albay Photo 26" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 26</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1wbbT_pJk4yrW_2Wb00mQGxCbREw6zWiD', 'Albay Heritage Photo 27', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1wbbT_pJk4yrW_2Wb00mQGxCbREw6zWiD" alt="Albay Photo 27" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 27</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1eBxHocRSvKpSzjhv050VlgnfEzkZs0Wr', 'Albay Heritage Photo 28', 'Albay', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1eBxHocRSvKpSzjhv050VlgnfEzkZs0Wr" alt="Albay Photo 28" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 28</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
             </div>
 
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU', 'Albay Heritage & Scenery Photo 2', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU" alt="Albay Photo 2" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 2</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
+            <!-- SORSOGON PHOTOS (7 Images) -->
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm', 'Sorsogon Scenery Photo 1', 'Sorsogon', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm" alt="Sorsogon Photo 1" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1Al8tTdUDYm4fKVNa7h_3VhfA7vYWQGFI', 'Sorsogon Scenery Photo 2', 'Sorsogon', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1Al8tTdUDYm4fKVNa7h_3VhfA7vYWQGFI" alt="Sorsogon Photo 2" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 2</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1phK_dmEGdPIbrYMF2Cart8b3o48Hoz9K', 'Sorsogon Scenery Photo 3', 'Sorsogon', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1phK_dmEGdPIbrYMF2Cart8b3o48Hoz9K" alt="Sorsogon Photo 3" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 3</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1we_cgHvQ-KMzdUGKsC_bpXyVB0IW78Iv', 'Sorsogon Scenery Photo 4', 'Sorsogon', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1we_cgHvQ-KMzdUGKsC_bpXyVB0IW78Iv" alt="Sorsogon Photo 4" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 4</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1h0O1MKtSmCQPpRH9-2vTt7u2qYJ70Rah', 'Sorsogon Scenery Photo 5', 'Sorsogon', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1h0O1MKtSmCQPpRH9-2vTt7u2qYJ70Rah" alt="Sorsogon Photo 5" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 5</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1VDSRW5g17-YVkgbRKjSQgvaSGqbLBRde', 'Sorsogon Scenery Photo 6', 'Sorsogon', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1VDSRW5g17-YVkgbRKjSQgvaSGqbLBRde" alt="Sorsogon Photo 6" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 6</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
             </div>
 
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T', 'Albay Heritage & Scenery Photo 3', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T" alt="Albay Photo 3" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 3</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
+            <!-- CATANDUANES PHOTO (1 Image) -->
+            <div class="photo-card" data-province="catanduanes" onclick="openLightbox('https://lh3.googleusercontent.com/d/1tpEju6l-vcb0QFyLwPwCjYjYBsxtDSlg', 'Catanduanes Island Photo 1', 'Catanduanes', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Catanduanes</span><img src="https://lh3.googleusercontent.com/d/1tpEju6l-vcb0QFyLwPwCjYjYBsxtDSlg" alt="Catanduanes Photo 1" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Catanduanes Island Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
             </div>
 
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc', 'Albay Heritage & Scenery Photo 4', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc" alt="Albay Photo 4" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 4</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
+            <!-- CAMARINES SUR PHOTOS (4 Images) -->
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1DI594_GynFXYCzbl3XeM2fiBba14vCrh', 'Camarines Sur Heritage Photo 1', 'Camarines Sur', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1DI594_GynFXYCzbl3XeM2fiBba14vCrh" alt="CamSur Photo 1" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1zj4zantLfyzqEd7y7i096v79FUxSEMHo', 'Camarines Sur Heritage Photo 2', 'Camarines Sur', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1zj4zantLfyzqEd7y7i096v79FUxSEMHo" alt="CamSur Photo 2" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 2</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1sGXsp7Z51nw4eyY9mlEdgTCexqMediJC', 'Camarines Sur Heritage Photo 3', 'Camarines Sur', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1sGXsp7Z51nw4eyY9mlEdgTCexqMediJC" alt="CamSur Photo 3" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 3</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            </div>
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1lfKy1MWP3221q_1hH_I5J3O7vtU88GXx', 'Camarines Sur Heritage Photo 4', 'Camarines Sur', 'Pamana Team', '2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1lfKy1MWP3221q_1hH_I5J3O7vtU88GXx" alt="CamSur Photo 4" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 4</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
             </div>
 
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1-TUJ89J7YWPMtsqcb4H6TOBOuoRoxkpA', 'Albay Heritage & Scenery Photo 5', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1-TUJ89J7YWPMtsqcb4H6TOBOuoRoxkpA" alt="Albay Photo 5" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 5</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj', 'Albay Heritage & Scenery Photo 6', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj" alt="Albay Photo 6" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 6</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV', 'Albay Heritage & Scenery Photo 7', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV" alt="Albay Photo 7" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 7</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H', 'Albay Heritage & Scenery Photo 8', 'Albay', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Albay</span>
-                    <img src="https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H" alt="Albay Photo 8" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Albay Heritage & Scenery Photo 8</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SORSOGON PHOTOS (2 Images) -->
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm', 'Sorsogon Heritage & Scenery Photo 1', 'Sorsogon', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Sorsogon</span>
-                    <img src="https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm" alt="Sorsogon Photo 1" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Sorsogon Heritage & Scenery Photo 1</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm', 'Sorsogon Heritage & Scenery Photo 2', 'Sorsogon', 'Pamana Contributor', '2024')">
-                <div class="photo-img-wrapper">
-                    <span class="photo-badge">Sorsogon</span>
-                    <img src="https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm" alt="Sorsogon Photo 2" loading="lazy">
-                </div>
-                <div class="photo-info">
-                    <div class="photo-title">Sorsogon Heritage & Scenery Photo 2</div>
-                    <div class="photo-meta">
-                        <span><i class="fa-solid fa-camera"></i> Pamana Contributor</span>
-                        <span><i class="fa-solid fa-calendar-day"></i> 2024</span>
-                    </div>
-                </div>
+            <!-- EMPTY NOTICE FOR PROVINCES WITH NO PHOTOS (ENGLISH VERSION) -->
+            <div class="empty-province-notice" id="emptyNotice">
+                <i class="fa-solid fa-images"></i>
+                <h3>No Photos Available Yet</h3>
+                <p>Stay tuned! Photos for this province will be shared by the Pamana Team soon.</p>
             </div>
 
         </div>
@@ -618,26 +779,50 @@
     </div>
 
     <script>
+        // Trigger Welcome Modal automatically on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            var welcomeModal = document.getElementById('welcomeModal');
+            setTimeout(function() {
+                welcomeModal.classList.add('show');
+            }, 300);
+        });
+
+        function closeWelcomeModal() {
+            var welcomeModal = document.getElementById('welcomeModal');
+            welcomeModal.classList.remove('show');
+        }
+
+        // Province Filter Logic
         function filterProvince(province) {
             var buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(function(btn) { btn.classList.remove('active'); });
             event.target.classList.add('active');
 
             var cards = document.querySelectorAll('.photo-card');
+            var visibleCount = 0;
+
             cards.forEach(function(card) {
                 if (province === 'all' || card.getAttribute('data-province') === province) {
                     card.style.display = 'block';
+                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
+
+            var emptyNotice = document.getElementById('emptyNotice');
+            if (visibleCount === 0) {
+                emptyNotice.style.display = 'block';
+            } else {
+                emptyNotice.style.display = 'none';
+            }
         }
 
         function openLightbox(imgSrc, desc, province, photographer, dateTaken) {
             document.getElementById('lightboxImg').src = imgSrc;
             document.getElementById('lightboxDesc').textContent = desc;
             document.getElementById('lightboxProvince').textContent = province;
-            document.getElementById('lightboxPhotographer').textContent = photographer || 'Pamana Contributor';
+            document.getElementById('lightboxPhotographer').textContent = photographer || 'Pamana Team';
             document.getElementById('lightboxDate').textContent = dateTaken || '2024';
 
             var modal = document.getElementById('lightboxModal');
