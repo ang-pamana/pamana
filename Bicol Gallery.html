@@ -18,7 +18,7 @@
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; min-height: 100%; background: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff; overflow-x: hidden; }
+        html, body { width: 100%; min-height: 100%; background: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #222222; overflow-x: hidden; }
 
         /* STICKY HEADER BAR */
         .sticky-header {
@@ -33,7 +33,7 @@
             justify-content: space-between;
             padding: 0 20px;
             z-index: 9999;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .brand-group { display: flex; align-items: center; gap: 10px; }
@@ -96,7 +96,7 @@
         }
 
         .mobile-menu-btn { display: none; background: none; border: none; color: #222222; font-size: 20px; cursor: pointer; padding: 4px; }
-        .mobile-dropdown { display: none; position: fixed; top: 52px; left: 0; width: 100%; background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9998; }
+        .mobile-dropdown { display: none; position: fixed; top: 52px; left: 0; width: 100%; background: #ffffff; flex-direction: column; border-bottom: 3px solid #ff4e00; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 9998; }
         .mobile-dropdown a, .mobile-dropdown button { color: #222222; text-decoration: none; padding: 12px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #f0f0f0; text-align: left; background: none; border: none; width: 100%; cursor: pointer; }
         .mobile-dropdown a.active, .mobile-dropdown a:hover, .mobile-dropdown button:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
@@ -125,7 +125,7 @@
 
         .gallery-header p {
             font-size: 14px;
-            color: #aaaaaa;
+            color: #666666;
         }
 
         /* PROVINCE FILTER BUTTONS */
@@ -138,9 +138,9 @@
         }
 
         .filter-btn {
-            background: #222222;
-            color: #dddddd;
-            border: 1px solid #333333;
+            background: #ffffff;
+            color: #444444;
+            border: 1px solid #dddddd;
             padding: 8px 18px;
             border-radius: 30px;
             font-size: 12px;
@@ -148,6 +148,7 @@
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
 
         .filter-btn:hover, .filter-btn.active {
@@ -165,18 +166,19 @@
         }
 
         .photo-card {
-            background: #1e1e1e;
+            background: #ffffff;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #e9ecef;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         }
 
         .photo-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 25px rgba(255, 78, 0, 0.15);
             border-color: #ff4e00;
         }
 
@@ -185,7 +187,7 @@
             height: 220px;
             overflow: hidden;
             position: relative;
-            background: #111111;
+            background: #f1f3f5;
         }
 
         .photo-img-wrapper img {
@@ -203,7 +205,7 @@
             position: absolute;
             top: 12px;
             left: 12px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(255, 255, 255, 0.9);
             color: #ff4e00;
             padding: 4px 12px;
             border-radius: 20px;
@@ -212,7 +214,8 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 78, 0, 0.4);
+            border: 1px solid rgba(255, 78, 0, 0.3);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .photo-info {
@@ -222,14 +225,14 @@
         .photo-title {
             font-size: 13.5px;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 6px;
-            line-height: 1.3;
+            color: #222222;
+            margin-bottom: 8px;
+            line-height: 1.35;
         }
 
         .photo-meta {
             font-size: 11px;
-            color: #888888;
+            color: #777777;
             display: flex;
             justify-content: space-between;
         }
@@ -240,14 +243,15 @@
             grid-column: 1 / -1;
             text-align: center;
             padding: 60px 20px;
-            background: #181818;
+            background: #ffffff;
             border-radius: 20px;
-            border: 1px dashed #333333;
+            border: 1px dashed #cccccc;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         }
 
         .empty-province-notice i { font-size: 40px; color: #ff4e00; margin-bottom: 12px; }
-        .empty-province-notice h3 { font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 6px; }
-        .empty-province-notice p { font-size: 13px; color: #888888; }
+        .empty-province-notice h3 { font-size: 18px; font-weight: 800; color: #222222; margin-bottom: 6px; }
+        .empty-province-notice p { font-size: 13px; color: #666666; }
 
         /* LIGHTBOX MODAL */
         .lightbox-modal {
@@ -256,7 +260,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.88);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 10005;
@@ -275,14 +279,13 @@
         }
 
         .lightbox-content {
-            background: #181818;
+            background: #ffffff;
             border-radius: 20px;
             max-width: 850px;
             width: 100%;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            border: 1px solid #333333;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
         }
@@ -290,7 +293,7 @@
         .lightbox-img-holder {
             width: 100%;
             max-height: 480px;
-            background: #000000;
+            background: #111111;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -305,6 +308,7 @@
 
         .lightbox-details {
             padding: 20px 24px;
+            background: #ffffff;
         }
 
         .lightbox-province-tag {
@@ -320,7 +324,7 @@
         .lightbox-desc {
             font-size: 16px;
             font-weight: 700;
-            color: #ffffff;
+            color: #222222;
             margin-bottom: 12px;
             line-height: 1.4;
         }
@@ -329,8 +333,8 @@
             display: flex;
             gap: 20px;
             font-size: 12px;
-            color: #aaaaaa;
-            border-top: 1px solid #2a2a2a;
+            color: #666666;
+            border-top: 1px solid #eeeeee;
             padding-top: 12px;
         }
 
@@ -361,7 +365,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 10010;
@@ -387,7 +391,7 @@
             border-radius: 24px;
             padding: 32px 28px 28px 28px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             animation: popupAnim 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
@@ -469,7 +473,7 @@
         .rating-comment { width: 100%; height: 85px; border: 1px solid #e0e0e0; border-radius: 12px; padding: 12px; font-size: 13px; outline: none; margin-bottom: 20px; }
         .rating-submit-btn { width: 100%; padding: 12px 20px; border: none; border-radius: 30px; background: linear-gradient(90deg, #ff4e00 0%, #ff8800 100%); color: #ffffff; font-weight: 800; cursor: pointer; }
 
-        .custom-toast { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); z-index: 10001; background: #ffffff; color: #222222; padding: 14px 22px; border-radius: 50px; display: flex; align-items: center; gap: 12px; border: 2px solid #ff4e00; opacity: 0; transition: all 0.4s ease; }
+        .custom-toast { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); z-index: 10001; background: #ffffff; color: #222222; padding: 14px 22px; border-radius: 50px; display: flex; align-items: center; gap: 12px; border: 2px solid #ff4e00; opacity: 0; transition: all 0.4s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .custom-toast.show { top: 70px; opacity: 1; }
 
         @media (max-width: 850px) { .desktop-nav { display: none; } .mobile-menu-btn { display: block; } }
@@ -555,167 +559,163 @@
         <div class="gallery-grid" id="galleryGrid">
             
             <!-- ALBAY PHOTOS (28 Images) -->
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW', 'Albay Heritage Photo 1', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW" alt="Albay Photo 1" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW', 'Aquilino P. Bonto Building at Bicol University Main Campus', 'Albay', 'Jovin Leron', 'February 06, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1yXH1oCkLT5Z8Dzcyl67mqbGKtPSv_AMW" alt="Aquilino P. Bonto Building at Bicol University Main Campus" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Aquilino P. Bonto Building at Bicol University Main Campus</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Feb 06, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU', 'Albay Heritage Photo 2', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU" alt="Albay Photo 2" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 2</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU', 'BU FWP: Festival Competition at Bicol University', 'Albay', 'Jovin Leron', 'August 13, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1XzVKvTcAgn3IgIgcFYlnoecePdpw0rDU" alt="BU FWP: Festival Competition at Bicol University" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">BU FWP: Festival Competition at Bicol University</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Aug 13, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T', 'Albay Heritage Photo 3', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T" alt="Albay Photo 3" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 3</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T', 'Fisherfolk at Sawangan, Legazpi City', 'Albay', 'Jovin Leron', 'August 07, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1l3t9jNvluYQChOzQF_1uedLpZBYL0A9T" alt="Fisherfolk at Sawangan, Legazpi City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Fisherfolk at Sawangan, Legazpi City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Aug 07, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc', 'Albay Heritage Photo 4', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc" alt="Albay Photo 4" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 4</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc', 'Kiwot Bees\' Bao Hive at Nelly\'s Garden and Bee Farm', 'Albay', 'Jovin Leron', 'April 22, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1GztQZw-RjzNu_n6_iuQJMzElN2pnYBXc" alt="Kiwot Bees\' Bao Hive at Nelly\'s Garden and Bee Farm" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Kiwot Bees' Bao Hive at Nelly's Garden and Bee Farm</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Apr 22, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj', 'Albay Heritage Photo 5', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj" alt="Albay Photo 5" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 5</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj', 'Mipajo Viewdeck and Camping Site at Banquerohan, Legazpi City', 'Albay', 'Jovin Leron', 'January 15, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1hJ0eUtdYTLwxSqh5sFPtnRAdOnzSuZFj" alt="Mipajo Viewdeck and Camping Site at Banquerohan, Legazpi City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Mipajo Viewdeck and Camping Site at Banquerohan, Legazpi City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Jan 15, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV', 'Albay Heritage Photo 6', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV" alt="Albay Photo 6" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 6</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV', 'Mira\'s Flower Farm at Alcala, Daraga, Albay', 'Albay', 'Jovin Leron', 'October 28, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1VJXqQslqsxAonq8_BDVUvAtf210jTNiV" alt="Mira\'s Flower Farm at Alcala, Daraga, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Mira's Flower Farm at Alcala, Daraga, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Oct 28, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H', 'Albay Heritage Photo 7', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H" alt="Albay Photo 7" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 7</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H', 'Sunrise View of Albay Provincial Hall', 'Albay', 'Jovin Leron', 'August 17, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1TEP3zVWaE7DQJ61hhyao2nrQCmTbH36H" alt="Sunrise View of Albay Provincial Hall" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sunrise View of Albay Provincial Hall</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Aug 17, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1bltdbSd-00cIRz8LmUld1aFzhJPuso_z', 'Albay Heritage Photo 8', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1bltdbSd-00cIRz8LmUld1aFzhJPuso_z" alt="Albay Photo 8" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 8</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1I-IVsgIF9Cz33OG3zajTG3shqlDu7mz5', 'A silhouette view of the tree at Gabawan, Daraga, Albay', 'Albay', 'Shyr Biton', 'August 13, 2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1I-IVsgIF9Cz33OG3zajTG3shqlDu7mz5" alt="A silhouette view of the tree at Gabawan, Daraga, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">A silhouette view of the tree at Gabawan, Daraga, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Shyr Biton</span><span><i class="fa-solid fa-calendar-day"></i> Aug 13, 2024</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1I-IVsgIF9Cz33OG3zajTG3shqlDu7mz5', 'Albay Heritage Photo 9', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1I-IVsgIF9Cz33OG3zajTG3shqlDu7mz5" alt="Albay Photo 9" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 9</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1QuIOMnPvYCcM4Je_pkefNlb5Sd3uPihM', 'Bicol University College of Medicine Building at Daraga, Albay', 'Albay', 'Rose Anne Mae A Alejo', 'August 25, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1QuIOMnPvYCcM4Je_pkefNlb5Sd3uPihM" alt="Bicol University College of Medicine Building at Daraga, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Bicol University College of Medicine Building at Daraga, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Rose Anne Mae A Alejo</span><span><i class="fa-solid fa-calendar-day"></i> Aug 25, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1QuIOMnPvYCcM4Je_pkefNlb5Sd3uPihM', 'Albay Heritage Photo 10', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1QuIOMnPvYCcM4Je_pkefNlb5Sd3uPihM" alt="Albay Photo 10" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 10</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1Ja-am9yVZXGefiNNdt86BlQXe4wJcTJm', 'Clouds during sunset hours at P3, Gabawan, Daraga, Albay', 'Albay', 'Shyr Biton', 'July 12, 2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1Ja-am9yVZXGefiNNdt86BlQXe4wJcTJm" alt="Clouds during sunset hours at P3, Gabawan, Daraga, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Clouds during sunset hours at P3, Gabawan, Daraga, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Shyr Biton</span><span><i class="fa-solid fa-calendar-day"></i> Jul 12, 2024</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1Ja-am9yVZXGefiNNdt86BlQXe4wJcTJm', 'Albay Heritage Photo 11', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1Ja-am9yVZXGefiNNdt86BlQXe4wJcTJm" alt="Albay Photo 11" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 11</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1xJO55HmYdOcoOBCkKvOPRle_QxSOHPEG', 'Cone-shaped green hills from Quitinday Green Hills, Jovellar, Albay', 'Albay', 'Sarah Jean Ventura', 'January 14, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1xJO55HmYdOcoOBCkKvOPRle_QxSOHPEG" alt="Cone-shaped green hills from Quitinday Green Hills, Jovellar, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Cone-shaped green hills from Quitinday Green Hills, Jovellar, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Jan 14, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1xJO55HmYdOcoOBCkKvOPRle_QxSOHPEG', 'Albay Heritage Photo 12', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1xJO55HmYdOcoOBCkKvOPRle_QxSOHPEG" alt="Albay Photo 12" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 12</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1doIKgz02eP4MmhHGPwnm-e1eghddzBM-', 'FarmPlate at Brgy. Gabawan, Daraga, Albay', 'Albay', 'Alexandra Hera Lumibao', 'July 6, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1doIKgz02eP4MmhHGPwnm-e1eghddzBM-" alt="FarmPlate at Brgy. Gabawan, Daraga, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">FarmPlate at Brgy. Gabawan, Daraga, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Alexandra Hera Lumibao</span><span><i class="fa-solid fa-calendar-day"></i> Jul 6, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1doIKgz02eP4MmhHGPwnm-e1eghddzBM-', 'Albay Heritage Photo 13', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1doIKgz02eP4MmhHGPwnm-e1eghddzBM-" alt="Albay Photo 13" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 13</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/13po7nBj4EGwGg2YapPB0iCP0MrbfC5M1', 'Front view of Vera Falls from Malilipot, Albay', 'Albay', 'Sarah Jean Ventura', 'June 16, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/13po7nBj4EGwGg2YapPB0iCP0MrbfC5M1" alt="Front view of Vera Falls from Malilipot, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Front view of Vera Falls from Malilipot, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Jun 16, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/13po7nBj4EGwGg2YapPB0iCP0MrbfC5M1', 'Albay Heritage Photo 14', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/13po7nBj4EGwGg2YapPB0iCP0MrbfC5M1" alt="Albay Photo 14" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 14</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1TN02kcCTMFQnxiqQqEDOHiht3ojoNPUy', 'Jovellar River at Jovellar Underground River, Falls, Caves, and Rainforest', 'Albay', 'Shyr Biton', 'June 19, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1TN02kcCTMFQnxiqQqEDOHiht3ojoNPUy" alt="Jovellar River at Jovellar Underground River, Falls, Caves, and Rainforest" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Jovellar River at Jovellar Underground River, Falls, Caves, and Rainforest</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Shyr Biton</span><span><i class="fa-solid fa-calendar-day"></i> Jun 19, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1TN02kcCTMFQnxiqQqEDOHiht3ojoNPUy', 'Albay Heritage Photo 15', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1TN02kcCTMFQnxiqQqEDOHiht3ojoNPUy" alt="Albay Photo 15" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 15</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1QT2eugPwjFqvRtH4mnGMzl_YRQwQLNl4', 'Lake at Cagaray, Bacacay', 'Albay', 'Rose Anne Mae A Alejo', 'April 19, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1QT2eugPwjFqvRtH4mnGMzl_YRQwQLNl4" alt="Lake at Cagaray, Bacacay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Lake at Cagaray, Bacacay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Rose Anne Mae A Alejo</span><span><i class="fa-solid fa-calendar-day"></i> Apr 19, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1QT2eugPwjFqvRtH4mnGMzl_YRQwQLNl4', 'Albay Heritage Photo 16', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1QT2eugPwjFqvRtH4mnGMzl_YRQwQLNl4" alt="Albay Photo 16" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 16</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1JaJKiMMcQ7pXw-R74qXSHv6A5o22PicV', 'Morning light over the hills of Cagraray Island', 'Albay', 'Sarah Jean Ventura', 'February 26, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1JaJKiMMcQ7pXw-R74qXSHv6A5o22PicV" alt="Morning light over the hills of Cagraray Island" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Morning light over the hills of Cagraray Island</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Feb 26, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1JaJKiMMcQ7pXw-R74qXSHv6A5o22PicV', 'Albay Heritage Photo 17', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1JaJKiMMcQ7pXw-R74qXSHv6A5o22PicV" alt="Albay Photo 17" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 17</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1CVzMuNUIoSw3gLfS91V6tnKmmJlu3f34', 'Mt. Mayon view during Sunset hours at Purok 3, Gabawan, Daraga, Albay', 'Albay', 'Shyr Biton', 'April 4, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1CVzMuNUIoSw3gLfS91V6tnKmmJlu3f34" alt="Mt. Mayon view during Sunset hours at Purok 3, Gabawan, Daraga, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Mt. Mayon view during Sunset hours at Purok 3, Gabawan, Daraga, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Shyr Biton</span><span><i class="fa-solid fa-calendar-day"></i> Apr 4, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1CVzMuNUIoSw3gLfS91V6tnKmmJlu3f34', 'Albay Heritage Photo 18', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1CVzMuNUIoSw3gLfS91V6tnKmmJlu3f34" alt="Albay Photo 18" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 18</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/11z9kGfVVZOlPy2A85KmY0Qa4dEELFqQN', 'SM City Legazpi', 'Albay', 'Alexandra Hera Lumibao', 'February 2, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/11z9kGfVVZOlPy2A85KmY0Qa4dEELFqQN" alt="SM City Legazpi" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">SM City Legazpi</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Alexandra Hera Lumibao</span><span><i class="fa-solid fa-calendar-day"></i> Feb 2, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/11z9kGfVVZOlPy2A85KmY0Qa4dEELFqQN', 'Albay Heritage Photo 19', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/11z9kGfVVZOlPy2A85KmY0Qa4dEELFqQN" alt="Albay Photo 19" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 19</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1GkBoi2OYnYRcmpmNCnA_-Ra3Dds-1YBc', 'Sunset at Purok 3, Gabawan, Daraga, Albay', 'Albay', 'Shyr Biton', 'March 25, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1GkBoi2OYnYRcmpmNCnA_-Ra3Dds-1YBc" alt="Sunset at Purok 3, Gabawan, Daraga, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sunset at Purok 3, Gabawan, Daraga, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Shyr Biton</span><span><i class="fa-solid fa-calendar-day"></i> Mar 25, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1GkBoi2OYnYRcmpmNCnA_-Ra3Dds-1YBc', 'Albay Heritage Photo 20', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1GkBoi2OYnYRcmpmNCnA_-Ra3Dds-1YBc" alt="Albay Photo 20" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 20</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1DfMiMB9xkZaHaqwXorhouElcGWjl2f_V', 'Sunset at Sawangan Park, Legazpi City', 'Albay', 'Rose Anne Mae A Alejo', 'January 18, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1DfMiMB9xkZaHaqwXorhouElcGWjl2f_V" alt="Sunset at Sawangan Park, Legazpi City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sunset at Sawangan Park, Legazpi City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Rose Anne Mae A Alejo</span><span><i class="fa-solid fa-calendar-day"></i> Jan 18, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1DfMiMB9xkZaHaqwXorhouElcGWjl2f_V', 'Albay Heritage Photo 21', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1DfMiMB9xkZaHaqwXorhouElcGWjl2f_V" alt="Albay Photo 21" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 21</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1-EoPMBWzJRZFmJO09jIm8dgm8K1zBlv_', 'Mayon Skyline at Tabaco City', 'Albay', 'Rose Anne Mae A Alejo', 'January 2, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1-EoPMBWzJRZFmJO09jIm8dgm8K1zBlv_" alt="Mayon Skyline at Tabaco City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Mayon Skyline at Tabaco City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Rose Anne Mae A Alejo</span><span><i class="fa-solid fa-calendar-day"></i> Jan 2, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1-EoPMBWzJRZFmJO09jIm8dgm8K1zBlv_', 'Albay Heritage Photo 22', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1-EoPMBWzJRZFmJO09jIm8dgm8K1zBlv_" alt="Albay Photo 22" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 22</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1qGPx5SDukbCrhWdZwm0LwrVXBdDruKRP', 'The Albay Cathedral at Old Albay District, Legazpi City', 'Albay', 'Alexandra Hera Lumibao', 'April 3, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1qGPx5SDukbCrhWdZwm0LwrVXBdDruKRP" alt="The Albay Cathedral at Old Albay District, Legazpi City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">The Albay Cathedral at Old Albay District, Legazpi City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Alexandra Hera Lumibao</span><span><i class="fa-solid fa-calendar-day"></i> Apr 3, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1qGPx5SDukbCrhWdZwm0LwrVXBdDruKRP', 'Albay Heritage Photo 23', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1qGPx5SDukbCrhWdZwm0LwrVXBdDruKRP" alt="Albay Photo 23" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 23</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1dphiAnGvtRtsvm3mn_CKxywflfRzkgtI', 'The giant statue of Our Lady of Salvation with Mayon Volcano in the background from Pawa, Legazpi City, Albay', 'Albay', 'Sarah Jean Ventura', 'July 22, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1dphiAnGvtRtsvm3mn_CKxywflfRzkgtI" alt="The giant statue of Our Lady of Salvation with Mayon Volcano in the background from Pawa, Legazpi City, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">The giant statue of Our Lady of Salvation with Mayon...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Jul 22, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1dphiAnGvtRtsvm3mn_CKxywflfRzkgtI', 'Albay Heritage Photo 24', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1dphiAnGvtRtsvm3mn_CKxywflfRzkgtI" alt="Albay Photo 24" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 24</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1maCC_QzXCho6TerqKqkHij4HtByN4Gvx', 'The Porta Sancta arch of the Diocesan Shrine of Our Lady of Salvation from Joroan, Tiwi, Albay', 'Albay', 'Sarah Jean Ventura', 'April 4, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1maCC_QzXCho6TerqKqkHij4HtByN4Gvx" alt="The Porta Sancta arch of the Diocesan Shrine of Our Lady of Salvation from Joroan, Tiwi, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">The Porta Sancta arch of the Diocesan Shrine of Our Lady...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Apr 4, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1maCC_QzXCho6TerqKqkHij4HtByN4Gvx', 'Albay Heritage Photo 25', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1maCC_QzXCho6TerqKqkHij4HtByN4Gvx" alt="Albay Photo 25" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 25</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1qUK7XpZEk4fFp-8PRi861rbcq2G3pnfb', 'Verafalls at Malinao, Albay', 'Albay', 'Rose Anne Mae A Alejo', 'August 2, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1qUK7XpZEk4fFp-8PRi861rbcq2G3pnfb" alt="Verafalls at Malinao, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Verafalls at Malinao, Albay</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Rose Anne Mae A Alejo</span><span><i class="fa-solid fa-calendar-day"></i> Aug 2, 2025</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1qUK7XpZEk4fFp-8PRi861rbcq2G3pnfb', 'Albay Heritage Photo 26', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1qUK7XpZEk4fFp-8PRi861rbcq2G3pnfb" alt="Albay Photo 26" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 26</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1wbbT_pJk4yrW_2Wb00mQGxCbREw6zWiD', 'View of Mayon Volcano from Legazpi City Boulevard, Legazpi City, Albay', 'Albay', 'Sarah Jean Ventura', 'July 9, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1wbbT_pJk4yrW_2Wb00mQGxCbREw6zWiD" alt="View of Mayon Volcano from Legazpi City Boulevard, Legazpi City, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">View of Mayon Volcano from Legazpi City Boulevard...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Jul 9, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1wbbT_pJk4yrW_2Wb00mQGxCbREw6zWiD', 'Albay Heritage Photo 27', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1wbbT_pJk4yrW_2Wb00mQGxCbREw6zWiD" alt="Albay Photo 27" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 27</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
-            </div>
-            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1eBxHocRSvKpSzjhv050VlgnfEzkZs0Wr', 'Albay Heritage Photo 28', 'Albay', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1eBxHocRSvKpSzjhv050VlgnfEzkZs0Wr" alt="Albay Photo 28" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Albay Heritage Photo 28</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="albay" onclick="openLightbox('https://lh3.googleusercontent.com/d/1eBxHocRSvKpSzjhv050VlgnfEzkZs0Wr', 'View of Mayon Volcano from Legazpi City Boulevard, Legazpi City, Albay', 'Albay', 'Sarah Jean Ventura', 'July 9, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Albay</span><img src="https://lh3.googleusercontent.com/d/1eBxHocRSvKpSzjhv050VlgnfEzkZs0Wr" alt="View of Mayon Volcano from Legazpi City Boulevard, Legazpi City, Albay" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">View of Mayon Volcano from Legazpi City Boulevard...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Jul 9, 2026</span></div></div>
             </div>
 
             <!-- SORSOGON PHOTOS (7 Images) -->
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm', 'Sorsogon Scenery Photo 1', 'Sorsogon', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm" alt="Sorsogon Photo 1" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm', 'Pantomina sa Tinampo during Kasanggayahan Festival at Sorsogon City', 'Sorsogon', 'Jovin Leron', 'October 18, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/19yUBG90fjMjoAVaF9GHGUsHZUXLavfnm" alt="Pantomina sa Tinampo during Kasanggayahan Festival at Sorsogon City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Pantomina sa Tinampo during Kasanggayahan Festival...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Jovin Leron</span><span><i class="fa-solid fa-calendar-day"></i> Oct 18, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1Al8tTdUDYm4fKVNa7h_3VhfA7vYWQGFI', 'Sorsogon Scenery Photo 2', 'Sorsogon', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1Al8tTdUDYm4fKVNa7h_3VhfA7vYWQGFI" alt="Sorsogon Photo 2" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 2</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1Al8tTdUDYm4fKVNa7h_3VhfA7vYWQGFI', 'Cabin Villas from Modesta Resort, Irosin Sorsogon', 'Sorsogon', 'Sarah Jean Ventura', 'September 12, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1Al8tTdUDYm4fKVNa7h_3VhfA7vYWQGFI" alt="Cabin Villas from Modesta Resort, Irosin Sorsogon" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Cabin Villas from Modesta Resort, Irosin Sorsogon</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Sep 12, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1phK_dmEGdPIbrYMF2Cart8b3o48Hoz9K', 'Sorsogon Scenery Photo 3', 'Sorsogon', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1phK_dmEGdPIbrYMF2Cart8b3o48Hoz9K" alt="Sorsogon Photo 3" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 3</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1phK_dmEGdPIbrYMF2Cart8b3o48Hoz9K', 'Panoramic view of the Sorsogon Sports Arena from Sorsogon City, Sorsogon', 'Sorsogon', 'Sarah Jean Ventura', 'September 11, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1phK_dmEGdPIbrYMF2Cart8b3o48Hoz9K" alt="Panoramic view of the Sorsogon Sports Arena from Sorsogon City, Sorsogon" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Panoramic view of the Sorsogon Sports Arena...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Sep 11, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1we_cgHvQ-KMzdUGKsC_bpXyVB0IW78Iv', 'Sorsogon Scenery Photo 4', 'Sorsogon', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1we_cgHvQ-KMzdUGKsC_bpXyVB0IW78Iv" alt="Sorsogon Photo 4" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 4</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1we_cgHvQ-KMzdUGKsC_bpXyVB0IW78Iv', 'Sky colors during Sunset at Sorsogon City', 'Sorsogon', 'Shyr Biton', 'July 28, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1we_cgHvQ-KMzdUGKsC_bpXyVB0IW78Iv" alt="Sky colors during Sunset at Sorsogon City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sky colors during Sunset at Sorsogon City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Shyr Biton</span><span><i class="fa-solid fa-calendar-day"></i> Jul 28, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1h0O1MKtSmCQPpRH9-2vTt7u2qYJ70Rah', 'Sorsogon Scenery Photo 5', 'Sorsogon', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1h0O1MKtSmCQPpRH9-2vTt7u2qYJ70Rah" alt="Sorsogon Photo 5" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 5</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1h0O1MKtSmCQPpRH9-2vTt7u2qYJ70Rah', 'Sunset view from Rompeolas, Sorsogon City', 'Sorsogon', 'Christine Quite', 'November 7, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1h0O1MKtSmCQPpRH9-2vTt7u2qYJ70Rah" alt="Sunset view from Rompeolas, Sorsogon City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Sunset view from Rompeolas, Sorsogon City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Christine Quite</span><span><i class="fa-solid fa-calendar-day"></i> Nov 7, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1VDSRW5g17-YVkgbRKjSQgvaSGqbLBRde', 'Sorsogon Scenery Photo 6', 'Sorsogon', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1VDSRW5g17-YVkgbRKjSQgvaSGqbLBRde" alt="Sorsogon Photo 6" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Sorsogon Scenery Photo 6</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="sorsogon" onclick="openLightbox('https://lh3.googleusercontent.com/d/1VDSRW5g17-YVkgbRKjSQgvaSGqbLBRde', 'View of Bulusan Lake from Bulusan, Sorsogon', 'Sorsogon', 'Sarah Jean Ventura', 'September 11, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Sorsogon</span><img src="https://lh3.googleusercontent.com/d/1VDSRW5g17-YVkgbRKjSQgvaSGqbLBRde" alt="View of Bulusan Lake from Bulusan, Sorsogon" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">View of Bulusan Lake from Bulusan, Sorsogon</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Sep 11, 2026</span></div></div>
             </div>
 
             <!-- CATANDUANES PHOTO (1 Image) -->
-            <div class="photo-card" data-province="catanduanes" onclick="openLightbox('https://lh3.googleusercontent.com/d/1tpEju6l-vcb0QFyLwPwCjYjYBsxtDSlg', 'Catanduanes Island Photo 1', 'Catanduanes', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Catanduanes</span><img src="https://lh3.googleusercontent.com/d/1tpEju6l-vcb0QFyLwPwCjYjYBsxtDSlg" alt="Catanduanes Photo 1" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Catanduanes Island Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="catanduanes" onclick="openLightbox('https://lh3.googleusercontent.com/d/1tpEju6l-vcb0QFyLwPwCjYjYBsxtDSlg', 'Scenic view of Binurong Point from Baras, Catanduanes', 'Catanduanes', 'Sarah Jean Ventura', 'March 7, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Catanduanes</span><img src="https://lh3.googleusercontent.com/d/1tpEju6l-vcb0QFyLwPwCjYjYBsxtDSlg" alt="Scenic view of Binurong Point from Baras, Catanduanes" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Scenic view of Binurong Point from Baras, Catanduanes</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Mar 7, 2026</span></div></div>
             </div>
 
             <!-- CAMARINES SUR PHOTOS (4 Images) -->
-            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1DI594_GynFXYCzbl3XeM2fiBba14vCrh', 'Camarines Sur Heritage Photo 1', 'Camarines Sur', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1DI594_GynFXYCzbl3XeM2fiBba14vCrh" alt="CamSur Photo 1" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 1</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1DI594_GynFXYCzbl3XeM2fiBba14vCrh', 'Basilica at Naga City', 'Camarines Sur', 'Rose Anne Mae A Alejo', 'September 20, 2024')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1DI594_GynFXYCzbl3XeM2fiBba14vCrh" alt="Basilica at Naga City" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Basilica at Naga City</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Rose Anne Mae A Alejo</span><span><i class="fa-solid fa-calendar-day"></i> Sep 20, 2024</span></div></div>
             </div>
-            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1zj4zantLfyzqEd7y7i096v79FUxSEMHo', 'Camarines Sur Heritage Photo 2', 'Camarines Sur', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1zj4zantLfyzqEd7y7i096v79FUxSEMHo" alt="CamSur Photo 2" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 2</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1zj4zantLfyzqEd7y7i096v79FUxSEMHo', 'Facade view of the Basilica Minore of Our Lady of Peñafrancia from Naga City, Camarines Sur', 'Camarines Sur', 'Sarah Jean Ventura', 'September 29, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1zj4zantLfyzqEd7y7i096v79FUxSEMHo" alt="Facade view of the Basilica Minore of Our Lady of Peñafrancia from Naga City, Camarines Sur" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Facade view of the Basilica Minore of Our Lady...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Sep 29, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1sGXsp7Z51nw4eyY9mlEdgTCexqMediJC', 'Camarines Sur Heritage Photo 3', 'Camarines Sur', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1sGXsp7Z51nw4eyY9mlEdgTCexqMediJC" alt="CamSur Photo 3" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 3</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1sGXsp7Z51nw4eyY9mlEdgTCexqMediJC', 'Front view of the Naga Metropolitan Cathedral from Naga City, Camarines Sur', 'Camarines Sur', 'Sarah Jean Ventura', 'September 29, 2026')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1sGXsp7Z51nw4eyY9mlEdgTCexqMediJC" alt="Front view of the Naga Metropolitan Cathedral from Naga City, Camarines Sur" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Front view of the Naga Metropolitan Cathedral...</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Sarah Jean Ventura</span><span><i class="fa-solid fa-calendar-day"></i> Sep 29, 2026</span></div></div>
             </div>
-            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1lfKy1MWP3221q_1hH_I5J3O7vtU88GXx', 'Camarines Sur Heritage Photo 4', 'Camarines Sur', 'Pamana Team', '2024')">
-                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1lfKy1MWP3221q_1hH_I5J3O7vtU88GXx" alt="CamSur Photo 4" loading="lazy"></div>
-                <div class="photo-info"><div class="photo-title">Camarines Sur Heritage Photo 4</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Pamana Team</span><span><i class="fa-solid fa-calendar-day"></i> 2024</span></div></div>
+            <div class="photo-card" data-province="camsur" onclick="openLightbox('https://lh3.googleusercontent.com/d/1lfKy1MWP3221q_1hH_I5J3O7vtU88GXx', 'Peñafrancia Basilica Minore at Naga City, Camarines Sur', 'Camarines Sur', 'Alexandra Hera Lumibao', 'March 23, 2025')">
+                <div class="photo-img-wrapper"><span class="photo-badge">Camarines Sur</span><img src="https://lh3.googleusercontent.com/d/1lfKy1MWP3221q_1hH_I5J3O7vtU88GXx" alt="Peñafrancia Basilica Minore at Naga City, Camarines Sur" loading="lazy"></div>
+                <div class="photo-info"><div class="photo-title">Peñafrancia Basilica Minore at Naga City, Camarines Sur</div><div class="photo-meta"><span><i class="fa-solid fa-camera"></i> Alexandra Hera Lumibao</span><span><i class="fa-solid fa-calendar-day"></i> Mar 23, 2025</span></div></div>
             </div>
 
             <!-- EMPTY NOTICE FOR PROVINCES WITH NO PHOTOS (ENGLISH VERSION) -->
@@ -886,7 +886,7 @@
                 headers: { "Content-Type": "application/json", "Accept": "application/json" },
                 body: JSON.stringify({ Rating: selectedRating + " Stars", Feedback: comment || "No written feedback provided.", Page_Submitted: window.location.href, Submitted_At: new Date().toLocaleString() })
             })
-            .then(function() { closeRatingModal(); showToast("Maraming salamat sa iyong rating at feedback!"); })
+            .then(function() { closeRatingModal(); showToast("Thank you for your rating and feedback!"); })
             .catch(function() { closeRatingModal(); showToast("Salamat sa feedback! Na-record na ang iyong rating."); })
             .finally(function() { submitBtn.textContent = "SUBMIT FEEDBACK"; submitBtn.disabled = false; });
         }
