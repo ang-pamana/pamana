@@ -66,11 +66,11 @@
         .mobile-dropdown a.active, .mobile-dropdown a:hover { background: #fff5f0; color: #ff4e00; }
         .mobile-dropdown.open { display: flex; }
 
-        /* WELCOME MODAL STYLES */
+        /* WELCOME MODAL STYLES (Z-INDEX: 20000 PARA HARANGIN ANG FLOATING BUTTON) */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            display: flex; justify-content: center; align-items: center; z-index: 10000; padding: 20px;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            display: flex; justify-content: center; align-items: center; z-index: 20000; padding: 20px;
             transition: opacity 0.3s ease;
         }
         .modal-box {
@@ -93,6 +93,17 @@
         .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden; }
         .canva-embed-holder { position: relative; width: 100%; height: 0; padding-top: 288.6530%; overflow: hidden; }
         .canva-embed-holder iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: 0 !important; outline: none !important; }
+
+        /* FLOATING BUTTON (Z-INDEX: 9990) */
+        .wotd-float-btn {
+            position: fixed; bottom: 24px; right: 24px; z-index: 9990;
+            background: linear-gradient(135deg, #ff4e00 0%, #ff8800 100%);
+            color: #ffffff; border: none; border-radius: 30px; padding: 12px 20px;
+            font-size: 13px; font-weight: 800; display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 6px 20px rgba(255, 78, 0, 0.4); cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .wotd-float-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 78, 0, 0.55); }
 
         @media (max-width: 850px) {
             .sticky-header { height: 46px; padding: 0 14px; }
@@ -151,26 +162,38 @@
     </div>
 
     <main class="content-container">
-    <div class="canva-block">
-        <div class="canva-embed-holder">
-            <iframe loading="lazy" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen scrolling="no"></iframe>
+        <div class="canva-block">
+            <div class="canva-embed-holder">
+                <iframe loading="lazy" src="https://www.canva.com/design/DAHaUonab1A/SsyWwRGyMcmPS5dNC3Ji4Q/view?embed" allowfullscreen scrolling="no"></iframe>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
     <!-- FLOATING WORD OF THE DAY BUTTON -->
-    <button onclick="document.getElementById('pamanaWotdModal').style.display='flex';" style="position:fixed; bottom:24px; right:24px; z-index:999999; background:linear-gradient(135deg, #ff4e00 0%, #ff8800 100%); color:#ffffff; border:none; border-radius:30px; padding:12px 20px; font-size:13px; font-weight:800; display:flex; align-items:center; gap:8px; box-shadow:0 6px 20px rgba(255, 78, 0, 0.4); cursor:pointer;">
+    <button class="wotd-float-btn" onclick="openWotdModal()">
         <i class="fa-solid fa-book-open"></i> Word of the Day
     </button>
 
-    <!-- WORD OF THE DAY POPUP MODAL -->
-    <div id="pamanaWotdModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:1000000; justify-content:center; align-items:center; padding:20px;">
+    <!-- WORD OF THE DAY POPUP MODAL (WITH SOURCE ATTRIBUTION) -->
+    <div id="pamanaWotdModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:25000; justify-content:center; align-items:center; padding:20px;">
         <div style="background:#ffffff; color:#222222; width:100%; max-width:420px; border-radius:24px; padding:32px 26px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.25); position:relative;">
-            <span style="display:inline-block; background:#fff5f0; color:#ff4e00; padding:4px 14px; border-radius:20px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; border:1px solid #ffdcd0;">Word of the Day</span>
-            <h2 style="font-family:'Georgia', serif; font-size:32px; font-weight:800; color:#222222; margin-bottom:4px;">Magayon</h2>
-            <p style="font-style:italic; color:#ff4e00; font-size:13.5px; margin-bottom:18px;">Adjective (Bikol)</p>
-            <p style="font-size:14px; color:#444444; line-height:1.6; background:#f8f9fa; padding:16px; border-radius:14px; border-left:4px solid #ff4e00; margin-bottom:24px; text-align:left;"><strong>Meaning:</strong> Beautiful, lovely, or pleasant to the eyes.</p>
-            <button onclick="document.getElementById('pamanaWotdModal').style.display='none';" style="width:100%; padding:12px; border:none; border-radius:25px; background:linear-gradient(90deg, #ff4e00 0%, #ff8800 100%); color:#ffffff; font-weight:800; cursor:pointer; font-size:12.5px; letter-spacing:1px; box-shadow:0 4px 14px rgba(255, 78, 0, 0.3);">GOT IT!</button>
+            <button onclick="closeWotdModal()" style="position:absolute; top:16px; right:20px; background:none; border:none; font-size:20px; color:#777777; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+            
+            <span style="display:inline-block; background:#fff5f0; color:#ff4e00; padding:4px 14px; border-radius:20px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; border:1px solid #ffdcd0;">
+                <i class="fa-solid fa-language" style="margin-right:4px;"></i> Word of the Day
+            </span>
+            
+            <h2 id="wotdWord" style="font-family:'Georgia', serif; font-size:32px; font-weight:800; color:#ff4e00; margin-bottom:4px;">Magayon</h2>
+            <p id="wotdTranslation" style="font-style:italic; color:#666666; font-size:13.5px; margin-bottom:18px;">Adjective (Bikol)</p>
+            <p id="wotdMeaning" style="font-size:14px; color:#444444; line-height:1.6; background:#f8f9fa; padding:16px; border-radius:14px; border-left:4px solid #ff4e00; margin-bottom:20px; text-align:left;">
+                Beautiful, lovely, or pleasant to the eyes.
+            </p>
+            
+            <button onclick="closeWotdModal()" style="width:100%; padding:12px; border:none; border-radius:25px; background:linear-gradient(90deg, #ff4e00 0%, #ff8800 100%); color:#ffffff; font-weight:800; cursor:pointer; font-size:12.5px; letter-spacing:1px; box-shadow:0 4px 14px rgba(255, 78, 0, 0.3);">GOT IT!</button>
+            
+            <div style="font-size:11px; color:#999999; font-style:italic; margin-top:14px;">
+                Source: BICOL SAMINOVIC MAN
+            </div>
         </div>
     </div>
 
@@ -193,6 +216,32 @@
                 setTimeout(function() { modal.style.display = 'none'; }, 300);
             }
             sessionStorage.setItem('pamana_has_visited', 'true');
+        }
+
+        // BICOL WORDS LIST
+        var bicolWordsList = [
+            { word: "Magayon", trans: "Adjective (Bikol)", meaning: "Beautiful, lovely, or pleasant to the eyes." },
+            { word: "Mabalos", trans: "Expression (Bikol)", meaning: "Thank you. An expression of gratitude used in everyday Bicolano conversation." },
+            { word: "Maogma", trans: "Adjective (Bikol)", meaning: "Happy, joyful, or feeling glad and pleasant." },
+            { word: "Oragon", trans: "Adjective (Bikol)", meaning: "Strong, flexible, or excellent. An iconic Bicolano term describing someone resilient and impressive." },
+            { word: "Marhay", trans: "Adjective (Bikol)", meaning: "Good or fine. Commonly used in greetings like 'Marhay na adlaw' (Good day)." },
+            { word: "Namumutan", trans: "Noun / Adjective (Bikol)", meaning: "Beloved or loved one, expressing deep affection and love." }
+        ];
+
+        function openWotdModal() {
+            var today = new Date();
+            var dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+            var selected = bicolWordsList[dateSeed % bicolWordsList.length];
+
+            document.getElementById('wotdWord').textContent = selected.word;
+            document.getElementById('wotdTranslation').textContent = selected.trans;
+            document.getElementById('wotdMeaning').textContent = selected.meaning;
+
+            document.getElementById('pamanaWotdModal').style.display = 'flex';
+        }
+
+        function closeWotdModal() {
+            document.getElementById('pamanaWotdModal').style.display = 'none';
         }
     </script>
 </body>
