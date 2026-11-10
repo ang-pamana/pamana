@@ -74,70 +74,11 @@
             .wotd-header-btn span { display: none; }
             .wotd-header-btn { padding: 4px 8px; margin: 0; }
         }
-        /* ORANGE BRAND TITLE */
-.brand-title {
-    font-family: 'Georgia', serif;
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #ff4e00;
-    display: inline-block;
-}
-
-/* WOTD HEADER BUTTON */
-.wotd-header-btn {
-    background: linear-gradient(135deg, #ff4e00 0%, #ff8800 100%);
-    color: #ffffff !important;
-    padding: 5px 14px !important;
-    border-radius: 20px;
-    font-size: 11px !important;
-    font-weight: 800 !important;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 3px 8px rgba(255, 78, 0, 0.3);
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-.wotd-header-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 12px rgba(255, 78, 0, 0.45);
-}
-
-/* WOTD POPUP MODAL STYLES */
-.wotd-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 10015;
-    display: flex; justify-content: center; align-items: center;
-    padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-}
-.wotd-overlay.show { opacity: 1; pointer-events: auto; }
-.wotd-card {
-    background: #ffffff; color: #222222; width: 100%; max-width: 440px;
-    border-radius: 24px; padding: 32px 28px; text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25); position: relative;
-}
-.wotd-badge {
-    display: inline-block; background: #ff4e00; color: #ffffff;
-    padding: 4px 14px; border-radius: 20px; font-size: 11px;
-    font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
-}
-.wotd-word { font-family: 'Georgia', serif; font-size: 30px; font-weight: 800; color: #222222; margin-bottom: 4px; }
-.wotd-pos { font-style: italic; color: #ff4e00; font-size: 13px; margin-bottom: 16px; }
-.wotd-def {
-    font-size: 14px; color: #444444; line-height: 1.6; background: #fff5f0;
-    padding: 14px; border-radius: 14px; border: 1px solid #ffdcd0; margin-bottom: 20px;
-}
-.wotd-close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 20px; color: #888888; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <!-- UNIFIED HEADER BAR -->
+    <!-- UNIFIED HEADER - HOMEPAGE -->
 <header class="sticky-header">
     <div class="brand-group">
         <img src="https://ang-pamana.github.io/pamana/pamanalogo.png" alt="Logo" class="brand-logo">
@@ -145,16 +86,13 @@
     </div>
 
     <nav class="desktop-nav">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="culture.html">Culture</a>
         <a href="environment.html">Environment</a>
         <a href="heritage.html">Heritage</a>
         <a href="feature.html">Feature</a>
         <a href="Bicol%20Gallery.html">Gallery</a>
         <a href="team.html">Meet the Team</a>
-        <a href="javascript:void(0)" class="wotd-header-btn" onclick="openWotdModal()">
-            <i class="fa-solid fa-book-open"></i> Word of the Day
-        </a>
     </nav>
 
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
@@ -163,16 +101,13 @@
 </header>
 
 <div class="mobile-dropdown" id="mobileMenu">
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="culture.html">Culture</a>
     <a href="environment.html">Environment</a>
     <a href="heritage.html">Heritage</a>
     <a href="feature.html">Feature</a>
     <a href="Bicol%20Gallery.html">Gallery</a>
     <a href="team.html">Meet the Team</a>
-    <a href="javascript:void(0)" onclick="openWotdModal(); toggleMobileMenu();">
-        <i class="fa-solid fa-book-open"></i> Word of the Day
-    </a>
 </div>
 
     <div class="modal-overlay" id="welcomeModal">
@@ -259,17 +194,6 @@
                 setTimeout(function() { modal.style.display = 'none'; }, 300);
             }
         }
-        <!-- WORD OF THE DAY POPUP MODAL -->
-<div class="wotd-overlay" id="wotdModal">
-    <div class="wotd-card">
-        <button class="wotd-close-btn" onclick="closeWotdModal()"><i class="fa-solid fa-xmark"></i></button>
-        <span class="wotd-badge">Word of the Day</span>
-        <h2 class="wotd-word">Magayon</h2>
-        <p class="wotd-pos">Adjective (Bikol)</p>
-        <p class="wotd-def">Meaning: Beautiful, lovely, or pleasant to the eyes.</p>
-        <button onclick="closeWotdModal()" style="width:100%; padding:10px; border:none; border-radius:20px; background:#ff4e00; color:#fff; font-weight:800; cursor:pointer;">CLOSE</button>
-    </div>
-</div>
     </script>
 </body>
 </html>
