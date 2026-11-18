@@ -2,34 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ang-pamana.github.io/pamana/</loc>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ang-pamana.github.io/pamana/index.html</loc>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ang-pamana.github.io/pamana/culture.html</loc>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ang-pamana.github.io/pamana/environment.html</loc>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ang-pamana.github.io/pamana/heritage.html</loc>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ang-pamana.github.io/pamana/feature.html</loc>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ang-pamana.github.io/pamana/Bicol%20Gallery.html</loc>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ang-pamana.github.io/pamana/team.html</loc>
-    <priority>0.7</priority>
   </url>
 </urlset>
