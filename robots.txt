@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ang-pamana.github.io/pamana/sitemap.xml
