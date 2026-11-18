@@ -333,15 +333,18 @@
     </div>
 
     <!-- 1. DESKTOP NAVIGATION -->
-    <nav class="desktop-nav">
-        <a href="index.html">Home</a>
-        <a href="culture.html">Culture</a>
-        <a href="environment.html">Environment</a>
-        <a href="heritage.html">Heritage</a>
-        <a href="feature.html">Feature</a>
-        <a href="Bicol%20Gallery.html">Gallery</a>
-        <a href="team.html">Meet the Team</a>
-    </nav>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="culture.html">Culture</a>
+            <a href="environment.html">Environment</a>
+            <a href="heritage.html">Heritage</a>
+            <a href="feature.html">Feature</a>
+            <a href="Bicol%20Gallery.html">Gallery</a>
+            <a href="team.html">Meet the Team</a>
+            <button class="nav-exp-btn" onclick="openRatingModal()">
+                <i class="fa-solid fa-star"></i> How's Your Experience
+            </button>
+        </nav>
 
     <!-- 2. MOBILE MENU HAMBURGER BUTTON -->
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
@@ -350,15 +353,18 @@
 </header>
 
 <!-- 3. MOBILE DROPDOWN MENU -->
-<div class="mobile-dropdown" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="culture.html">Culture</a>
-    <a href="environment.html">Environment</a>
-    <a href="heritage.html">Heritage</a>
-    <a href="feature.html">Feature</a>
-    <a href="Bicol%20Gallery.html">Gallery</a>
-    <a href="team.html">Meet the Team</a>
-</div>
+    <div class="mobile-dropdown" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="culture.html">Culture</a>
+        <a href="environment.html">Environment</a>
+        <a href="heritage.html">Heritage</a>
+        <a href="feature.html">Feature</a>
+        <a href="Bicol%20Gallery.html">Gallery</a>
+        <a href="team.html">Meet the Team</a>
+        <button onclick="openRatingModal(); toggleMobileMenu();" style="color: #ff4e00;">
+            <i class="fa-solid fa-star"></i> How's Your Experience
+        </button>
+    </div>
 
     <!-- FLOATING BUTTONS GROUP (BACK & SHARE) -->
     <div class="floating-actions-group">
