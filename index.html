@@ -92,7 +92,15 @@
         .content-container { margin-top: 50px; width: 100%; position: relative; overflow: hidden; }
         .canva-block { width: 100%; position: relative; background: #ffffff; overflow: hidden; }
         .canva-embed-holder { position: relative; width: 100%; height: 0; padding-top: 288.6530%; overflow: hidden; }
-        .canva-embed-holder iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: 0 !important; outline: none !important; }
+        .canva-embed-holder iframe {
+    position: absolute;
+    width: calc(100% + 18px); /* Itinutulak palabas ang inner scrollbar ng Canva */
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 0 !important;
+    outline: none !important;
+}
 
         /* FLOATING BUTTON (Z-INDEX: 9990) */
         .wotd-float-btn {
